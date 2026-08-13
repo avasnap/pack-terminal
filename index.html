@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PACK://TRACKER</title>
+<style>
+  :root {
+    --bg: #050805; --fg: #33ff66; --dim: #1a8f3c; --faint: #0e5424;
+    --amber: #ffb000; --red: #ff4444; --cyan: #2ee6d6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--fg); }
+  body {
+    font: 14px/1.45 "Cascadia Mono", ui-monospace, "JetBrains Mono", Consolas, monospace;
+    padding: 18px 22px; min-height: 100vh; position: relative; overflow-x: hidden;
+  }
+  body::after {  /* scanlines */
+    content: ""; position: fixed; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(0deg, transparent 0 2px, rgba(0,0,0,.22) 2px 4px);
+    mix-blend-mode: multiply;
+  }
+  body::before { /* vignette + phosphor glow */
+    content: ""; position: fixed; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%);
+  }
+  a { color: var(--cyan); text-decoration: none; }
+  .dim { color: var(--dim); } .faint { color: var(--faint); }
+  .amber { color: var(--amber); } .red { color: var(--red); } .cyan { color: var(--cyan); }
+  #crt { text-shadow: 0 0 6px rgba(51,255,102,.45); max-width: 1100px; margin: 0 auto; }
+  header { white-space: pre; color: var(--fg); margin-bottom: 10px; }
+  .row { display: flex; flex-wrap: wrap; gap: 26px; align-items: baseline; margin: 14px 0; }
+  #mc { font-size: 44px; letter-spacing: 1px; }
+  #mc.up { color: var(--fg); } #mc.down { color: var(--red); text-shadow: 0 0 6px rgba(255,68,68,.4); }
+  .kv { white-space: pre; }
+  #spark { white-space: pre; font-size: 16px; letter-spacing: 2px; color: var(--cyan); overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; margin-top: 6px; }
+  th, td { text-align: right; padding: 1px 10px; font-size: 13px; white-space: nowrap; }
+  th { color: var(--dim); border-bottom: 1px solid var(--faint); text-transform: lowercase; }
+  td:first-child, th:first-child { text-align: left; }
+  tr.untrusted td { color: var(--faint); }
+  tr.flash td { animation: flash .6s; }
+  @keyframes flash { 0% { background: rgba(51,255,102,.18); } 100% { background: transparent; } }
+  #log { margin-top: 16px; border-top: 1px solid var(--faint); padding-top: 8px;
+         max-height: 200px; overflow-y: auto; font-size: 12.5px; }
+  #log div { white-space: pre-wrap; }
+  .cursor::after { content: "█"; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .section { color: var(--dim); margin-top: 18px; }
+  .wrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+<div id="crt">
+<header id="banner">
+╔══════════════════════════════════════════════════════════════════╗
+║  PACK://TRACKER  ·  wolf pack multi-pool market cap              ║
+║  robinhood chain 4663 · uniswap v4 + all dexes · no backend      ║
+╚══════════════════════════════════════════════════════════════════╝</header>
+
+<div class="row">
+  <div><span class="dim">MARKET CAP </span><span id="mc" class="up">──────</span></div>
+  <div class="kv" id="pricebox"></div>
+</div>
+<div class="row">
+  <div class="kv" id="statbox"></div>
+</div>
+<div id="spark"></div>
+
+<div class="section">── pools ────────────────────────────────────────────</div>
+<div class="wrap"><table id="pools">
+  <thead><tr><th>quote</th><th>dex</th><th>price usd</th><th>liq usd</th><th>vol 24h</th><th>Δ 24h</th><th>dev</th></tr></thead>
+  <tbody></tbody>
+</table></div>
+
+<div class="section">── log ──────────────────────────────────────────────</div>
+<div id="log"></div>
+<div class="cursor dim" style="margin-top:6px">pack@rhchain:~$ </div>
+</div>
+
+<script>
+"use strict";
+const PACK = "0x0145acbccefbed6f303c420beeaaac72e905430b";
+const API = "https://api.dexscreener.com/latest/dex/tokens/" + PACK;
+const RPC = "https://rpc.mainnet.chain.robinhood.com";
+const SUPPLY_FALLBACK = 956038886.86;
+const REFRESH_MS = 10000;
+const TRUSTED = new Set([   // canonical quote assets (robinhood registry + verified memecoins)
+  "0x0000000000000000000000000000000000000000",                    // native ETH (dexscreener: ETH)
+  "0x0bd7d308f8e1639fab988df18a8011f41eacad73",                    // WETH
+  "0x5fc5360d0400a0fd4f2af552add042d716f1d168",                    // USDG
+  "0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec",                    // NVDA
+  "0xff080c8ce2e5feadaca0da81314ae59d232d4afd",                    // MU
+  "0xe93237c50d904957cf27e7b1133b510c669c2e74",                    // MSFT
+  "0xaf3d76f1834a1d425780943c99ea8a608f8a93f9",                    // AAPL
+  "0x86923f96303d656e4aa86d9d42d1e57ad2023fdc",                    // AMD
+  "0x4a0e65a3eccec6dbe60ae065f2e7bb85fae35eea",                    // SPCX
+  "0x020bfc650a365f8bb26819deaabf3e21291018b4",                    // CASHCAT
+  "0xe8fb470e0685437d7739bd2aacba60b228800335",                    // THROBBIN
+  "0x45242320dbb855eea8fd36804c6487e10e97fcf9",                    // TENDIES
+  "0x39dbed3a2bd333467115de45665cc57f813c4571",                    // PONS
+  "0x40686524e56aff0f1446958725dcf6e6da5381e6",                    // QUOTRON
+]);
+const MIN_LIQ_USD = 300;
+const BARS = " ▁▂▃▄▅▆▇█";
+
+let supply = SUPPLY_FALLBACK, supplySrc = "cached";
+let history = [], lastMedian = null, lastDivAlert = false, ticks = 0;
+const t0 = Date.now();
+
+const $ = id => document.getElementById(id);
+const fmtUsd = (v, d = 0) => "$" + v.toLocaleString("en-US", {maximumFractionDigits: d});
+const now = () => new Date().toISOString().slice(11, 19);
+
+function log(msg, cls) {
+  const el = document.createElement("div");
+  if (cls) el.className = cls;
+  el.textContent = `[${now()}] ${msg}`;
+  const box = $("log");
+  box.prepend(el);
+  while (box.children.length > 80) box.lastChild.remove();
+}
+
+async function fetchSupply() {
+  try {
+    const r = await fetch(RPC, {method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({jsonrpc: "2.0", id: 1, method: "eth_call",
+        params: [{to: PACK, data: "0x18160ddd"}, "latest"]})});
+    const j = await r.json();
+    if (j.result) {
+      supply = Number(BigInt(j.result)) / 1e18;
+      supplySrc = "on-chain";
+      log(`totalSupply refreshed on-chain: ${supply.toLocaleString()} PACK`);
+    }
+  } catch (e) { log(`supply refresh failed (${e.message}) — using cached ${SUPPLY_FALLBACK.toLocaleString()}`, "faint"); }
+}
+
+function median(xs) { const s = [...xs].sort((a, b) => a - b); return s[s.length >> 1]; }
+
+async function tick() {
+  let data;
+  try {
+    const r = await fetch(API, {cache: "no-store"});
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    data = await r.json();
+  } catch (e) { log(`ERR dexscreener: ${e.message} — retrying in ${REFRESH_MS/1000}s`, "red"); return; }
+
+  const pairs = (data.pairs || []).filter(p => p.priceUsd && (p.liquidity?.usd ?? 0) >= MIN_LIQ_USD);
+  const rows = pairs.map(p => ({
+    sym: p.quoteToken.symbol, dex: p.dexId,
+    price: +p.priceUsd, liq: p.liquidity?.usd ?? 0,
+    vol: p.volume?.h24 ?? 0, chg: p.priceChange?.h24,
+    trusted: TRUSTED.has((p.quoteToken.address || "").toLowerCase()),
+    id: p.pairAddress,
+  })).sort((a, b) => b.liq - a.liq);
+
+  const tr = rows.filter(r => r.trusted);
+  if (!tr.length) { log("no trusted pairs in response", "red"); return; }
+  // liquidity-weighted median as the anchor, then a ±30% sanity band —
+  // keeps dead/stale pools (dev −50%+) out of the aggregate & divergence
+  const byPrice = [...tr].sort((a, b) => a.price - b.price);
+  const half = byPrice.reduce((s, r) => s + r.liq, 0) / 2;
+  let acc = 0, med0 = byPrice[0].price;
+  for (const r of byPrice) { acc += r.liq; if (acc >= half) { med0 = r.price; break; } }
+  const sane = tr.filter(r => Math.abs(r.price / med0 - 1) < 0.30);
+  const med = median(sane.map(r => r.price));
+  const wsum = sane.reduce((s, r) => s + r.liq, 0);
+  const wavg = sane.reduce((s, r) => s + r.price * r.liq, 0) / wsum;
+  const lo = Math.min(...sane.map(r => r.price)), hi = Math.max(...sane.map(r => r.price));
+  const divBps = Math.round((hi / lo - 1) * 1e4);
+  const mc = med * supply;
+  const totLiq = rows.reduce((s, r) => s + r.liq, 0);
+  const totVol = rows.reduce((s, r) => s + r.vol, 0);
+
+  const mcEl = $("mc");
+  mcEl.textContent = fmtUsd(mc);
+  if (lastMedian !== null) {
+    mcEl.className = med >= lastMedian ? "up" : "down";
+    const d = med / lastMedian - 1;
+    if (Math.abs(d) > 0.02) log(`price ${(d*100).toFixed(2)}% in one tick → $${med.toFixed(6)}`, "amber");
+  }
+  $("pricebox").textContent =
+    `median  $${med.toFixed(6)}\n` +
+    `liq-wtd $${wavg.toFixed(6)}\n` +
+    `range   $${lo.toFixed(6)}..$${hi.toFixed(6)}`;
+  $("statbox").textContent =
+    `pools ${sane.length} trusted / ${rows.length} listed   divergence ${divBps} bps   ` +
+    `dex liq ${fmtUsd(totLiq)}   vol24h ${fmtUsd(totVol)}\n` +
+    `supply ${supply.toLocaleString(undefined, {maximumFractionDigits: 0})} PACK (${supplySrc})   ` +
+    `realizable exit ≲ ${fmtUsd(totLiq / 2)} (quote-side depth)   ` +
+    `up ${Math.floor((Date.now() - t0) / 60000)}m · tick ${++ticks}`;
+
+  history.push(med);
+  if (history.length > 120) history.shift();
+  const hLo = Math.min(...history), hHi = Math.max(...history);
+  $("spark").textContent = history.map(v =>
+    BARS[hHi === hLo ? 4 : Math.round((v - hLo) / (hHi - hLo) * 8)]).join("") +
+    `  session ${((history[history.length-1] / history[0] - 1) * 100).toFixed(2)}%`;
+
+  const tbody = $("pools").tBodies[0];
+  tbody.innerHTML = "";
+  for (const r of rows.slice(0, 18)) {
+    const trEl = document.createElement("tr");
+    if (!r.trusted) trEl.className = "untrusted";
+    const dev = r.trusted ? ((r.price / med - 1) * 1e4).toFixed(0) + "bp" : "—";
+    const chg = r.chg == null ? "—" : (r.chg > 0 ? "+" : "") + r.chg + "%";
+    trEl.innerHTML =
+      `<td>${r.trusted ? "" : "☠ "}${r.sym}</td><td class="dim">${r.dex}</td>` +
+      `<td>$${r.price.toFixed(6)}</td><td>${fmtUsd(r.liq)}</td><td>${fmtUsd(r.vol)}</td>` +
+      `<td class="${(r.chg ?? 0) < 0 ? "red" : "dim"}">${chg}</td><td class="dim">${dev}</td>`;
+    tbody.appendChild(trEl);
+  }
+
+  if (divBps > 1000 && !lastDivAlert) log(`ALERT divergence ${divBps} bps across trusted pools`, "amber");
+  lastDivAlert = divBps > 1000;
+  lastMedian = med;
+}
+
+log("PACK tracker terminal online — data: dexscreener api, 10s refresh");
+fetchSupply();
+tick();
+setInterval(tick, REFRESH_MS);
+setInterval(fetchSupply, 10 * 60 * 1000);
+</script>
+</body>
+</html>
