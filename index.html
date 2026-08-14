@@ -588,7 +588,7 @@ $("log").addEventListener("click", e => {
 $("pager").addEventListener("click", e => { if (!e.target.closest("#pagerbox")) closePager(); });
 $("pagerbox").addEventListener("click", e => {
   const a = e.target.closest("a.cmd");
-  if (a) { e.preventDefault(); exec(a.dataset.cmd); }
+  if (a) { e.preventDefault(); e.stopPropagation(); exec(a.dataset.cmd); }
 });
 $("diarybtn").addEventListener("click", openDiaryPager);
 document.addEventListener("keydown", e => {
