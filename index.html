@@ -92,7 +92,7 @@
 </div>
 <div id="spark"></div>
 
-<div class="section">── pools ────────────────────────────────────────────</div>
+<div class="section">── pools ──────────────── ◆ locked dens, always shown ──</div>
 <div class="wrap"><table id="pools">
   <thead><tr><th>#</th><th class="l">quote</th><th class="l">dex</th><th>price usd</th><th>liq usd</th><th>vol 24h</th><th>Δ 24h</th><th>dev</th><th class="l">trade</th></tr></thead>
   <tbody></tbody>
@@ -120,6 +120,19 @@ const TRUSTED = new Set([
   "0x39dbed3a2bd333467115de45665cc57f813c4571", "0x40686524e56aff0f1446958725dcf6e6da5381e6",
 ]);
 const BARS = " ▁▂▃▄▅▆▇█";
+// the ten locked protocol dens (v4 poolId truncated = dexscreener pairAddress)
+const DENS = new Map([
+  ["0x4900c6d3f31ff1e1545a487469c134cdbd9f1499", "NVDA"],
+  ["0x052362df3d4224dd4200faad35e7ce9b97e6ae85", "MU"],
+  ["0x5ecdeabbf5448615109e2a2423bfb151062d849a", "MSFT"],
+  ["0xb0afc3cd4a67c7b9db8a857862322a911adb0701", "AAPL"],
+  ["0xfe3e6151a19b798d83a254d165f69d1442002589", "AMD"],
+  ["0xf4a4509bf8bd51e052d896ad9d53e66c9627f498", "SPCX"],
+  ["0xa0e3293bb948a13f5dad3f2a8aa40e9d839bcb9a", "CASHCAT"],
+  ["0x70da501d5844310bdaaabd73520b9ceeff9c5382", "THROBBIN"],
+  ["0xbb061ffe27facf06aaff43a94cb04fb612c990af", "TENDIES"],
+  ["0x548ae8c6751c5c7b5d3cf53f41a54e602263e7c6", "PONS"],
+]);
 const store = (() => {   // localStorage is unavailable in some contexts (data: origin, strict private mode)
   try { localStorage.setItem("__t", "1"); localStorage.removeItem("__t"); return localStorage; }
   catch { const m = new Map();
@@ -235,11 +248,13 @@ async function tick() {
     data = await r.json();
   } catch (e) { log(`ERR dexscreener: ${e.message} — retrying`, "red"); return; }
 
-  const pairs = (data.pairs || []).filter(p => p.priceUsd && (p.liquidity?.usd ?? 0) >= cfg.dust);
+  const pairs = (data.pairs || []).filter(p => p.priceUsd &&
+    ((p.liquidity?.usd ?? 0) >= cfg.dust || DENS.has((p.pairAddress || "").toLowerCase().slice(0, 42))));
   lastRows = pairs.map(p => ({
     sym: p.quoteToken.symbol, dex: p.dexId, qaddr: (p.quoteToken.address || "").toLowerCase(),
     price: +p.priceUsd, liq: p.liquidity?.usd ?? 0, vol: p.volume?.h24 ?? 0,
     chg: p.priceChange?.h24, trusted: TRUSTED.has((p.quoteToken.address || "").toLowerCase()),
+    den: DENS.has((p.pairAddress || "").toLowerCase().slice(0, 42)),
     id: p.pairAddress, url: p.url || `https://dexscreener.com/robinhoodchain/${p.pairAddress}`,
   })).sort((a, b) => b.liq - a.liq);
 
@@ -301,13 +316,17 @@ async function tick() {
 
   const tbody = $("pools").tBodies[0];
   tbody.innerHTML = "";
-  lastRows.slice(0, 18).forEach((r, i) => {
+  // the ten locked dens are always shown; others fill remaining slots by liquidity
+  const denRows = lastRows.filter(r => r.den);
+  const otherRows = lastRows.filter(r => !r.den).slice(0, Math.max(0, 18 - denRows.length));
+  const shown = [...denRows, ...otherRows].sort((a, b) => b.liq - a.liq);
+  shown.forEach((r, i) => {
     const trEl = document.createElement("tr");
     if (!r.trusted) trEl.className = "untrusted";
     const dev = r.trusted ? ((r.price / med - 1) * 1e4).toFixed(0) + "bp" : "—";
     let chg = r.chg == null ? "—" : (r.chg > 0 ? "+" : "") + (Math.abs(r.chg) > 999 ? ">999" : r.chg) + "%";
     trEl.innerHTML =
-      `<td class="faint">${i + 1}</td><td class="l">${r.trusted ? "" : "☠ "}${r.sym}</td>` +
+      `<td class="faint">${i + 1}</td><td class="l">${r.den ? "◆ " : r.trusted ? "" : "☠ "}${r.sym}</td>` +
       `<td class="l dim">${r.dex}</td><td>$${r.price.toFixed(6)}</td><td>${fmtUsd(r.liq)}</td>` +
       `<td>${fmtUsd(r.vol)}</td><td class="${(r.chg ?? 0) < 0 ? "red" : "dim"}">${chg}</td>` +
       `<td class="dim">${dev}</td>` +
@@ -315,6 +334,16 @@ async function tick() {
       `<a href="${r.url}" target="_blank" rel="noopener">[chart]</a></td>`;
     tbody.appendChild(trEl);
   });
+  for (const [pid, sym] of DENS) {   // a den missing from the API response still gets a row
+    if (!shown.some(r => r.den && (r.id || "").toLowerCase().slice(0, 42) === pid)) {
+      const trEl = document.createElement("tr");
+      trEl.className = "untrusted";
+      trEl.innerHTML = `<td></td><td class="l">◆ ${sym}</td>` +
+        `<td class="l" colspan="6">den not reported by dexscreener this tick</td>` +
+        `<td class="l"><a href="https://dexscreener.com/robinhoodchain/${pid}" target="_blank" rel="noopener">[chart]</a></td>`;
+      tbody.appendChild(trEl);
+    }
+  }
 
   if (divBps > cfg.divbps && !lastDivAlert) {
     log(`ALERT divergence ${divBps} bps across trusted pools`, "amber");
