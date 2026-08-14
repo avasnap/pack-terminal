@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-14T22:56:59.205086+00:00",
+ "generated_at": "2026-08-14T23:00:02.157607+00:00",
  "as_of_block": 36623001,
  "state": {
   "supply": 948060219.698326,
@@ -10,9 +10,9 @@
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 31088.868087731236,
-  "market_cap": 2647617.5122215594,
-  "price": 0.002792668078683899
+  "banked_usd": 31085.52684637244,
+  "market_cap": 2615511.916096548,
+  "price": 0.0027588035672763567
  },
  "entries": [
   {
@@ -324,6 +324,21 @@
    "_id": "sec-6a7f9c510e9e2e99a4307998",
    "kind": "security",
    "ts": 1786747985,
+   "block": 36623001,
+   "day": 2,
+   "title": "reconcile drift",
+   "lines": [
+    "The ledger and the router disagree: 51,790,531",
+    "counted vs 51,939,780 claimed. The lock is checking its sums."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6a7f9d51230ff69cc2326164",
+   "kind": "security",
+   "ts": 1786748241,
    "block": 36623001,
    "day": 2,
    "title": "reconcile drift",
