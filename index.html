@@ -265,11 +265,19 @@ async function tick() {
   const missing = DEN_FULL.filter(f => !listed.has(f.slice(0, 42)));
   if (missing.length) {
     try {
-      const r2 = await fetch("https://api.dexscreener.com/latest/dex/pairs/robinhoodchain/" +
+      const r2 = await fetch("https://api.dexscreener.com/latest/dex/pairs/robinhood/" +
                              missing.join(","), {cache: "no-store"});
       if (r2.ok) {
         const d2 = await r2.json();
-        for (const p of d2.pairs || []) if (p.priceUsd) (data.pairs = data.pairs || []).push(p);
+        for (let p of d2.pairs || []) {
+          if (!p.priceUsd) continue;
+          // pairs endpoint may orient base=den/quote=PACK — reorient to PACK-base
+          if ((p.baseToken?.address || "").toLowerCase() !== PACK && +p.priceNative > 0) {
+            p = {...p, quoteToken: p.baseToken, baseToken: {address: PACK, symbol: "PACK"},
+                 priceUsd: String(+p.priceUsd / +p.priceNative), priceChange: {}};
+          }
+          (data.pairs = data.pairs || []).push(p);
+        }
       }
     } catch (e) { /* dens fall back to placeholder rows */ }
   }
@@ -280,7 +288,7 @@ async function tick() {
     price: +p.priceUsd, liq: p.liquidity?.usd ?? 0, vol: p.volume?.h24 ?? 0,
     chg: p.priceChange?.h24, trusted: TRUSTED.has((p.quoteToken.address || "").toLowerCase()),
     den: DENS.has((p.pairAddress || "").toLowerCase().slice(0, 42)),
-    id: p.pairAddress, url: p.url || `https://dexscreener.com/robinhoodchain/${p.pairAddress}`,
+    id: p.pairAddress, url: p.url || `https://dexscreener.com/robinhood/${p.pairAddress}`,
   })).sort((a, b) => b.liq - a.liq);
 
   const tr = lastRows.filter(r => r.trusted);
@@ -365,7 +373,7 @@ async function tick() {
       trEl.className = "untrusted";
       trEl.innerHTML = `<td></td><td class="l">◆ ${sym}</td>` +
         `<td class="l" colspan="6">den not reported by dexscreener this tick</td>` +
-        `<td class="l"><a href="https://dexscreener.com/robinhoodchain/${pid}" target="_blank" rel="noopener">[chart]</a></td>`;
+        `<td class="l"><a href="https://dexscreener.com/robinhood/${pid}" target="_blank" rel="noopener">[chart]</a></td>`;
       tbody.appendChild(trEl);
     }
   }
