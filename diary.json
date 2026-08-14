@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-14T19:25:02.950030+00:00",
+ "generated_at": "2026-08-14T20:49:34.555480+00:00",
  "as_of_block": 36191780,
  "state": {
   "supply": 949181111.9468809,
@@ -10,8 +10,8 @@
   "positions": 10,
   "claimed": null,
   "claimable": null,
-  "market_cap": 2570704.877687289,
-  "price": 0.0027083396891605586
+  "market_cap": 3487024.982924304,
+  "price": 0.003673719313453267
  },
  "entries": [
   {
