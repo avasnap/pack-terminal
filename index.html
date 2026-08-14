@@ -429,6 +429,9 @@ function openDiaryPager() {   // the diary as a browsable pager: newest first, t
     if (since > 1000)
       h += `<div class="ev amber">since the last entry: ≈${Math.round(since).toLocaleString()} PACK burned</div>`;
   }
+  if (st.banked_usd)
+    h += `<div class="ev">the bank: ≈$${Math.round(st.banked_usd).toLocaleString()} of quote fees ` +
+         `queued in the router, TWAP'd out ≤2% of a den per feeding</div>`;
   h += es.map(e =>
     `<div><span class="dim">D${e.day} · ${fmtWhen(e.ts)} UTC</span> · ` +
     `<a href="#" class="cmd" data-cmd="diaryid ${escapeHtml(e._id)}">${escapeHtml(e.title)}</a>` +
