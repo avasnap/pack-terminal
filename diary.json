@@ -1,0 +1,271 @@
+{
+ "generated_at": "2026-08-14T18:00:24.244958+00:00",
+ "as_of_block": 36191780,
+ "state": {
+  "supply": 949181111.9468809,
+  "burned": 50818887.57934686,
+  "bought": 2747468.014235619,
+  "residue": 20456.917096710964,
+  "sealed": true,
+  "positions": 10,
+  "claimed": null,
+  "claimable": null,
+  "market_cap": 2399279.742937117,
+  "price": 0.0025277365012204202
+ },
+ "entries": [
+  {
+   "_id": "genesis",
+   "kind": "genesis",
+   "ts": 1786570285,
+   "block": 34853811,
+   "day": 0,
+   "title": "genesis",
+   "lines": [
+    "Born in one transaction. 1,000,000,000 minted. Ten dens",
+    "dug \u2014 six smell of equities, four smell of memes. Ten",
+    "full-range positions sealed into a lock with no doors.",
+    "50,000,000 poured into a bowl the creator cannot touch",
+    "for 30 days. There was no second transaction."
+   ],
+   "evidence": {
+    "txs": [
+     "0x1f0846139f0f454e9a50cdcb9bbc93d7941ebca9465b56cbd55f4cfc06f6fb9b",
+     "0x9657139ab34ecf652fb43de1058d4754e9a03a0fc841e8a69780731b2e17d1a9"
+    ]
+   },
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "muzzle-1",
+   "kind": "genesis",
+   "ts": 1786573885,
+   "block": 34853811,
+   "day": 0,
+   "title": "the first muzzle",
+   "lines": [
+    "The 0.5% muzzle comes off \u2014 by the launch schedule,",
+    "not witnessed. The lock records what it is told here."
+   ],
+   "evidence": {},
+   "measured": false,
+   "round": null
+  },
+  {
+   "_id": "feeding-001",
+   "kind": "feeding",
+   "ts": 1786574697,
+   "block": 34897818,
+   "day": 0,
+   "title": "FEEDING \u21161 \u00b7 10/10 dens",
+   "lines": [
+    "43,961,113 PACK burned \u00b7 658,308 bought back and buried deeper",
+    "The first meal. The launch bots pushed 811,000,000 PACK",
+    "through the NVDA den in six hours, paying 1% each pass.",
+    "Every fee ended in the wolf's teeth. 4.4% of everything,",
+    "gone in two minutes. The wolf did not thank them.",
+    "Keepers fed: 0x346dc337, 0xd2546e1d \u2014 444,052 in bounties (PACK side).",
+    "\u2500\u2500 milestone: 1%. Then 2%. Then 3%. Then 4% of genesis, smoke. All in one meal. \u2500\u2500"
+   ],
+   "evidence": {
+    "txs": [
+     "0x6bfe7b97e0caaaa521810923eceba2116c5b1e366b7fde41c67b5bccb58bfef8",
+     "0x8dac01f7a6e98ebb048e222da1ebf4f7549c683cb0206e927136143faf281514",
+     "0xe57c534e912331f40cdbf7913df2d281149efbe4ed644806a55abf7a28972fec",
+     "0x5e13ded75b93efadd890ced23a28fd24b9700851fc8b5ce7fccdb1f81408aafd",
+     "0x422642123750a6ea47ac39d2d6109c40dacdba1a2196befe7d184cda477397ce",
+     "0xcf3169a64ca510f921fb445025e077867d16227ed3fc6ce411c132a072470902",
+     "0x0e5aa64d838215e028c62271a0e54dd0100c8e322f03159bc17e1b3d9d8728ef",
+     "0xbbec86c85b5440bf2e73bbdb78064c2f80bc89b7bd8bfc2b5e413d46ce1e95cc",
+     "0x76e66d4c0cdd3b40a4cde28c87574bd0601752a605f37a97525bfd38a1aae922",
+     "0xb5ceb345e976ae80f370c38c5be390e5617f82452aa3967a383f974df68b76fd"
+    ],
+    "dens": [
+     "NVDA",
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN",
+     "TENDIES",
+     "PONS"
+    ],
+    "burn": 43961112.66644861,
+    "bought": 658308.4590558751,
+    "keepers": [
+     "0x346dc337b3308dadd03eac357179b0ccc9c57df8",
+     "0xd2546e1d1abd3656d4889d989e34428332dff453"
+    ]
+   },
+   "measured": true,
+   "round": 1
+  },
+  {
+   "_id": "muzzle-2",
+   "kind": "genesis",
+   "ts": 1786595485,
+   "block": 34853811,
+   "day": 0,
+   "title": "the second muzzle",
+   "lines": [
+    "The 2% muzzle comes off \u2014 by the launch schedule. Uncapped",
+    "from here on. The schedule says forever; forever is untested."
+   ],
+   "evidence": {},
+   "measured": false,
+   "round": null
+  },
+  {
+   "_id": "feeding-002",
+   "kind": "feeding",
+   "ts": 1786617897,
+   "block": 35328551,
+   "day": 0,
+   "title": "FEEDING \u21162 \u00b7 10/10 dens",
+   "lines": [
+    "3,415,803 PACK burned \u00b7 491,826 bought back and buried deeper"
+   ],
+   "evidence": {
+    "txs": [
+     "0x21312aa8aa9a7b5a88077049491c5d938a40eaeb54f9d0b9745212e42e0669e9",
+     "0x553c257734e87b3b342a3fd8b4cc5baf1b092ca78c34c99ab29d21e8439d9dee",
+     "0x21b2339d49008bc3565431f5f6affb9497458847fc6e21cc3e77c0873259a150",
+     "0x25e76526aedcb4022a40efe6af9ee6a417167d4179db3ec0d663ed63688dee4f",
+     "0xd103471b29b15a475e30fbd28b2ffa2301566a287d08586d09e1751f2963dc27",
+     "0x7b748982b25b4ab519806cd7fd4f61881172a358b31980074a88064d5de5e6e9",
+     "0xb80c8294ff36ebab246749d2b245582eb1e79f238035a4123e5072ddcebab7f9",
+     "0x1f15532ae5d25d7de28849462f1cca260a56137c8cef0feee07039a161ed4130",
+     "0x924891958a37d9761e6b4b23aed043bf44b6eb394ec6d3b1f7e10edaf066fdc7",
+     "0x24cfa22d0b9fe1195a7b28ce431468cad4551ef2ccbc363a050c24e53118add1"
+    ],
+    "dens": [
+     "NVDA",
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN",
+     "TENDIES",
+     "PONS"
+    ],
+    "burn": 3415802.641747586,
+    "bought": 491826.0200296133,
+    "keepers": [
+     "0x041fd30fe0b4ef179ce0e4b8f22e993c879d4973",
+     "0x3cd432f6918c4c0006ecb11b1bea8e7b496383ec",
+     "0x4e4b898741db0fa205c8652af073b33d493f2c5e",
+     "0x8c56ae5cea94b53e74f8475abeef528ee37cf7f2",
+     "0xbbce4c420093b9d7d6d9fdfedb63fabe37b57fe4",
+     "0xee63edd8acae27829caadbf6f2d18799f042f0c7"
+    ]
+   },
+   "measured": true,
+   "round": 2
+  },
+  {
+   "_id": "feeding-003",
+   "kind": "feeding",
+   "ts": 1786661097,
+   "block": 35759580,
+   "day": 1,
+   "title": "FEEDING \u21163 \u00b7 10/10 dens",
+   "lines": [
+    "2,353,025 PACK burned \u00b7 822,184 bought back and buried deeper",
+    "The burn thins; the burial does not. A record buried."
+   ],
+   "evidence": {
+    "txs": [
+     "0x3dc535775fcb70f76bab1d047130f9a67bfdb67feb6fc7d2204d5dd7825de880",
+     "0xeecab1702310e32232a5330f47496ecf4a128973f511fde61f143cad4f8e0d5d",
+     "0xfe04820f3858b336c6783fdb267b6f82c6b041b82f6e1e155593e8f02abc1fe1",
+     "0xf47cbe4d94a3e80204d78681f8c6a52a7bdfb3860d6d625e4fbab2e220b8f262",
+     "0x5ffbd3782068f2bd39f80c7477c12d61a420753ca9d0addfd7ae29a031d8e51c",
+     "0x3a8fa714461f8772fa531c241c72a56c55c7c5e791b906283cc04ea8de5b7f7b",
+     "0x5ea5d25874aea298af0cae10da91d036a1c7fa5dbf9d314f1c6102c77ab530d3",
+     "0xad5eb0ca9309f62b5ce2f703113e1cfe9620a328952e24214a7e6b988043dfcc",
+     "0xdf0a801bcedd15d23cef9497fce8fbc0b5cbafe2bcb7c4ce580ef1d250787778",
+     "0x42136d1ac0f7da31e3d01fb5cf13f950cb521652f5dbb00a7699cbb415aa7a91"
+    ],
+    "dens": [
+     "NVDA",
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN",
+     "TENDIES",
+     "PONS"
+    ],
+    "burn": 2353024.6440500156,
+    "bought": 822184.3713481195,
+    "keepers": [
+     "0x8c56ae5cea94b53e74f8475abeef528ee37cf7f2",
+     "0x963740d2af32104f694d97fac2349fab238a8666",
+     "0xbbce4c420093b9d7d6d9fdfedb63fabe37b57fe4",
+     "0xddf12ae2d7872908d826a0c7ca2ba368e2b082b4",
+     "0xee63edd8acae27829caadbf6f2d18799f042f0c7"
+    ]
+   },
+   "measured": true,
+   "round": 3
+  },
+  {
+   "_id": "feeding-004",
+   "kind": "feeding",
+   "ts": 1786704297,
+   "block": 36190796,
+   "day": 1,
+   "title": "FEEDING \u21164 \u00b7 10/10 dens",
+   "lines": [
+    "1,088,948 PACK burned \u00b7 775,149 bought back and buried deeper",
+    "For every 100 burned, 71 were bought with outside money. The flow is turning.",
+    "\u2500\u2500 milestone: 5% of genesis is now smoke \u2500\u2500"
+   ],
+   "evidence": {
+    "txs": [
+     "0x2b7744dea64563f7d395ed1967596cb5d155ac84dc27f932ef6a52b0e7a23077",
+     "0x7a612efc08bf6ce6db3cf0ab3d9f00194be32a6fec0d435d37fea44aec5133c1",
+     "0x347fcf9a8e96ec5bb95b93257ad726ee20b25952571441a1d43f6a97db010922",
+     "0x17d9df8341f866781ca651e363f2ea8e0258e2ade4f259563c4de8599db8729c",
+     "0xa273194e3b763a8e89033d000854e1172c52c15cac2717205dbb9ad2e7e3f77c",
+     "0xdbb6f11de495d038a3d47b85934fbc6c64ec5d9b081d68a2778346600048555e",
+     "0x771b048e8109593c6ca969645e5f76c8fbec9977d1875a118894859de1e68033",
+     "0x4f388d5714a6f667e3b05c40a668f719b940486f1341836ff3bb013e19cdbbca",
+     "0x464ea9cfd56fd35020403d38bc5d90cbec24c552dec42d2a1e741eb1af63e6d9",
+     "0xe837b73efc2f06b57b5e851799b120522701ec39e13fae3b76fc1a21090780a4"
+    ],
+    "dens": [
+     "NVDA",
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN",
+     "TENDIES",
+     "PONS"
+    ],
+    "burn": 1088947.6271006465,
+    "bought": 775149.163802011,
+    "keepers": [
+     "0x70c6a27534a08f040a54bc2bbf7b34914d925f06",
+     "0x8c56ae5cea94b53e74f8475abeef528ee37cf7f2",
+     "0x963740d2af32104f694d97fac2349fab238a8666",
+     "0xa04a7f9cc62827d8af9248e62ba0b60d887a502b",
+     "0xae0a4b0272ca17519ce0a2251f6ddf64a9b40837",
+     "0xbbce4c420093b9d7d6d9fdfedb63fabe37b57fe4"
+    ]
+   },
+   "measured": true,
+   "round": 4
+  }
+ ]
+}

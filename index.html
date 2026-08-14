@@ -106,6 +106,17 @@ const LS = (k, v) => v === undefined
   : store.setItem("packterm." + k, JSON.stringify(v));
 
 const cfg = Object.assign({rate: 10, divbps: 1000, dust: 300, notify: false, theme: "green"}, LS("cfg") || {});
+let diaryData = null;
+
+async function loadDiary() {
+  try {
+    const r = await fetch("./diary.json", {cache: "no-store"});
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    diaryData = await r.json();
+    const newest = diaryData.entries[diaryData.entries.length - 1];
+    log(`diary: ${diaryData.entries.length} entries · newest: ${newest.title} · synced ${diaryData.generated_at.slice(0, 16)}Z`, "dim");
+  } catch (e) { /* absent on file:// or before first publish — diary command reports it */ }
+}
 let history = LS("hist") || [];              // [unix_ms, median]
 let supply = SUPPLY_FALLBACK, supplySrc = "cached";
 let lastMedian = null, lastDivAlert = false, ticks = 0, timer = null;
@@ -213,10 +224,21 @@ async function tick() {
   const win = history.slice(-120).map(h => h[1]);
   const hLo = Math.min(...win), hHi = Math.max(...win);
   const span = (Date.now() - history[Math.max(0, history.length - 120)][0]) / 60000;
-  $("spark").textContent = win.map(v =>
+  const winTs = history.slice(-120).map(h => h[0]);
+  let sparkTxt = win.map(v =>
     BARS[hHi === hLo ? 4 : Math.round((v - hLo) / (hHi - hLo) * 8)]).join("") +
     `  ${span < 90 ? Math.round(span) + "m" : (span / 60).toFixed(1) + "h"} ` +
     `${((win[win.length - 1] / win[0] - 1) * 100).toFixed(2)}%`;
+  if (diaryData && winTs.length > 1) {   // feeding markers under the sparkline
+    const feeds = diaryData.entries.filter(e => e.kind === "feeding").map(e => e.ts * 1000);
+    let marks = "";
+    for (let i = 0; i < winTs.length; i++) {
+      const lo2 = i ? winTs[i - 1] : winTs[0] - (winTs[1] - winTs[0]);
+      marks += feeds.some(f => f > lo2 && f <= winTs[i]) ? "▲" : " ";
+    }
+    if (marks.trim()) sparkTxt += "\n" + marks + "  ▲ = feeding";
+  }
+  $("spark").textContent = sparkTxt;
 
   const tbody = $("pools").tBodies[0];
   tbody.innerHTML = "";
@@ -245,6 +267,8 @@ async function tick() {
 
 /* ── command prompt ─────────────────────────────────────────── */
 const HELP = `commands:
+  diary              last entries from the Diary of the Wolf
+  diary all|<n>|<kind>  full list · round n detail · filter by kind
   mc                 print current aggregate to log
   pools              list every pair (incl. beyond top 18)
   swap <sym|#>       open swap for a pair (e.g. swap nvda, swap 3)
@@ -273,6 +297,38 @@ function exec(line) {
   switch ((cmd || "").toLowerCase()) {
     case "": return;
     case "help": HELP.split("\n").reverse().forEach(l => log(l, "dim")); break;
+    case "diary": {
+      if (!diaryData) {
+        log("diary not loaded — fetching...", "dim");
+        loadDiary().then(() => diaryData && exec("diary " + arg));
+        break;
+      }
+      const es = diaryData.entries;
+      const num = parseInt(arg, 10);
+      if (!arg) {                                 // newest-first summaries
+        if (lastAgg && diaryData.state.supply) {
+          const since = diaryData.state.supply - supply;
+          if (since > 1000) log(`since last entry: ≈${fmtUsd(since).slice(1)} PACK burned`, "amber");
+        }
+        [...es].slice(-8).forEach(e =>
+          log(`D${e.day} · ${e.title} — ${e.lines[0]}`, e.kind === "security" ? "red" : undefined));
+        log(`diary of the wolf · ${es.length} entries · newest first below`, "cyan");
+      } else if (arg === "all") {
+        [...es].reverse().forEach(e => log(`D${e.day} · ${e.title}`, "dim"));
+      } else if (!isNaN(num)) {                   // round detail
+        const e = es.find(x => x.round === num);
+        if (!e) { log(`no feeding round ${num}`, "red"); break; }
+        (e.evidence.txs || []).slice(0, 3).forEach(tx =>
+          log(`  tx ${tx}`, "faint"));
+        [...e.lines].reverse().forEach(l => log(`  ${l}`));
+        log(`D${e.day} · ${e.title}`, "cyan");
+      } else {                                    // kind filter
+        const hits = es.filter(x => x.kind === arg.toLowerCase());
+        if (!hits.length) { log(`no entries of kind '${arg}' — kinds: feeding, genesis, vesting, stranger, dust, security`, "red"); break; }
+        [...hits].reverse().forEach(e => log(`D${e.day} · ${e.title} — ${e.lines[0]}`));
+      }
+      break;
+    }
     case "mc":
       if (lastAgg) log(`MC ${fmtUsd(lastAgg.mc)} · median $${lastAgg.med.toFixed(6)} · ` +
                        `liq-wtd $${lastAgg.wavg.toFixed(6)} · ${lastAgg.pools} pools · ${lastAgg.divBps} bps`);
@@ -352,6 +408,7 @@ document.addEventListener("click", e => { if (!e.target.closest("a, input, table
 applyTheme();
 log("PACK tracker terminal online — dexscreener api · type `help` for commands");
 if (history.length) log(`restored ${history.length} stored price points`, "dim");
+loadDiary();
 fetchSupply();
 tick();
 timer = setInterval(tick, cfg.rate * 1000);
