@@ -133,6 +133,18 @@ const DENS = new Map([
   ["0xbb061ffe27facf06aaff43a94cb04fb612c990af", "TENDIES"],
   ["0x548ae8c6751c5c7b5d3cf53f41a54e602263e7c6", "PONS"],
 ]);
+const DEN_FULL = [   // full v4 poolIds (dexscreener pair ids on this chain)
+  "0x4900c6d3f31ff1e1545a487469c134cdbd9f1499f938054c0c77a14728b3f150",
+  "0x052362df3d4224dd4200faad35e7ce9b97e6ae8550e1fffabd829096139fdf3f",
+  "0x5ecdeabbf5448615109e2a2423bfb151062d849a23819b66e5a42bfcb2aea131",
+  "0xb0afc3cd4a67c7b9db8a857862322a911adb07019a560be5463147b452a793fb",
+  "0xfe3e6151a19b798d83a254d165f69d14420025896fbc642f21b2216241faaa45",
+  "0xf4a4509bf8bd51e052d896ad9d53e66c9627f498f4b793de6ca6426b11ba848b",
+  "0xa0e3293bb948a13f5dad3f2a8aa40e9d839bcb9a84bfaf80b78f920221d7396b",
+  "0x70da501d5844310bdaaabd73520b9ceeff9c53826b8e444e56bac53f71e9d224",
+  "0xbb061ffe27facf06aaff43a94cb04fb612c990afe2dc402e5c25753ce0b8aa35",
+  "0x548ae8c6751c5c7b5d3cf53f41a54e602263e7c688bd1070dede7fdb71878cbd",
+];
 const store = (() => {   // localStorage is unavailable in some contexts (data: origin, strict private mode)
   try { localStorage.setItem("__t", "1"); localStorage.removeItem("__t"); return localStorage; }
   catch { const m = new Map();
@@ -248,6 +260,19 @@ async function tick() {
     data = await r.json();
   } catch (e) { log(`ERR dexscreener: ${e.message} — retrying`, "red"); return; }
 
+  // dens missing from the token listing are fetched explicitly by pair id
+  const listed = new Set((data.pairs || []).map(p => (p.pairAddress || "").toLowerCase().slice(0, 42)));
+  const missing = DEN_FULL.filter(f => !listed.has(f.slice(0, 42)));
+  if (missing.length) {
+    try {
+      const r2 = await fetch("https://api.dexscreener.com/latest/dex/pairs/robinhoodchain/" +
+                             missing.join(","), {cache: "no-store"});
+      if (r2.ok) {
+        const d2 = await r2.json();
+        for (const p of d2.pairs || []) if (p.priceUsd) (data.pairs = data.pairs || []).push(p);
+      }
+    } catch (e) { /* dens fall back to placeholder rows */ }
+  }
   const pairs = (data.pairs || []).filter(p => p.priceUsd &&
     ((p.liquidity?.usd ?? 0) >= cfg.dust || DENS.has((p.pairAddress || "").toLowerCase().slice(0, 42))));
   lastRows = pairs.map(p => ({
