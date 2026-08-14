@@ -45,6 +45,21 @@
   #log div { white-space: pre-wrap; }
   .section { color: var(--dim); margin-top: 18px; }
   .wrap { overflow-x: auto; }
+  #pager {
+    position: fixed; inset: 0; z-index: 10; display: none;
+    background: rgba(3, 5, 3, .93); padding: 5vh 4vw;
+  }
+  #pager.open { display: flex; justify-content: center; align-items: flex-start; }
+  #pagerbox {
+    background: var(--bg); border: 1px solid var(--dim); max-width: 860px; width: 100%;
+    max-height: 88vh; overflow-y: auto; padding: 18px 22px;
+    box-shadow: 0 0 40px rgba(51,255,102,.15); text-shadow: 0 0 6px rgba(51,255,102,.45);
+  }
+  #pagerbox h2 { font-size: 15px; color: var(--cyan); font-weight: normal;
+                 border-bottom: 1px solid var(--faint); padding-bottom: 6px; margin-bottom: 10px; }
+  #pagerbox pre { white-space: pre-wrap; font: inherit; margin: 0 0 12px; }
+  #pagerbox .ev { color: var(--dim); font-size: 12.5px; }
+  #pagerbox .foot { color: var(--faint); margin-top: 14px; font-size: 12px; }
   #prompt { display: flex; gap: 0; margin-top: 8px; align-items: baseline; }
   #cmd {
     flex: 1; background: transparent; border: 0; outline: 0; color: var(--fg);
@@ -79,6 +94,7 @@
 <div id="log"></div>
 <div id="prompt"><span class="dim">pack@rhchain:~$&nbsp;</span><input id="cmd" autocomplete="off" spellcheck="false" autofocus></div>
 </div>
+<div id="pager"><div id="pagerbox"></div></div>
 
 <script>
 "use strict";
@@ -295,20 +311,31 @@ async function tick() {
 }
 
 /* ── command prompt ─────────────────────────────────────────── */
-function showEntry(e) {
+const bsLink = (kind, h, len) =>
+  `<a href="https://robinhoodchain.blockscout.com/${kind}/${h}" target="_blank" rel="noopener">${h.slice(0, len)}…</a>`;
+
+function showEntry(e) {   // pager view — terminal's `less`
   const txs = (e.evidence && e.evidence.txs) || [];
   const keepers = (e.evidence && e.evidence.keepers) || [];
-  if (keepers.length) logL(`  keepers: ${keepers.join(", ")}`, "faint");
-  if (txs.length > 3) {
-    const el = document.createElement("div");
-    el.className = "faint";
-    el.innerHTML = `[${now()}]   <a href="#" class="cmd" data-cmd="diarytxs ${escapeHtml(e._id)}">` +
-                   `… and ${txs.length - 3} more txs — click to list</a>`;
-    $("log").prepend(el);
-  }
-  txs.slice(0, 3).forEach(tx => logL(`  tx ${tx}`, "faint"));
-  [...e.lines].reverse().forEach(l => logL(`  ${l}`));
-  log(`D${e.day} · ${e.title}`, "cyan");
+  const dens = (e.evidence && e.evidence.dens) || [];
+  const when = new Date(e.ts * 1000).toISOString().slice(0, 16).replace("T", " ");
+  let h = `<h2>DAY ${e.day} · ${escapeHtml(e.title)} <span class="dim">· ${when} UTC` +
+          `${e.measured === false ? " · schedule-derived" : ""}</span></h2>`;
+  h += `<pre>${escapeHtml(e.lines.join("\n"))}</pre>`;
+  if (dens.length) h += `<div class="ev">dens: ${dens.map(escapeHtml).join(", ")}</div>`;
+  if (keepers.length)
+    h += `<div class="ev">keepers: ${keepers.map(k => bsLink("address", k, 10)).join(", ")}</div>`;
+  if (txs.length)
+    h += `<div class="ev">evidence — ${txs.length} tx${txs.length > 1 ? "s" : ""}:<br>` +
+         txs.map(tx => `&nbsp;&nbsp;${bsLink("tx", tx, 22)}`).join("<br>") + `</div>`;
+  h += `<div class="foot">esc · q · click outside to close</div>`;
+  $("pagerbox").innerHTML = h;
+  $("pager").className = "open";
+  cmdEl.blur();
+}
+function closePager() {
+  $("pager").className = "";
+  cmdEl.focus();
 }
 
 const HELP = `commands:
@@ -373,14 +400,6 @@ function exec(line) {
     case "diaryid": {                             // internal: expand one entry by id
       const e = diaryData && diaryData.entries.find(x => x._id === arg);
       if (e) showEntry(e);
-      break;
-    }
-    case "diarytxs": {                            // internal: list an entry's remaining txs
-      const e = diaryData && diaryData.entries.find(x => x._id === arg);
-      if (!e) break;
-      const txs = (e.evidence && e.evidence.txs) || [];
-      [...txs.slice(3)].reverse().forEach(tx => logL(`  tx ${tx}`, "faint"));
-      log(`${e.title} — all ${txs.length} txs:`, "cyan");
       break;
     }
     case "mc":
@@ -461,6 +480,12 @@ document.addEventListener("click", e => { if (!e.target.closest("a, input, table
 $("log").addEventListener("click", e => {
   const a = e.target.closest("a.cmd");
   if (a) { e.preventDefault(); exec(a.dataset.cmd); }
+});
+$("pager").addEventListener("click", e => { if (!e.target.closest("#pagerbox")) closePager(); });
+document.addEventListener("keydown", e => {
+  if ($("pager").className === "open" && (e.key === "Escape" || e.key === "q")) {
+    e.preventDefault(); closePager();
+  }
 });
 
 applyTheme();
