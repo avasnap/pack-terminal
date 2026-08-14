@@ -45,6 +45,9 @@
   #log div { white-space: pre-wrap; }
   .section { color: var(--dim); margin-top: 18px; }
   .wrap { overflow-x: auto; }
+  #chartwrap { border: 1px solid var(--faint); margin-top: 6px; position: relative; }
+  #mcchart { width: 100%; height: 240px; display: block; cursor: crosshair; }
+  #chartinfo { position: absolute; top: 4px; right: 8px; font-size: 12px; pointer-events: none; }
   #diarybtn {
     display: inline-block; white-space: pre; cursor: pointer; user-select: none;
     color: var(--fg); margin: 10px 0 0; line-height: 1.15;
@@ -91,6 +94,9 @@
   <div class="kv" id="statbox"></div>
 </div>
 <div id="spark"></div>
+
+<div class="section">── market cap ── 30s resolution · ▲ feedings · full history ──</div>
+<div id="chartwrap"><canvas id="mcchart"></canvas><div id="chartinfo" class="dim"></div></div>
 
 <div class="section">── pools ──────────────── ◆ locked dens, always shown ──</div>
 <div class="wrap"><table id="pools">
@@ -218,6 +224,104 @@ function logEntry(e, cls) {
   $("log").prepend(el);
   while ($("log").children.length > 120) $("log").lastChild.remove();
 }
+/* ── high-res market cap chart ─────────────────────────────── */
+let mcHist = null, chartHover = null;
+
+async function loadMcHistory() {
+  try {
+    const r = await fetch("./mcap_history.json", {cache: "no-store"});
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    mcHist = (await r.json()).points;   // [[unix_s, fdv, price], ...]
+    log(`chart: ${mcHist.length.toLocaleString()} points @30s loaded`, "dim");
+    drawChart();
+  } catch (e) { mcHist = []; }
+}
+
+function cssVar(name, fb) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fb;
+}
+
+function drawChart() {
+  const cv = $("mcchart");
+  if (!mcHist || !mcHist.length || !cv.clientWidth) return;
+  const dpr = window.devicePixelRatio || 1;
+  const W = cv.clientWidth, H = 240;
+  cv.width = W * dpr; cv.height = H * dpr;
+  const ctx = cv.getContext("2d");
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const fg = cssVar("--fg", "#33ff66"), dim = cssVar("--dim", "#1a8f3c"),
+        faint = cssVar("--faint", "#0e5424"), amber = cssVar("--amber", "#ffb000");
+  ctx.clearRect(0, 0, W, H);
+  const ml = 8, mr = 64, mt = 10, mb = 22;
+  const pts = mcHist;
+  const t0c = pts[0][0], t1c = pts[pts.length - 1][0];
+  const vmin = Math.min(...pts.map(p => p[1])), vmax = Math.max(...pts.map(p => p[1]));
+  const pad = (vmax - vmin) * 0.06 || 1;
+  const y0 = vmin - pad, y1 = vmax + pad;
+  const X = t => ml + (t - t0c) / (t1c - t0c || 1) * (W - ml - mr);
+  const Y = v => mt + (1 - (v - y0) / (y1 - y0)) * (H - mt - mb);
+
+  ctx.font = "11px Consolas, monospace";
+  // y grid: 4 nice levels
+  ctx.strokeStyle = faint; ctx.fillStyle = dim; ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const v = y0 + (y1 - y0) * i / 4, y = Y(v);
+    ctx.beginPath(); ctx.moveTo(ml, y); ctx.lineTo(W - mr, y); ctx.stroke();
+    ctx.fillText("$" + (v / 1e6).toFixed(2) + "M", W - mr + 6, y + 4);
+  }
+  // x grid: every 12h
+  const DAY = 86400;
+  for (let t = Math.ceil(t0c / (DAY / 2)) * (DAY / 2); t < t1c; t += DAY / 2) {
+    const x = X(t);
+    ctx.strokeStyle = faint;
+    ctx.beginPath(); ctx.moveTo(x, mt); ctx.lineTo(x, H - mb); ctx.stroke();
+    const d = new Date(t * 1000);
+    ctx.fillText(`${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()} ${String(d.getUTCHours()).padStart(2, "0")}:00`,
+                 x - 34, H - 8);
+  }
+  // series line with gap breaks (>3 min)
+  ctx.strokeStyle = fg; ctx.lineWidth = 1.4;
+  ctx.shadowColor = fg; ctx.shadowBlur = 6;
+  ctx.beginPath();
+  let pen = false;
+  for (let i = 0; i < pts.length; i++) {
+    if (i && pts[i][0] - pts[i - 1][0] > 180) pen = false;
+    const x = X(pts[i][0]), y = Y(pts[i][1]);
+    pen ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    pen = true;
+  }
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+  // feeding markers
+  if (diaryData) {
+    ctx.fillStyle = amber;
+    for (const e of diaryData.entries) {
+      if (e.kind !== "feeding" || e.ts < t0c || e.ts > t1c) continue;
+      const x = X(e.ts);
+      ctx.beginPath();
+      ctx.moveTo(x, H - mb - 1); ctx.lineTo(x - 4, H - mb + 7); ctx.lineTo(x + 4, H - mb + 7);
+      ctx.fill();
+    }
+  }
+  // crosshair
+  if (chartHover != null) {
+    let lo = 0, hi = pts.length - 1;
+    while (hi - lo > 1) { const m = (lo + hi) >> 1; (X(pts[m][0]) < chartHover ? lo = m : hi = m); }
+    const p = Math.abs(X(pts[lo][0]) - chartHover) < Math.abs(X(pts[hi][0]) - chartHover) ? pts[lo] : pts[hi];
+    const x = X(p[0]), y = Y(p[1]);
+    ctx.strokeStyle = dim;
+    ctx.beginPath(); ctx.moveTo(x, mt); ctx.lineTo(x, H - mb); ctx.stroke();
+    ctx.fillStyle = fg;
+    ctx.beginPath(); ctx.arc(x, y, 3, 0, 7); ctx.fill();
+    const d = new Date(p[0] * 1000);
+    $("chartinfo").textContent =
+      `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()} ${String(d.getUTCHours()).padStart(2, "0")}:` +
+      `${String(d.getUTCMinutes()).padStart(2, "0")} UTC · $${p[1].toLocaleString()} · $${p[2].toFixed(6)}`;
+  } else {
+    $("chartinfo").textContent = "";
+  }
+}
+
 function notifyUser(title, body) {
   if (cfg.notify && "Notification" in window && Notification.permission === "granted" && document.hidden)
     new Notification(title, {body});
@@ -325,6 +429,10 @@ async function tick() {
     `supply ${supply.toLocaleString(undefined, {maximumFractionDigits: 0})} PACK (${supplySrc})   ` +
     `realizable exit ≲ ${fmtUsd(totLiq / 2)}   up ${Math.floor((Date.now() - t0) / 60000)}m · tick ${++ticks} · ${cfg.rate}s`;
 
+  if (mcHist && mcHist.length) {   // live-append to the big chart between publishes
+    const nowS = Math.floor(Date.now() / 1000);
+    if (nowS - mcHist[mcHist.length - 1][0] >= 25) { mcHist.push([nowS, Math.round(mc), med]); drawChart(); }
+  }
   history.push([Date.now(), med]);
   if (history.length > 5000) history = history.slice(-5000);
   LS("hist", history);
@@ -594,6 +702,10 @@ $("pagerbox").addEventListener("click", e => {
   if (a) { e.preventDefault(); e.stopPropagation(); exec(a.dataset.cmd); }
 });
 $("diarybtn").addEventListener("click", openDiaryPager);
+$("mcchart").addEventListener("mousemove", e => { chartHover = e.offsetX; drawChart(); });
+$("mcchart").addEventListener("mouseleave", () => { chartHover = null; drawChart(); });
+window.addEventListener("resize", drawChart);
+document.addEventListener("visibilitychange", drawChart);
 document.addEventListener("keydown", e => {
   if ($("pager").className === "open" && (e.key === "Escape" || e.key === "q")) {
     e.preventDefault(); closePager();
@@ -604,6 +716,7 @@ applyTheme();
 log("PACK tracker terminal online — dexscreener api · type `help` for commands");
 if (history.length) log(`restored ${history.length} stored price points`, "dim");
 loadDiary();
+loadMcHistory();
 fetchSupply();
 tick();
 timer = setInterval(tick, cfg.rate * 1000);
