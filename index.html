@@ -148,6 +148,21 @@ function logL(msg, cls) {
   $("log").prepend(el);
   while ($("log").children.length > 120) $("log").lastChild.remove();
 }
+const escapeHtml = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+function logEntry(e, cls) {
+  // one diary row: clickable title (expands in-terminal) + [tx] evidence link
+  const txs = (e.evidence && e.evidence.txs) || [];
+  let html = `[${now()}] D${e.day} · ` +
+    `<a href="#" class="cmd" data-cmd="diaryid ${escapeHtml(e._id)}">${escapeHtml(e.title)}</a>` +
+    ` — ${escapeHtml(e.lines[0] || "")}`;
+  if (txs.length)
+    html += ` <a href="https://robinhoodchain.blockscout.com/tx/${txs[0]}" target="_blank" rel="noopener">[tx]</a>`;
+  const el = document.createElement("div");
+  if (cls) el.className = cls;
+  el.innerHTML = html;
+  $("log").prepend(el);
+  while ($("log").children.length > 120) $("log").lastChild.remove();
+}
 function notifyUser(title, body) {
   if (cfg.notify && "Notification" in window && Notification.permission === "granted" && document.hidden)
     new Notification(title, {body});
@@ -280,6 +295,16 @@ async function tick() {
 }
 
 /* ── command prompt ─────────────────────────────────────────── */
+function showEntry(e) {
+  const txs = (e.evidence && e.evidence.txs) || [];
+  const keepers = (e.evidence && e.evidence.keepers) || [];
+  if (keepers.length) logL(`  keepers: ${keepers.join(", ")}`, "faint");
+  if (txs.length > 3) logL(`  … and ${txs.length - 3} more txs`, "faint");
+  txs.slice(0, 3).forEach(tx => logL(`  tx ${tx}`, "faint"));
+  [...e.lines].reverse().forEach(l => logL(`  ${l}`));
+  log(`D${e.day} · ${e.title}`, "cyan");
+}
+
 const HELP = `commands:
   diary              last entries from the Diary of the Wolf
   diary all|<n>|<kind>  full list · round n detail · filter by kind
@@ -324,24 +349,24 @@ function exec(line) {
           const since = diaryData.state.supply - supply;
           if (since > 1000) log(`since last entry: ≈${fmtUsd(since).slice(1)} PACK burned`, "amber");
         }
-        [...es].slice(-8).forEach(e =>
-          logL(`D${e.day} · ${e.title} — ${e.lines[0]}`, e.kind === "security" ? "red" : undefined));
-        log(`diary of the wolf · ${es.length} entries · newest first below`, "cyan");
+        [...es].slice(-8).forEach(e => logEntry(e, e.kind === "security" ? "red" : undefined));
+        log(`diary of the wolf · ${es.length} entries · newest first below · click a title to expand`, "cyan");
       } else if (arg === "all") {
-        [...es].reverse().forEach(e => log(`D${e.day} · ${e.title}`, "dim"));
+        [...es].reverse().forEach(e => logEntry(e, "dim"));
       } else if (!isNaN(num)) {                   // round detail
         const e = es.find(x => x.round === num);
         if (!e) { log(`no feeding round ${num}`, "red"); break; }
-        const txs = e.evidence.txs || [];
-        if (txs.length > 3) logL(`  … and ${txs.length - 3} more txs`, "faint");
-        txs.slice(0, 3).forEach(tx => logL(`  tx ${tx}`, "faint"));
-        [...e.lines].reverse().forEach(l => logL(`  ${l}`));
-        log(`D${e.day} · ${e.title}`, "cyan");
+        showEntry(e);
       } else {                                    // kind filter
         const hits = es.filter(x => x.kind === arg.toLowerCase());
         if (!hits.length) { log(`no entries of kind '${arg}' — kinds: feeding, genesis, vesting, stranger, dust, security`, "red"); break; }
-        [...hits].reverse().forEach(e => logL(`D${e.day} · ${e.title} — ${e.lines[0]}`));
+        [...hits].reverse().forEach(e => logEntry(e));
       }
+      break;
+    }
+    case "diaryid": {                             // internal: expand one entry by id
+      const e = diaryData && diaryData.entries.find(x => x._id === arg);
+      if (e) showEntry(e);
       break;
     }
     case "mc":
@@ -419,6 +444,10 @@ cmdEl.addEventListener("keydown", e => {
   }
 });
 document.addEventListener("click", e => { if (!e.target.closest("a, input, table")) cmdEl.focus(); });
+$("log").addEventListener("click", e => {
+  const a = e.target.closest("a.cmd");
+  if (a) { e.preventDefault(); exec(a.dataset.cmd); }
+});
 
 applyTheme();
 log("PACK tracker terminal online — dexscreener api · type `help` for commands");
