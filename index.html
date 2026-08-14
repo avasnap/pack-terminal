@@ -299,7 +299,13 @@ function showEntry(e) {
   const txs = (e.evidence && e.evidence.txs) || [];
   const keepers = (e.evidence && e.evidence.keepers) || [];
   if (keepers.length) logL(`  keepers: ${keepers.join(", ")}`, "faint");
-  if (txs.length > 3) logL(`  … and ${txs.length - 3} more txs`, "faint");
+  if (txs.length > 3) {
+    const el = document.createElement("div");
+    el.className = "faint";
+    el.innerHTML = `[${now()}]   <a href="#" class="cmd" data-cmd="diarytxs ${escapeHtml(e._id)}">` +
+                   `… and ${txs.length - 3} more txs — click to list</a>`;
+    $("log").prepend(el);
+  }
   txs.slice(0, 3).forEach(tx => logL(`  tx ${tx}`, "faint"));
   [...e.lines].reverse().forEach(l => logL(`  ${l}`));
   log(`D${e.day} · ${e.title}`, "cyan");
@@ -367,6 +373,14 @@ function exec(line) {
     case "diaryid": {                             // internal: expand one entry by id
       const e = diaryData && diaryData.entries.find(x => x._id === arg);
       if (e) showEntry(e);
+      break;
+    }
+    case "diarytxs": {                            // internal: list an entry's remaining txs
+      const e = diaryData && diaryData.entries.find(x => x._id === arg);
+      if (!e) break;
+      const txs = (e.evidence && e.evidence.txs) || [];
+      [...txs.slice(3)].reverse().forEach(tx => logL(`  tx ${tx}`, "faint"));
+      log(`${e.title} — all ${txs.length} txs:`, "cyan");
       break;
     }
     case "mc":
