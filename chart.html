@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PACK://CHART</title>
+<style>
+  :root {
+    --bg: #050805; --fg: #33ff66; --dim: #1a8f3c; --faint: #0e5424;
+    --amber: #ffb000; --red: #ff4444; --cyan: #2ee6d6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--fg); }
+  body {
+    font: 14px/1.45 "Cascadia Mono", ui-monospace, "JetBrains Mono", Consolas, monospace;
+    padding: 18px 22px; min-height: 100vh;
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(0deg, transparent 0 2px, rgba(0,0,0,.22) 2px 4px);
+    mix-blend-mode: multiply;
+  }
+  a { color: var(--cyan); text-decoration: none; }
+  a:hover { background: var(--cyan); color: var(--bg); }
+  .dim { color: var(--dim); } .faint { color: var(--faint); } .amber { color: var(--amber); }
+  #crt { text-shadow: 0 0 6px rgba(51,255,102,.45); max-width: 1400px; margin: 0 auto; }
+  header { white-space: pre; margin-bottom: 12px; }
+  #chartwrap { border: 1px solid var(--faint); position: relative; }
+  #mcchart { width: 100%; height: 62vh; min-height: 320px; display: block; cursor: crosshair; }
+  #chartinfo { position: absolute; top: 6px; right: 10px; font-size: 13px; pointer-events: none;
+               color: var(--fg); }
+  #legend { margin-top: 8px; font-size: 12.5px; color: var(--dim); }
+  #status { margin-top: 4px; font-size: 12px; color: var(--faint); }
+  .rangebar { margin: 10px 0 6px; }
+  .rangebar a { margin-right: 10px; padding: 1px 7px; border: 1px solid var(--faint); }
+  .rangebar a.on { background: var(--fg); color: var(--bg); }
+</style>
+</head>
+<body>
+<div id="crt">
+<header>
+╔══════════════════════════════════════════════════════════════════╗
+║  PACK://CHART · market cap, 30s resolution · chain 4663          ║
+╚══════════════════════════════════════════════════════════════════╝</header>
+<div class="rangebar" id="ranges">
+  <a href="#" data-h="6">6h</a><a href="#" data-h="24">24h</a><a href="#" data-h="72">3d</a><a href="#" data-h="0" class="on">all</a>
+</div>
+<div id="chartwrap"><canvas id="mcchart"></canvas><div id="chartinfo"></div></div>
+<div id="legend">median across trusted pools × live supply · <span class="amber">▲</span> feedings ·
+  dashed = reconstructed from chain (tracker downtime) · <a href="./">← terminal</a></div>
+<div id="status"></div>
+
+<script>
+"use strict";
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const $ = id => document.getElementById(id);
+let pts = [], feeds = [], hover = null, rangeH = 0;
+
+function cssVar(n, fb) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || fb; }
+function fmtT(s, withM) {
+  const d = new Date(s * 1000);
+  return `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()} ${String(d.getUTCHours()).padStart(2,"0")}` +
+         (withM ? ":" + String(d.getUTCMinutes()).padStart(2,"0") : ":00");
+}
+
+async function load() {
+  try {
+    const r = await fetch("./mcap_history.json", {cache: "no-store"});
+    const d = await r.json();
+    pts = d.points;   // [unix_s, fdv, price, backfilled?]
+    $("status").textContent = `${pts.length.toLocaleString()} points · data as of ${d.generated_at.slice(0,16)}Z · refreshes hourly via the publisher`;
+  } catch (e) { $("status").textContent = "history unavailable: " + e.message; }
+  try {
+    const r = await fetch("./diary.json", {cache: "no-store"});
+    feeds = (await r.json()).entries.filter(e => e.kind === "feeding").map(e => e.ts);
+  } catch (e) {}
+  draw();
+}
+
+function view() {
+  if (!rangeH) return pts;
+  const cut = Date.now() / 1000 - rangeH * 3600;
+  return pts.filter(p => p[0] >= cut);
+}
+
+function draw() {
+  const cv = $("mcchart");
+  const P = view();
+  if (!P.length || !cv.clientWidth) return;
+  const dpr = window.devicePixelRatio || 1;
+  const W = cv.clientWidth, H = cv.clientHeight;
+  cv.width = W * dpr; cv.height = H * dpr;
+  const ctx = cv.getContext("2d");
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const fg = cssVar("--fg","#33ff66"), dim = cssVar("--dim","#1a8f3c"),
+        faint = cssVar("--faint","#0e5424"), amber = cssVar("--amber","#ffb000");
+  ctx.clearRect(0, 0, W, H);
+  const ml = 8, mr = 68, mt = 12, mb = 26;
+  const t0 = P[0][0], t1 = P[P.length-1][0];
+  const vmin = Math.min(...P.map(p => p[1])), vmax = Math.max(...P.map(p => p[1]));
+  const pad = (vmax - vmin) * 0.06 || 1, y0 = vmin - pad, y1 = vmax + pad;
+  const X = t => ml + (t - t0) / (t1 - t0 || 1) * (W - ml - mr);
+  const Y = v => mt + (1 - (v - y0) / (y1 - y0)) * (H - mt - mb);
+
+  ctx.font = "11px Consolas, monospace";
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 5; i++) {
+    const v = y0 + (y1 - y0) * i / 5, y = Y(v);
+    ctx.strokeStyle = faint; ctx.fillStyle = dim;
+    ctx.beginPath(); ctx.moveTo(ml, y); ctx.lineTo(W - mr, y); ctx.stroke();
+    ctx.fillText("$" + (v / 1e6).toFixed(2) + "M", W - mr + 6, y + 4);
+  }
+  const span = t1 - t0, step = span > 2.5 * 86400 ? 86400 : span > 86400 ? 43200 : span > 21600 ? 10800 : 3600;
+  for (let t = Math.ceil(t0 / step) * step; t < t1; t += step) {
+    const x = X(t);
+    ctx.strokeStyle = faint;
+    ctx.beginPath(); ctx.moveTo(x, mt); ctx.lineTo(x, H - mb); ctx.stroke();
+    ctx.fillStyle = dim; ctx.fillText(fmtT(t), x - 30, H - 9);
+  }
+  // series: solid for live-recorded, dashed for backfilled; break on true holes (>10 min)
+  ctx.lineWidth = 1.5; ctx.strokeStyle = fg; ctx.shadowColor = fg; ctx.shadowBlur = 7;
+  let pen = false, dashed = null;
+  for (let i = 0; i < P.length; i++) {
+    const bf = !!P[i][3];
+    if (i && P[i][0] - P[i-1][0] > 600) pen = false;
+    if (bf !== dashed) {
+      if (pen !== false) ctx.stroke();
+      ctx.beginPath(); pen = false;
+      ctx.setLineDash(bf ? [4, 4] : []);
+      dashed = bf;
+    }
+    const x = X(P[i][0]), y = Y(P[i][1]);
+    pen ? ctx.lineTo(x, y) : (ctx.moveTo(x, y), pen = true);
+  }
+  ctx.stroke(); ctx.setLineDash([]); ctx.shadowBlur = 0;
+  // feeding markers
+  ctx.fillStyle = amber;
+  for (const t of feeds) {
+    if (t < t0 || t > t1) continue;
+    const x = X(t);
+    ctx.beginPath(); ctx.moveTo(x, H - mb - 1); ctx.lineTo(x - 4, H - mb + 8); ctx.lineTo(x + 4, H - mb + 8); ctx.fill();
+  }
+  // crosshair
+  if (hover != null) {
+    let lo = 0, hi = P.length - 1;
+    while (hi - lo > 1) { const m = (lo + hi) >> 1; (X(P[m][0]) < hover ? lo = m : hi = m); }
+    const p = Math.abs(X(P[lo][0]) - hover) < Math.abs(X(P[hi][0]) - hover) ? P[lo] : P[hi];
+    const x = X(p[0]), y = Y(p[1]);
+    ctx.strokeStyle = dim; ctx.beginPath(); ctx.moveTo(x, mt); ctx.lineTo(x, H - mb); ctx.stroke();
+    ctx.fillStyle = fg; ctx.beginPath(); ctx.arc(x, y, 3, 0, 7); ctx.fill();
+    $("chartinfo").textContent = `${fmtT(p[0], true)} UTC · $${Math.round(p[1]).toLocaleString()}` +
+      ` · $${p[2].toFixed(6)}${p[3] ? " · reconstructed" : ""}`;
+  } else $("chartinfo").textContent = "";
+}
+
+$("mcchart").addEventListener("mousemove", e => { hover = e.offsetX; draw(); });
+$("mcchart").addEventListener("mouseleave", () => { hover = null; draw(); });
+window.addEventListener("resize", draw);
+document.addEventListener("visibilitychange", draw);
+$("ranges").addEventListener("click", e => {
+  const a = e.target.closest("a[data-h]");
+  if (!a) return;
+  e.preventDefault();
+  rangeH = +a.dataset.h;
+  [...$("ranges").children].forEach(x => x.className = x === a ? "on" : "");
+  hover = null; draw();
+});
+load();
+setInterval(load, 5 * 60 * 1000);
+</script>
+</body>
+</html>

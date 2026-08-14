@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-08-14T22:52:28.232620+00:00",
- "as_of_block": 36622394,
+ "generated_at": "2026-08-14T22:56:59.205086+00:00",
+ "as_of_block": 36623001,
  "state": {
-  "supply": 949181111.9468809,
-  "burned": 50818887.57934686,
-  "bought": 2747468.014235619,
-  "residue": 20456.917096710964,
+  "supply": 948060219.698326,
+  "burned": 51939779.82790171,
+  "bought": 3422953.3732492314,
+  "residue": 24217.590681989746,
   "sealed": true,
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 31559.18659978834,
-  "market_cap": 2609773.1325183953,
-  "price": 0.0027494996472964437
+  "banked_usd": 31088.868087731236,
+  "market_cap": 2647617.5122215594,
+  "price": 0.002792668078683899
  },
  "entries": [
   {
@@ -269,6 +269,21 @@
    "round": 4
   },
   {
+   "_id": "sec-6a7f194c0cc6f3b3cc481a47",
+   "kind": "security",
+   "ts": 1786714444,
+   "block": 36623001,
+   "day": 1,
+   "title": "reconcile drift",
+   "lines": [
+    "The ledger and the router disagree: 49,729,940",
+    "counted vs 50,818,888 claimed. The lock is checking its sums."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
    "_id": "feeding-005",
    "kind": "feeding",
    "ts": 1786747497,
@@ -304,6 +319,21 @@
    },
    "measured": true,
    "round": 5
+  },
+  {
+   "_id": "sec-6a7f9c510e9e2e99a4307998",
+   "kind": "security",
+   "ts": 1786747985,
+   "block": 36623001,
+   "day": 2,
+   "title": "reconcile drift",
+   "lines": [
+    "The ledger and the router disagree: 51,790,531",
+    "counted vs 51,939,780 claimed. The lock is checking its sums."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
   }
  ]
 }
