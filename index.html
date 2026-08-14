@@ -173,10 +173,16 @@ function logL(msg, cls) {
   while ($("log").children.length > 120) $("log").lastChild.remove();
 }
 const escapeHtml = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const fmtWhen = ts => {   // "Aug 12 21:31" UTC
+  const d = new Date(ts * 1000);
+  return `${MONTHS[d.getUTCMonth()]} ${d.getUTCDate()} ` +
+         `${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")}`;
+};
 function logEntry(e, cls) {
   // one diary row: clickable title (expands in-terminal) + [tx] evidence link
   const txs = (e.evidence && e.evidence.txs) || [];
-  let html = `[${now()}] D${e.day} · ` +
+  let html = `[${now()}] D${e.day} · ${fmtWhen(e.ts)} · ` +
     `<a href="#" class="cmd" data-cmd="diaryid ${escapeHtml(e._id)}">${escapeHtml(e.title)}</a>` +
     ` — ${escapeHtml(e.lines[0] || "")}`;
   if (txs.length)
@@ -362,7 +368,7 @@ function openDiaryPager() {   // the diary as a browsable pager: newest first, t
       h += `<div class="ev amber">since the last entry: ≈${Math.round(since).toLocaleString()} PACK burned</div>`;
   }
   h += es.map(e =>
-    `<div><span class="dim">D${e.day}</span> · ` +
+    `<div><span class="dim">D${e.day} · ${fmtWhen(e.ts)} UTC</span> · ` +
     `<a href="#" class="cmd" data-cmd="diaryid ${escapeHtml(e._id)}">${escapeHtml(e.title)}</a>` +
     `${e.measured === false ? ' <span class="faint">· schedule-derived</span>' : ""}` +
     `<br><span class="${e.kind === "security" ? "red" : "dim"}">&nbsp;&nbsp;${escapeHtml(e.lines[0] || "")}</span></div>`
