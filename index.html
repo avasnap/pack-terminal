@@ -134,6 +134,20 @@ function log(msg, cls) {
   $("log").prepend(el);
   while ($("log").children.length > 120) $("log").lastChild.remove();
 }
+function logL(msg, cls) {
+  // log with 0x… hashes/addresses linkified to Blockscout (single pass, escaped first)
+  const esc = `[${now()}] ${msg}`.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const html = esc.replace(/0x[0-9a-fA-F]{40,64}/g, m => {
+    if (m.length === 66) return `<a href="https://robinhoodchain.blockscout.com/tx/${m}" target="_blank" rel="noopener">${m.slice(0, 14)}…</a>`;
+    if (m.length === 42) return `<a href="https://robinhoodchain.blockscout.com/address/${m}" target="_blank" rel="noopener">${m.slice(0, 10)}…</a>`;
+    return m;
+  });
+  const el = document.createElement("div");
+  if (cls) el.className = cls;
+  el.innerHTML = html;
+  $("log").prepend(el);
+  while ($("log").children.length > 120) $("log").lastChild.remove();
+}
 function notifyUser(title, body) {
   if (cfg.notify && "Notification" in window && Notification.permission === "granted" && document.hidden)
     new Notification(title, {body});
@@ -311,21 +325,22 @@ function exec(line) {
           if (since > 1000) log(`since last entry: ≈${fmtUsd(since).slice(1)} PACK burned`, "amber");
         }
         [...es].slice(-8).forEach(e =>
-          log(`D${e.day} · ${e.title} — ${e.lines[0]}`, e.kind === "security" ? "red" : undefined));
+          logL(`D${e.day} · ${e.title} — ${e.lines[0]}`, e.kind === "security" ? "red" : undefined));
         log(`diary of the wolf · ${es.length} entries · newest first below`, "cyan");
       } else if (arg === "all") {
         [...es].reverse().forEach(e => log(`D${e.day} · ${e.title}`, "dim"));
       } else if (!isNaN(num)) {                   // round detail
         const e = es.find(x => x.round === num);
         if (!e) { log(`no feeding round ${num}`, "red"); break; }
-        (e.evidence.txs || []).slice(0, 3).forEach(tx =>
-          log(`  tx ${tx}`, "faint"));
-        [...e.lines].reverse().forEach(l => log(`  ${l}`));
+        const txs = e.evidence.txs || [];
+        if (txs.length > 3) logL(`  … and ${txs.length - 3} more txs`, "faint");
+        txs.slice(0, 3).forEach(tx => logL(`  tx ${tx}`, "faint"));
+        [...e.lines].reverse().forEach(l => logL(`  ${l}`));
         log(`D${e.day} · ${e.title}`, "cyan");
       } else {                                    // kind filter
         const hits = es.filter(x => x.kind === arg.toLowerCase());
         if (!hits.length) { log(`no entries of kind '${arg}' — kinds: feeding, genesis, vesting, stranger, dust, security`, "red"); break; }
-        [...hits].reverse().forEach(e => log(`D${e.day} · ${e.title} — ${e.lines[0]}`));
+        [...hits].reverse().forEach(e => logL(`D${e.day} · ${e.title} — ${e.lines[0]}`));
       }
       break;
     }
