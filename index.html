@@ -45,6 +45,11 @@
   #log div { white-space: pre-wrap; }
   .section { color: var(--dim); margin-top: 18px; }
   .wrap { overflow-x: auto; }
+  #diarybtn {
+    display: inline-block; white-space: pre; cursor: pointer; user-select: none;
+    color: var(--fg); margin: 10px 0 0; line-height: 1.15;
+  }
+  #diarybtn:hover { color: var(--bg); background: var(--fg); text-shadow: none; }
   #pager {
     position: fixed; inset: 0; z-index: 10; display: none;
     background: rgba(3, 5, 3, .93); padding: 5vh 4vw;
@@ -74,6 +79,9 @@
 ║  PACK://TRACKER  ·  wolf pack multi-pool market cap              ║
 ║  robinhood chain 4663 · uniswap v4 + all dexes · no backend      ║
 ╚══════════════════════════════════════════════════════════════════╝</header>
+<div id="diarybtn" title="Diary of the Wolf">╔═══════════════════════╗
+║ ◆ DIARY OF THE WOLF ◆ ║
+╚═══════════════════════╝</div>
 
 <div class="row">
   <div><span class="dim">MARKET CAP </span><span id="mc" class="up">──────</span></div>
@@ -328,7 +336,8 @@ function showEntry(e) {   // pager view — terminal's `less`
   if (txs.length)
     h += `<div class="ev">evidence — ${txs.length} tx${txs.length > 1 ? "s" : ""}:<br>` +
          txs.map(tx => `&nbsp;&nbsp;${bsLink("tx", tx, 22)}`).join("<br>") + `</div>`;
-  h += `<div class="foot">esc · q · click outside to close</div>`;
+  h += `<div class="foot"><a href="#" class="cmd" data-cmd="diarylist">← back to the diary</a>` +
+       ` · esc · q · click outside to close</div>`;
   $("pagerbox").innerHTML = h;
   $("pager").className = "open";
   cmdEl.blur();
@@ -336,6 +345,32 @@ function showEntry(e) {   // pager view — terminal's `less`
 function closePager() {
   $("pager").className = "";
   cmdEl.focus();
+}
+function openDiaryPager() {   // the diary as a browsable pager: newest first, titles expand
+  if (!diaryData) {
+    loadDiary().then(() => diaryData ? openDiaryPager()
+      : log("diary unavailable (not published yet, or offline)", "red"));
+    return;
+  }
+  const es = [...diaryData.entries].reverse();
+  const st = diaryData.state || {};
+  let h = `<h2>DIARY OF THE WOLF <span class="dim">· ${es.length} entries · newest first · ` +
+          `as recorded by the lock, which forgets nothing</span></h2>`;
+  if (st.supply && typeof supply === "number") {
+    const since = st.supply - supply;
+    if (since > 1000)
+      h += `<div class="ev amber">since the last entry: ≈${Math.round(since).toLocaleString()} PACK burned</div>`;
+  }
+  h += es.map(e =>
+    `<div><span class="dim">D${e.day}</span> · ` +
+    `<a href="#" class="cmd" data-cmd="diaryid ${escapeHtml(e._id)}">${escapeHtml(e.title)}</a>` +
+    `${e.measured === false ? ' <span class="faint">· schedule-derived</span>' : ""}` +
+    `<br><span class="${e.kind === "security" ? "red" : "dim"}">&nbsp;&nbsp;${escapeHtml(e.lines[0] || "")}</span></div>`
+  ).join("");
+  h += `<div class="foot">click an entry · esc · q · click outside to close</div>`;
+  $("pagerbox").innerHTML = h;
+  $("pager").className = "open";
+  cmdEl.blur();
 }
 
 const HELP = `commands:
@@ -402,6 +437,7 @@ function exec(line) {
       if (e) showEntry(e);
       break;
     }
+    case "diarylist": openDiaryPager(); break;
     case "mc":
       if (lastAgg) log(`MC ${fmtUsd(lastAgg.mc)} · median $${lastAgg.med.toFixed(6)} · ` +
                        `liq-wtd $${lastAgg.wavg.toFixed(6)} · ${lastAgg.pools} pools · ${lastAgg.divBps} bps`);
@@ -482,6 +518,11 @@ $("log").addEventListener("click", e => {
   if (a) { e.preventDefault(); exec(a.dataset.cmd); }
 });
 $("pager").addEventListener("click", e => { if (!e.target.closest("#pagerbox")) closePager(); });
+$("pagerbox").addEventListener("click", e => {
+  const a = e.target.closest("a.cmd");
+  if (a) { e.preventDefault(); exec(a.dataset.cmd); }
+});
+$("diarybtn").addEventListener("click", openDiaryPager);
 document.addEventListener("keydown", e => {
   if ($("pager").className === "open" && (e.key === "Escape" || e.key === "q")) {
     e.preventDefault(); closePager();
