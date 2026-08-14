@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-08-14T22:48:30.281056+00:00",
- "as_of_block": 36191780,
+ "generated_at": "2026-08-14T22:52:28.232620+00:00",
+ "as_of_block": 36622394,
  "state": {
   "supply": 949181111.9468809,
   "burned": 50818887.57934686,
@@ -11,8 +11,8 @@
   "claimed": 0.0,
   "claimable": 0.0,
   "banked_usd": 31559.18659978834,
-  "market_cap": 2556389.8397432105,
-  "price": 0.002693258228137049
+  "market_cap": 2609773.1325183953,
+  "price": 0.0027494996472964437
  },
  "entries": [
   {
@@ -267,6 +267,43 @@
    },
    "measured": true,
    "round": 4
+  },
+  {
+   "_id": "feeding-005",
+   "kind": "feeding",
+   "ts": 1786747497,
+   "block": 36622066,
+   "day": 2,
+   "title": "FEEDING \u21165 \u00b7 5/10 dens",
+   "lines": [
+    "656,976 PACK burned \u00b7 329,180 bought back and buried deeper",
+    "Meal 5 of the shrinking. Decay is the schedule."
+   ],
+   "evidence": {
+    "txs": [
+     "0x8cfb31b04827eec30ea5694775f4668ac86c60ff2a9dbb249d0410208fe6e8df",
+     "0x412d387f54507d21626e998f45ebcbe879ad845acdeda2e4cc6055c6f4026210",
+     "0x06ca04df24117b24f015b059875cafdba9f5f2d12cffd836cebaaf2532af18e6",
+     "0xd9aec0ef1c917955d7b6551cbad86972eff878b22d8fa6fdd9747db0e3c9d162",
+     "0x0c561ef57b01ff6234a31a3ce57c856ae869c758a63a3863c24e11769a79af7f"
+    ],
+    "dens": [
+     "NVDA",
+     "MU",
+     "AAPL",
+     "SPCX",
+     "PONS"
+    ],
+    "burn": 656976.2118981152,
+    "bought": 329180.41828250623,
+    "keepers": [
+     "0x3780215e0bd2d5f146deb848e5b0d0cabea19bed",
+     "0x963740d2af32104f694d97fac2349fab238a8666",
+     "0xc45dea808062b08c39154a500ed684a59872e756"
+    ]
+   },
+   "measured": true,
+   "round": 5
   }
  ]
 }
