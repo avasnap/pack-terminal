@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-08-14T23:00:02.157607+00:00",
- "as_of_block": 36623001,
+ "generated_at": "2026-08-14T23:07:43.709915+00:00",
+ "as_of_block": 36623050,
  "state": {
   "supply": 948060219.698326,
   "burned": 51939779.82790171,
@@ -10,9 +10,9 @@
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 31085.52684637244,
-  "market_cap": 2615511.916096548,
-  "price": 0.0027588035672763567
+  "banked_usd": 31126.483418402044,
+  "market_cap": 2679159.7470017555,
+  "price": 0.0028259383648163907
  },
  "entries": [
   {
@@ -289,10 +289,9 @@
    "ts": 1786747497,
    "block": 36622066,
    "day": 2,
-   "title": "FEEDING \u21165 \u00b7 5/10 dens",
+   "title": "FEEDING \u21165 \u00b7 10/10 dens",
    "lines": [
-    "656,976 PACK burned \u00b7 329,180 bought back and buried deeper",
-    "Meal 5 of the shrinking. Decay is the schedule."
+    "1,120,892 PACK burned \u00b7 675,485 bought back and buried deeper"
    ],
    "evidence": {
     "txs": [
@@ -300,21 +299,35 @@
      "0x412d387f54507d21626e998f45ebcbe879ad845acdeda2e4cc6055c6f4026210",
      "0x06ca04df24117b24f015b059875cafdba9f5f2d12cffd836cebaaf2532af18e6",
      "0xd9aec0ef1c917955d7b6551cbad86972eff878b22d8fa6fdd9747db0e3c9d162",
-     "0x0c561ef57b01ff6234a31a3ce57c856ae869c758a63a3863c24e11769a79af7f"
+     "0xd3a959ae0dfbf9c294e08c4eb73327434ed33e542a7a40d86e4696d91786f07c",
+     "0x0c561ef57b01ff6234a31a3ce57c856ae869c758a63a3863c24e11769a79af7f",
+     "0x6e1684f5984cdae3c9e0b8f81152117bc152204f4690bacd6fa5e609dd5feef5",
+     "0x5212ffd343f871384251fa6d36ec9dbb25165c1f3f505d99e26a383e110fe145",
+     "0xbd2fcac8192fe82ce4a7159b3d8fd07d48e655eb65ae2c108eeb9010e129def2",
+     "0x9db58ceb7711e3651dd1123a4f1f2d8b6301824507efb9941c2ae59b0e7624a5"
     ],
     "dens": [
      "NVDA",
      "MU",
+     "MSFT",
      "AAPL",
+     "AMD",
      "SPCX",
+     "CASHCAT",
+     "THROBBIN",
+     "TENDIES",
      "PONS"
     ],
-    "burn": 656976.2118981152,
-    "bought": 329180.41828250623,
+    "burn": 1120892.248554858,
+    "bought": 675485.3590136125,
     "keepers": [
+     "0x15e881726a51f4bc416a034fbaa4e5d21e1eb5f7",
      "0x3780215e0bd2d5f146deb848e5b0d0cabea19bed",
+     "0x4113c7c5f8c0ce9a2b306784a4d91d638e44d00e",
+     "0x4e4b898741db0fa205c8652af073b33d493f2c5e",
      "0x963740d2af32104f694d97fac2349fab238a8666",
-     "0xc45dea808062b08c39154a500ed684a59872e756"
+     "0xc45dea808062b08c39154a500ed684a59872e756",
+     "0xee63edd8acae27829caadbf6f2d18799f042f0c7"
     ]
    },
    "measured": true,
