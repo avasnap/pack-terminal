@@ -295,7 +295,18 @@ async function tick() {
       }
     } catch (e) { /* dens fall back to placeholder rows */ }
   }
-  const pairs = (data.pairs || []).filter(p => p.priceUsd &&
+  // normalize orientation: dexscreener sometimes serves pairs base=X/quote=PACK
+  // (canonical pool order) instead of reorienting to the queried token
+  data.pairs = (data.pairs || []).map(p => {
+    if ((p.quoteToken?.address || "").toLowerCase() === PACK &&
+        (p.baseToken?.address || "").toLowerCase() !== PACK && +p.priceNative > 0) {
+      return {...p, baseToken: p.quoteToken, quoteToken: p.baseToken,
+              priceUsd: String(+p.priceUsd / +p.priceNative),
+              priceNative: String(1 / +p.priceNative), priceChange: {}};
+    }
+    return p;
+  });
+  const pairs = data.pairs.filter(p => p.priceUsd &&
     ((p.liquidity?.usd ?? 0) >= cfg.dust || DENS.has((p.pairAddress || "").toLowerCase().slice(0, 42))));
   lastRows = pairs.map(p => ({
     sym: p.quoteToken.symbol, dex: p.dexId, qaddr: (p.quoteToken.address || "").toLowerCase(),
