@@ -94,7 +94,7 @@
 
 <div class="section">── pools ──────────────── ◆ locked dens, always shown ──</div>
 <div class="wrap"><table id="pools">
-  <thead><tr><th>#</th><th class="l">quote</th><th class="l">dex</th><th>price usd</th><th>liq usd</th><th>vol 24h</th><th>Δ 24h</th><th>dev</th><th class="l">trade</th></tr></thead>
+  <thead><tr><th>#</th><th class="l">quote</th><th class="l">dex</th><th>fee</th><th>price usd</th><th>liq usd</th><th>vol 24h</th><th>Δ 24h</th><th>dev</th><th class="l">trade</th></tr></thead>
   <tbody></tbody>
 </table></div>
 
@@ -155,7 +155,14 @@ const LS = (k, v) => v === undefined
   : store.setItem("packterm." + k, JSON.stringify(v));
 
 const cfg = Object.assign({rate: 10, divbps: 1000, dust: 300, notify: false, theme: "green"}, LS("cfg") || {});
-let diaryData = null;
+let diaryData = null, poolFees = null;
+
+async function loadPoolFees() {
+  try {
+    const r = await fetch("./pool_fees.json", {cache: "no-store"});
+    if (r.ok) poolFees = await r.json();
+  } catch (e) {}
+}
 
 async function loadDiary() {
   try {
@@ -228,6 +235,13 @@ function applyTheme() {
     r.setProperty("--fg", "#ffb000"); r.setProperty("--dim", "#a67200");
     r.setProperty("--faint", "#5c4000"); r.setProperty("--cyan", "#ffd866");
   } else { ["--fg", "--dim", "--faint", "--cyan"].forEach(p => r.removeProperty(p)); }
+}
+function feeFor(r) {
+  if (r.dex !== "uniswap" || !poolFees) return "—";
+  const f = poolFees[(r.id || "").toLowerCase().slice(0, 42)];
+  if (f == null) return "—";
+  if (f === 8388608) return "dyn";
+  return (f / 10000).toFixed(2).replace(/\.?0+$/, "") + "%";
 }
 function swapUrl(r) {
   if (r.dex === "uniswap") {
@@ -360,7 +374,8 @@ async function tick() {
     let chg = r.chg == null ? "—" : (r.chg > 0 ? "+" : "") + (Math.abs(r.chg) > 999 ? ">999" : r.chg) + "%";
     trEl.innerHTML =
       `<td class="faint">${i + 1}</td><td class="l">${r.den ? "◆ " : r.trusted ? "" : "☠ "}${r.sym}</td>` +
-      `<td class="l dim">${r.dex}</td><td>$${r.price.toFixed(6)}</td><td>${fmtUsd(r.liq)}</td>` +
+      `<td class="l dim">${r.dex}</td><td class="dim">${feeFor(r)}</td>` +
+      `<td>$${r.price.toFixed(6)}</td><td>${fmtUsd(r.liq)}</td>` +
       `<td>${fmtUsd(r.vol)}</td><td class="${(r.chg ?? 0) < 0 ? "red" : "dim"}">${chg}</td>` +
       `<td class="dim">${dev}</td>` +
       `<td class="l"><a href="${swapUrl(r)}" target="_blank" rel="noopener">[swap]</a> ` +
@@ -372,7 +387,7 @@ async function tick() {
       const trEl = document.createElement("tr");
       trEl.className = "untrusted";
       trEl.innerHTML = `<td></td><td class="l">◆ ${sym}</td>` +
-        `<td class="l" colspan="6">den not reported by dexscreener this tick</td>` +
+        `<td class="l" colspan="7">den not reported by dexscreener this tick</td>` +
         `<td class="l"><a href="https://dexscreener.com/robinhood/${pid}" target="_blank" rel="noopener">[chart]</a></td>`;
       tbody.appendChild(trEl);
     }
@@ -604,6 +619,7 @@ applyTheme();
 log("PACK tracker terminal online — dexscreener api · type `help` for commands");
 if (history.length) log(`restored ${history.length} stored price points`, "dim");
 loadDiary();
+loadPoolFees();
 fetchSupply();
 tick();
 timer = setInterval(tick, cfg.rate * 1000);
