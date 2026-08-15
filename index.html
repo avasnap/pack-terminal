@@ -237,7 +237,7 @@ function applyTheme() {
   } else { ["--fg", "--dim", "--faint", "--cyan"].forEach(p => r.removeProperty(p)); }
 }
 function feeFor(r) {
-  if (r.dex !== "uniswap" || !poolFees) return "—";
+  if (!poolFees) return "—";
   const f = poolFees[(r.id || "").toLowerCase().slice(0, 42)];
   if (f == null) return "—";
   if (f === 8388608) return "dyn";
