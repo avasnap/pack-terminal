@@ -47,7 +47,7 @@
 </div>
 <div id="chartwrap"><canvas id="mcchart"></canvas><div id="chartinfo"></div></div>
 <div id="legend">median across trusted pools × live supply · <span class="amber">▲</span> feedings ·
-  dashed = reconstructed from chain (tracker downtime) · <a href="./">← terminal</a></div>
+  reconstructed spans (chain-measured, pre-tracker) flagged in readout · <a href="./">← terminal</a></div>
 <div id="status"></div>
 
 <script>
@@ -117,22 +117,18 @@ function draw() {
     ctx.beginPath(); ctx.moveTo(x, mt); ctx.lineTo(x, H - mb); ctx.stroke();
     ctx.fillStyle = dim; ctx.fillText(fmtT(t), x - 30, H - 9);
   }
-  // series: solid for live-recorded, dashed for backfilled; break on true holes (>10 min)
+  // one continuous series — reconstructed spans use chain-measured legs and are
+  // flagged in the crosshair readout; only true holes (>10 min) break the line
   ctx.lineWidth = 1.5; ctx.strokeStyle = fg; ctx.shadowColor = fg; ctx.shadowBlur = 7;
-  let pen = false, dashed = null;
+  ctx.beginPath();
+  let pen = false;
   for (let i = 0; i < P.length; i++) {
-    const bf = !!P[i][3];
     if (i && P[i][0] - P[i-1][0] > 600) pen = false;
-    if (bf !== dashed) {
-      if (pen !== false) ctx.stroke();
-      ctx.beginPath(); pen = false;
-      ctx.setLineDash(bf ? [4, 4] : []);
-      dashed = bf;
-    }
     const x = X(P[i][0]), y = Y(P[i][1]);
-    pen ? ctx.lineTo(x, y) : (ctx.moveTo(x, y), pen = true);
+    pen ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    pen = true;
   }
-  ctx.stroke(); ctx.setLineDash([]); ctx.shadowBlur = 0;
+  ctx.stroke(); ctx.shadowBlur = 0;
   // feeding markers
   ctx.fillStyle = amber;
   for (const t of feeds) {
