@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PACK://PODS</title>
+<style>
+  :root {
+    --bg: #050805; --fg: #33ff66; --dim: #1a8f3c; --faint: #0e5424;
+    --amber: #ffb000; --red: #ff4444; --cyan: #2ee6d6; --magenta: #ff4fd8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--fg); }
+  body {
+    font: 14px/1.45 "Cascadia Mono", ui-monospace, "JetBrains Mono", Consolas, monospace;
+    padding: 18px 22px; min-height: 100vh;
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(0deg, transparent 0 2px, rgba(0,0,0,.22) 2px 4px);
+    mix-blend-mode: multiply;
+  }
+  a { color: var(--cyan); text-decoration: none; }
+  a:hover { background: var(--cyan); color: var(--bg); }
+  .dim { color: var(--dim); } .faint { color: var(--faint); }
+  .amber { color: var(--amber); } .mag { color: var(--magenta); }
+  #crt { text-shadow: 0 0 6px rgba(51,255,102,.45); max-width: 1400px; margin: 0 auto; }
+  header { white-space: pre; margin-bottom: 6px; }
+  #topline { color: var(--dim); margin-bottom: 14px; font-size: 12.5px; }
+  #cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  @media (max-width: 900px) { #cols { grid-template-columns: 1fr; } }
+  .side h2 { font-size: 14px; font-weight: normal; color: var(--dim);
+             border-bottom: 1px solid var(--faint); padding-bottom: 4px; margin-bottom: 10px; }
+  .side.degen h2 { color: var(--magenta); border-color: #58164a;
+                   text-shadow: 0 0 6px rgba(255,79,216,.35); }
+  .pod { border: 1px solid var(--faint); padding: 10px 14px; margin-bottom: 12px; }
+  .side.degen .pod { border-color: #58164a; }
+  .pod .head { display: flex; justify-content: space-between; align-items: baseline; }
+  .pod .sym { font-size: 16px; }
+  .side.degen .sym { color: var(--magenta); text-shadow: 0 0 6px rgba(255,79,216,.35); }
+  .pod .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px 18px;
+               margin-top: 6px; font-size: 13px; }
+  .pod .grid div { white-space: nowrap; }
+  .pod .k { color: var(--dim); }
+  .pod .pending { margin-top: 7px; border-top: 1px dashed var(--faint); padding-top: 6px;
+                  font-size: 13px; }
+  .pod .links { margin-top: 5px; font-size: 12.5px; }
+</style>
+</head>
+<body>
+<div id="crt">
+<header>
+╔══════════════════════════════════════════════════════════════════╗
+║  PACK://PODS · ten dens, two wolves · chain 4663                 ║
+╚══════════════════════════════════════════════════════════════════╝</header>
+<div id="topline">loading…</div>
+<div id="cols">
+  <div class="side" id="builder"><h2>THE BUILDER · six tokenized equities</h2></div>
+  <div class="side degen" id="degen"><h2>THE DEGEN · four native memes</h2></div>
+</div>
+<div class="dim" style="margin-top:14px; font-size:12.5px">
+  pending spend = quote fees banked in the router for this den, worked out ≤2% per feeding ·
+  <a href="./">← terminal</a> · <a href="./chart.html">chart</a></div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const PACK = "0x0145acbccefbed6f303c420beeaaac72e905430b";
+let densData = null, live = {};   // pool_id -> pair
+
+function fmtUsd(v, d = 0) { return "$" + (+v).toLocaleString("en-US", {maximumFractionDigits: d}); }
+function fmtAmt(v) {
+  if (v >= 1e6) return (v / 1e6).toFixed(2) + "M";
+  if (v >= 1e3) return (v / 1e3).toFixed(1) + "k";
+  return v >= 1 ? v.toFixed(2) : v.toFixed(4);
+}
+function eta(ts) {
+  const s = ts - Date.now() / 1000;
+  if (s <= 0) return "READY";
+  return `${Math.floor(s / 3600)}h ${String(Math.floor(s % 3600 / 60)).padStart(2, "0")}m`;
+}
+
+async function loadDens() {
+  const r = await fetch("./dens.json", {cache: "no-store"});
+  densData = await r.json();
+}
+async function loadLive() {
+  if (!densData) return;
+  const ids = densData.dens.map(d => d.pool_id).join(",");
+  try {
+    const r = await fetch("https://api.dexscreener.com/latest/dex/pairs/robinhood/" + ids,
+                          {cache: "no-store"});
+    const d = await r.json();
+    for (let p of d.pairs || []) {
+      if ((p.baseToken?.address || "").toLowerCase() !== PACK && +p.priceNative > 0)
+        p = {...p, priceUsd: String(+p.priceUsd / +p.priceNative)};
+      live[p.pairAddress.toLowerCase()] = p;
+    }
+  } catch (e) {}
+}
+
+function render() {
+  if (!densData) return;
+  const dens = densData.dens;
+  for (const el of ["builder", "degen"]) $(el).querySelectorAll(".pod").forEach(x => x.remove());
+  let bankTotal = 0, ready = 0;
+  for (const d of dens) {
+    bankTotal += d.pending_spend_usd || 0;
+    if (d.next_ready_ts && d.next_ready_ts <= Date.now() / 1000) ready++;
+    const p = live[d.pool_id.toLowerCase()];
+    const price = p ? "$" + (+p.priceUsd).toFixed(6) : "—";
+    const liq = p && p.liquidity ? fmtUsd(p.liquidity.usd) : "—";
+    const vol = p && p.volume ? fmtUsd(p.volume.h24) : "—";
+    const el = document.createElement("div");
+    el.className = "pod";
+    el.innerHTML =
+      `<div class="head"><span class="sym">◆ ${d.sym}</span>` +
+      `<span class="dim">${d.name} · den ${d.token_id}</span></div>` +
+      `<div class="grid">` +
+      `<div><span class="k">PACK px </span>${price}</div>` +
+      `<div><span class="k">liq </span>${liq}</div>` +
+      `<div><span class="k">vol 24h </span>${vol}</div>` +
+      `<div><span class="k">fee </span>1%</div>` +
+      `<div><span class="k">burned </span>${fmtAmt(d.lifetime_burned)} PACK</div>` +
+      `<div><span class="k">buried </span>${fmtAmt(d.lifetime_bought)} PACK</div>` +
+      `</div>` +
+      `<div class="pending">pending spend: <span class="amber">${fmtAmt(d.pending_spend)} ${d.sym}` +
+      ` (≈${fmtUsd(d.pending_spend_usd)})</span>` +
+      ` · harvest <span class="${d.next_ready_ts && d.next_ready_ts <= Date.now()/1000 ? "amber" : "dim"}">` +
+      `${d.next_ready_ts ? eta(d.next_ready_ts) : "?"}</span></div>` +
+      `<div class="links"><a href="https://robinhoodchain.blockscout.com/address/${d.quote}" target="_blank" rel="noopener">[token]</a> ` +
+      `<a href="https://dexscreener.com/robinhood/${d.pool_id}" target="_blank" rel="noopener">[chart]</a> ` +
+      `<a href="https://app.uniswap.org/swap?chain=robinhood&inputCurrency=${d.quote}&outputCurrency=${PACK}" target="_blank" rel="noopener">[swap]</a></div>`;
+    $(d.side === "stock" ? "builder" : "degen").appendChild(el);
+  }
+  $("topline").textContent =
+    `fee bank total ≈${fmtUsd(bankTotal)} queued across ten dens · ` +
+    `${ready ? ready + " dens READY to harvest" : "next harvest " + eta(Math.min(...dens.filter(d => d.next_ready_ts).map(d => d.next_ready_ts)))} · ` +
+    `data ${densData.generated_at.slice(0, 16)}Z`;
+}
+
+(async () => {
+  await loadDens();
+  await loadLive();
+  render();
+  setInterval(async () => { await loadLive(); render(); }, 30 * 1000);
+  setInterval(async () => { await loadDens(); render(); }, 5 * 60 * 1000);
+  setInterval(render, 30 * 1000);
+})();
+</script>
+</body>
+</html>
