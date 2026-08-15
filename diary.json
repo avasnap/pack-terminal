@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-15T21:53:09.877670+00:00",
+ "generated_at": "2026-08-15T21:58:36.952715+00:00",
  "as_of_block": 37053694,
  "state": {
   "supply": 947666773.8633718,
@@ -10,9 +10,9 @@
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 27502.99373716144,
-  "market_cap": 1374983.573286431,
-  "price": 0.0014509146159899732
+  "banked_usd": 27505.79585154795,
+  "market_cap": 1365595.670279901,
+  "price": 0.0014410082825978485
  },
  "entries": [
   {
@@ -269,21 +269,6 @@
    "round": 4
   },
   {
-   "_id": "sec-6a7f194c0cc6f3b3cc481a47",
-   "kind": "security",
-   "ts": 1786714444,
-   "block": 36623001,
-   "day": 1,
-   "title": "reconcile drift",
-   "lines": [
-    "The ledger and the router disagree: 49,729,940",
-    "counted vs 50,818,888 claimed. The lock is checking its sums."
-   ],
-   "evidence": {},
-   "measured": true,
-   "round": null
-  },
-  {
    "_id": "feeding-005",
    "kind": "feeding",
    "ts": 1786747497,
@@ -332,36 +317,6 @@
    },
    "measured": true,
    "round": 5
-  },
-  {
-   "_id": "sec-6a7f9c510e9e2e99a4307998",
-   "kind": "security",
-   "ts": 1786747985,
-   "block": 36623001,
-   "day": 2,
-   "title": "reconcile drift",
-   "lines": [
-    "The ledger and the router disagree: 51,790,531",
-    "counted vs 51,939,780 claimed. The lock is checking its sums."
-   ],
-   "evidence": {},
-   "measured": true,
-   "round": null
-  },
-  {
-   "_id": "sec-6a7f9d51230ff69cc2326164",
-   "kind": "security",
-   "ts": 1786748241,
-   "block": 36623001,
-   "day": 2,
-   "title": "reconcile drift",
-   "lines": [
-    "The ledger and the router disagree: 51,790,531",
-    "counted vs 51,939,780 claimed. The lock is checking its sums."
-   ],
-   "evidence": {},
-   "measured": true,
-   "round": null
   },
   {
    "_id": "feeding-006",
@@ -414,6 +369,38 @@
    },
    "measured": true,
    "round": 6
+  },
+  {
+   "_id": "crossing",
+   "kind": "milestone",
+   "ts": 1786790757,
+   "block": 37052709,
+   "day": 2,
+   "title": "the crossing",
+   "lines": [
+    "For the first time, the wolf buried more than it burned:",
+    "805,481 bought back against 393,446 gone to smoke.",
+    "The launch fires are ash. What feeds the lock now is",
+    "the bank, worked out a slice at a time."
+   ],
+   "evidence": {
+    "txs": [
+     "0x335bdbcadb9758bdde5d87ab1093f85d14712bd999fed5ecd6dc01f880f6c8bd",
+     "0xa1782d0f2d01f3ad1d6650ab64d8e222a9f0e483258ee02b0a37f15764c5b192",
+     "0x9b01d685e525dcd8e800cbfc88706355437950e61b38408b1add391c7b85f3c6",
+     "0xd359d7462f062982b2fb87ff5906eecb114667d4e98464be18fde749454b46c2",
+     "0x9f4d40ffc0a4055eab90dbb87fcc3f53b1428a59e2ce9508ac7a601ada8030e2",
+     "0x6a36f0f0a655a40698d65684f27dc45adb9a475d58b993a3657182031a3c82c7",
+     "0xc1b31a8845f0b01f924f48daba57c3042417993d23717ccd075b71a4e9c4137f",
+     "0x6eec11033bc88e6de8b9b4ce138ee40ae7eaeaafe5a5dd5ba55907d36c1f6fed",
+     "0xee616db9bacf8d337a00a9eea9806f8cf517fc8502a78cb6df9631817f013f59",
+     "0x279c6a70f41b4eef128b563714fa4bfd88f3a1e69ffd3d3a8ad1a33c54306dc2"
+    ],
+    "burn": 393445.8349541792,
+    "bought": 805481.0192429386
+   },
+   "measured": true,
+   "round": null
   }
  ]
 }
