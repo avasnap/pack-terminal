@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-08-18T10:00:01.938596+00:00",
- "as_of_block": 39206654,
+ "generated_at": "2026-08-18T11:00:02.292865+00:00",
+ "as_of_block": 39637360,
  "state": {
-  "supply": 944085055.0547447,
-  "burned": 55914944.471483,
-  "bought": 9370981.667251771,
-  "residue": 58913.59262082401,
+  "supply": 943731485.3598617,
+  "burned": 56268514.16636605,
+  "bought": 10667767.833174458,
+  "residue": 67057.541928197,
   "sealed": true,
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 19046.469298744145,
-  "market_cap": 561264.4409859295,
-  "price": 0.0005945062237569086
+  "banked_usd": 17633.79979986412,
+  "market_cap": 585621.632188299,
+  "price": 0.0006205384066051277
  },
  "entries": [
   {
@@ -651,6 +651,57 @@
    },
    "measured": true,
    "round": 11
+  },
+  {
+   "_id": "feeding-012",
+   "kind": "feeding",
+   "ts": 1787049897,
+   "block": 39636376,
+   "day": 5,
+   "title": "FEEDING \u211612 \u00b7 10/10 dens",
+   "lines": [
+    "353,570 PACK burned \u00b7 1,296,786 bought back and buried deeper",
+    "The wolf now buries more than it burns. For every 100",
+    "gone to smoke, 367 came back from the fee bank."
+   ],
+   "evidence": {
+    "txs": [
+     "0x708acf0a1c94ee2ff4a1351b6d475cac56c5035aa8c9867f8a67d7df91dbbe31",
+     "0x96e4cff80f1535543f14e2bad2c081918976ccecfc8b4601c25c8e9b845c365d",
+     "0x8abe5ef7c17c3950ab6e6193e27a33a3265412728fcff64f742011d7b7b3fa35",
+     "0x0e3318744645649a297d7443c049584c9c5a2cd7783ce3a6c7e4674ccc00851e",
+     "0x9cd25e48e3d2fa74ac32cb46178acb43aa50c7f8ff85f7fbd6d5503e47b8b325",
+     "0x3aaf858e69e639a1951a9c99d9b2e53b5196fb572d1d5eae649fe778583392d5",
+     "0xe7b3d8c1b609c955dcc47b93c7aab105372ba7d35ef8444536ee8b26a516d467",
+     "0x11de07694c3ae43351428172330d337a481c2c599bf7bd834ebe763fa24b2639",
+     "0x4c6c379823049facfbc37ee66211063f715dc0fd0fa8b5db2ac2cafa7460953b",
+     "0xc84d305ecc4db18816c4c73d1428047c60068032f622ffb48d8e538b00d6f9f6"
+    ],
+    "dens": [
+     "NVDA",
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN",
+     "TENDIES",
+     "PONS"
+    ],
+    "burn": 353569.6948830463,
+    "bought": 1296786.1659226848,
+    "keepers": [
+     "0x0644be3f923e70536c6c1bd014d3b9db7d72ccf9",
+     "0x2160a8cece9d06e6f55e2b6a65e5bc714a25f5a9",
+     "0x577dce567f51a2be3c47385881e7c67e32d6f431",
+     "0x7e6544efe16d2952da14aea1edb79b31bb23a6d3",
+     "0x98d848d13e880ff4af6af31543adf4ba4455d1cb",
+     "0xdcabcf02208de3851b74844d61e67ae03a3ffc38"
+    ]
+   },
+   "measured": true,
+   "round": 12
   }
  ]
 }
