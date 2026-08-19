@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-19T21:15:02.186224+00:00",
+ "generated_at": "2026-08-19T21:45:02.153884+00:00",
  "as_of_block": 40498022,
  "state": {
   "supply": 943116376.8989271,
@@ -10,9 +10,9 @@
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 14799.054460594562,
-  "market_cap": 607942.6504375001,
-  "price": 0.0006446104270148335
+  "banked_usd": 14797.249500373557,
+  "market_cap": 634626.0986480784,
+  "price": 0.0006729032749222323
  },
  "entries": [
   {
@@ -103,6 +103,26 @@
    },
    "measured": true,
    "round": 1
+  },
+  {
+   "_id": "dust-w0",
+   "kind": "dust",
+   "ts": 1786580109,
+   "block": 34951912,
+   "day": 0,
+   "title": "dust \u00b7 week 0",
+   "lines": [
+    "Strangers burned 0.47 PACK of their own this week,",
+    "in 2 small gestures. The wolf appreciates the gestures."
+   ],
+   "evidence": {
+    "txs": [
+     "0x8d9d3968f3c12e36dde122bbfd8258458669c8db3d7ccf7ed27512aca3ef9dcc",
+     "0xc0fdd0f563fc04ea4c2976988487453783a640f482c234d23e61f5ed50135f79"
+    ]
+   },
+   "measured": true,
+   "round": null
   },
   {
    "_id": "muzzle-2",
@@ -1012,6 +1032,27 @@
     "are measured in is bending."
    ],
    "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "strangers-w0",
+   "kind": "stranger",
+   "ts": 1787174507,
+   "block": 40877959,
+   "day": 6,
+   "title": "strangers \u00b7 week 0",
+   "lines": [
+    "Strangers dug 82 dens beside the wolf's this week \u2014",
+    "18 named after nothing the registry knows.",
+    "7 carry hooks. The wolf dug none of them",
+    "and drinks from none of them."
+   ],
+   "evidence": {
+    "count": 82,
+    "unknown_symbol": 18,
+    "hooked": 7
+   },
    "measured": true,
    "round": null
   }
