@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-08-19T10:45:01.382686+00:00",
- "as_of_block": 40068297,
+ "generated_at": "2026-08-19T11:00:01.536151+00:00",
+ "as_of_block": 40498022,
  "state": {
-  "supply": 943334322.723811,
-  "burned": 56665676.8024167,
-  "bought": 12069802.23060686,
-  "residue": 76061.42980055787,
+  "supply": 943116376.8989271,
+  "burned": 56883622.627300724,
+  "bought": 13284172.682920815,
+  "residue": 83299.19215498358,
   "sealed": true,
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 16201.881808515627,
-  "market_cap": 565516.0103346552,
-  "price": 0.0005994863079949935
+  "banked_usd": 14835.971392593887,
+  "market_cap": 578621.1400662222,
+  "price": 0.000613520403461547
  },
  "entries": [
   {
@@ -755,6 +755,55 @@
    },
    "measured": true,
    "round": 13
+  },
+  {
+   "_id": "feeding-014",
+   "kind": "feeding",
+   "ts": 1787136297,
+   "block": 40497043,
+   "day": 6,
+   "title": "FEEDING \u211614 \u00b7 10/10 dens",
+   "lines": [
+    "217,946 PACK burned \u00b7 1,214,370 bought back and buried deeper"
+   ],
+   "evidence": {
+    "txs": [
+     "0x7c096118fbba166c7a76414499fa789de3882e884638cdab06d06794c95754c0",
+     "0x58333744b0c59a9f935f06308eca4287b1bc24856b0d59bc5003e6203cc12a3c",
+     "0xb7ac1259e3ef40cab9229d2bd09262b028eb5d46eddd484b8a4a044d4aab1923",
+     "0xb84131d019090061ce9396a177ce3d1af0510326ef421df52cf69a631bcf6176",
+     "0xe125edc60447213f76fcd416bfbc5d61537bfea2ea30451fdb0cd3bdfb1f7624",
+     "0x7249d00e15f9af7026a8493a1ef028bf5fde72484040c5a2a29a65d4e56068dc",
+     "0x8086027c0e52357224d48b8829c3a836acd7e0d1ffad3928d316dfaa69d0ca8f",
+     "0x12520f91bf733017319736ab11d1ed97b4a4abca0ec17db9e9b2bc64e107512f",
+     "0x912de476acfa480d644d500d7f39a1d19ae4b09812ac41f6f9c90672d31b8f23",
+     "0x5c9e1c21556ccd377fa0f62d5ad352f94ea6e668c8df287989501db78ec8bdac"
+    ],
+    "dens": [
+     "NVDA",
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN",
+     "TENDIES",
+     "PONS"
+    ],
+    "burn": 217945.8248840281,
+    "bought": 1214370.4523139552,
+    "keepers": [
+     "0x2160a8cece9d06e6f55e2b6a65e5bc714a25f5a9",
+     "0x2da2d78bf606d205e4be0895f58648470e31c024",
+     "0x98d848d13e880ff4af6af31543adf4ba4455d1cb",
+     "0xa7b02b5cde7e5b0c7ba1de83e87316bddb80a8e3",
+     "0xca6ea8dc8d5524c38ba261dcd96b1bca7624a6d2",
+     "0xdcabcf02208de3851b74844d61e67ae03a3ffc38"
+    ]
+   },
+   "measured": true,
+   "round": 14
   }
  ]
 }
