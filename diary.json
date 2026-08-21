@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-21T21:30:02.078606+00:00",
+ "generated_at": "2026-08-21T21:45:01.397352+00:00",
  "as_of_block": 42220740,
  "state": {
   "supply": 941506224.6280531,
@@ -10,9 +10,9 @@
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 10237.604389909658,
-  "market_cap": 712750.5272448717,
-  "price": 0.0007570321986202985
+  "banked_usd": 10234.406736689283,
+  "market_cap": 708170.938287525,
+  "price": 0.0007521680895602061
  },
  "entries": [
   {
@@ -1304,6 +1304,22 @@
    },
    "measured": true,
    "round": 18
+  },
+  {
+   "_id": "vesting-t21",
+   "kind": "vesting",
+   "ts": 1787348701,
+   "block": 42220740,
+   "day": 9,
+   "title": "the bowl",
+   "lines": [
+    "21 days until the creator's bowl unlocks.",
+    "50,000,000 PACK, then a 180-day drip. Nothing claimed. Nothing claimable.",
+    "The wolf is watching the bowl."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
   }
  ]
 }
