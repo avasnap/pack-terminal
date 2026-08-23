@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-08-23T10:15:02.260470+00:00",
- "as_of_block": 43513032,
+ "generated_at": "2026-08-23T11:00:02.046940+00:00",
+ "as_of_block": 43943539,
  "state": {
-  "supply": 940472872.5320487,
-  "burned": 59527126.99417907,
-  "bought": 19653432.095679417,
-  "residue": 121415.74314942778,
+  "supply": 940078935.8560495,
+  "burned": 59921063.67017825,
+  "bought": 20137453.954764493,
+  "residue": 123604.84078366797,
   "sealed": true,
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 7820.242644411127,
-  "market_cap": 557566.2829983603,
-  "price": 0.0005928573798170452
+  "banked_usd": 7390.799370068061,
+  "market_cap": 573499.584771125,
+  "price": 0.0006100547123193309
  },
  "entries": [
   {
@@ -1520,6 +1520,56 @@
    },
    "measured": true,
    "round": 21
+  },
+  {
+   "_id": "feeding-022",
+   "kind": "feeding",
+   "ts": 1787481897,
+   "block": 43942554,
+   "day": 10,
+   "title": "FEEDING \u211622 \u00b7 10/10 dens",
+   "lines": [
+    "393,937 PACK burned \u00b7 484,022 bought back and buried deeper",
+    "The meals stopped shrinking."
+   ],
+   "evidence": {
+    "txs": [
+     "0xadf780e05421b7e7c5f1bec03908892f4109d16e4f135f51d8acc5fbf85e7d36",
+     "0x7c5007fc976791c76e88b54bd635fe293d8d89842c52f50954d46d78de24f3ac",
+     "0x1143890a304c41a6cde6001d458bf9e244d8a489edbbae22c0943c0988994bec",
+     "0x28f81af617c66616e4452a7beeea6af6e309fa76461d2afd5f144a136fc38fe0",
+     "0x70decfa2354e1c13680a45507f88f17e55b9759b7ab7d021c082d78e53340b9f",
+     "0x2de032e2b7e7a80f912065be8751918f0372bb6ac699abcbccdcafaa873a0564",
+     "0x6f53829305c13aeea81a009285124211db5479e1d0ae994d575122cdd8b11ba4",
+     "0xcda6297c0fd9e5c56066a77893fb18754b1253b5cbe601a871e5a0b763270590",
+     "0x407b7a926d64a34dc466ffbb1d00e038ce516d1b559e7e70e1ef87be2b46afcd",
+     "0x2d38f5d056f8b102066877fb8463ffedf6a262d43a27985e7b99a8d568a8eb59"
+    ],
+    "dens": [
+     "NVDA",
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN",
+     "TENDIES",
+     "PONS"
+    ],
+    "burn": 393936.67599918076,
+    "bought": 484021.85908507387,
+    "keepers": [
+     "0x2160a8cece9d06e6f55e2b6a65e5bc714a25f5a9",
+     "0x98d848d13e880ff4af6af31543adf4ba4455d1cb",
+     "0xa7b02b5cde7e5b0c7ba1de83e87316bddb80a8e3",
+     "0xbbce4c420093b9d7d6d9fdfedb63fabe37b57fe4",
+     "0xddd90834b757761a5d4696abc6de235c25140ccb",
+     "0xeb2d40ed7515b5e63357ebd8f15be28805e9e5c8"
+    ]
+   },
+   "measured": true,
+   "round": 22
   }
  ]
 }
