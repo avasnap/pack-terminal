@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-24T12:00:23.644118+00:00",
+ "generated_at": "2026-08-24T13:00:22.782590+00:00",
  "dens": [
   {
    "token_id": 639120,
@@ -84,7 +84,7 @@
    "quote": "0x4a0e65a3eccec6dbe60ae065f2e7bb85fae35eea",
    "pool_id": "0xf4a4509bf8bd51e052d896ad9d53e66c9627f498f4b793de6ca6426b11ba848b",
    "pending_spend": 0.002405800664415233,
-   "pending_spend_usd": 0.32326743527747487,
+   "pending_spend_usd": 0.3232193192641865,
    "lifetime_burned": 5004267.912706027,
    "lifetime_bought": 2099686.536975579,
    "harvests": 24,
