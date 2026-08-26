@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-26T21:00:01.477343+00:00",
+ "generated_at": "2026-08-26T21:45:02.113917+00:00",
  "as_of_block": 46526521,
  "state": {
   "supply": 938170406.109256,
@@ -11,8 +11,8 @@
   "claimed": 0.0,
   "claimable": 0.0,
   "banked_usd": 5415.131066573951,
-  "market_cap": 2268234.3661575234,
-  "price": 0.0024177210785876918
+  "market_cap": 2312413.7234666785,
+  "price": 0.0024648120516363664
  },
  "entries": [
   {
@@ -1840,6 +1840,27 @@
    },
    "measured": true,
    "round": 27
+  },
+  {
+   "_id": "strangers-w1",
+   "kind": "stranger",
+   "ts": 1787738752,
+   "block": 46502277,
+   "day": 13,
+   "title": "strangers \u00b7 week 1",
+   "lines": [
+    "Strangers dug 14 dens beside the wolf's this week \u2014",
+    "5 named after nothing the registry knows.",
+    "4 carry hooks. The wolf dug none of them",
+    "and drinks from none of them."
+   ],
+   "evidence": {
+    "count": 14,
+    "unknown_symbol": 5,
+    "hooked": 4
+   },
+   "measured": true,
+   "round": null
   },
   {
    "_id": "feeding-028",
