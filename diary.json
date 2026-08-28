@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-28T21:00:02.468680+00:00",
+ "generated_at": "2026-08-28T21:45:01.698258+00:00",
  "as_of_block": 48237825,
  "state": {
   "supply": 934913326.5725371,
@@ -11,8 +11,8 @@
   "claimed": 0.0,
   "claimable": 0.0,
   "banked_usd": 1.9038269157698897,
-  "market_cap": 1402419.7159266053,
-  "price": 0.00150005318789067
+  "market_cap": 1365820.711552176,
+  "price": 0.0014609062388268419
  },
  "entries": [
   {
@@ -2131,6 +2131,22 @@
    "lines": [
     "The ledger and the router disagree: 64,956,863",
     "counted vs 65,086,673 claimed. The lock is checking its sums."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "vesting-t14",
+   "kind": "vesting",
+   "ts": 1787953501,
+   "block": 48237825,
+   "day": 16,
+   "title": "the bowl",
+   "lines": [
+    "14 days until the creator's bowl unlocks.",
+    "50,000,000 PACK, then a 180-day drip. Nothing claimed. Nothing claimable.",
+    "The wolf is watching the bowl."
    ],
    "evidence": {},
    "measured": true,
