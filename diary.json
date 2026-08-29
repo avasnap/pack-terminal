@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-08-28T23:45:02.004837+00:00",
- "as_of_block": 48237825,
+ "generated_at": "2026-08-29T00:15:01.798386+00:00",
+ "as_of_block": 48666072,
  "state": {
   "supply": 934913326.5725371,
   "burned": 65086672.95369073,
@@ -11,8 +11,8 @@
   "claimed": 0.0,
   "claimable": 0.0,
   "banked_usd": 1.9038269157698897,
-  "market_cap": 1352470.2551223726,
-  "price": 0.0014466263520711924
+  "market_cap": 1378571.7651846362,
+  "price": 0.0014745449936397683
  },
  "entries": [
   {
@@ -2151,6 +2151,58 @@
    "evidence": {},
    "measured": true,
    "round": null
+  },
+  {
+   "_id": "feeding-033",
+   "kind": "feeding",
+   "ts": 1787957097,
+   "block": 48665083,
+   "day": 16,
+   "title": "FEEDING \u211633 \u00b7 10/10 dens",
+   "lines": [
+    "272,618 PACK burned \u00b7 136,607 bought back and buried deeper",
+    "For every 100 burned, 50 bought back from the fee",
+    "bank \u2014 queued quote fees, worked out a slice per feeding."
+   ],
+   "evidence": {
+    "txs": [
+     "0x56b49f1473eb24e7093dfe5db13b1896844c9ba54d69de0d2ab56e3d34237b4d",
+     "0xbd47315b7e1928991166845aac0d1eca09be84f9a9d37c6175f0a9ca6db6ccc6",
+     "0xba6722f70264fc85b449d9507f69fde0efdeabec6add03dc6776717639ab1835",
+     "0x8e88e0a7f7e2ca03eff1bea398ce2a421f44d0a14a30dc19d161e496b62c1eec",
+     "0x0722cb9ad4d32f3dc9a6f9e7c9398a6fc46faa920c01fa117b7bc8e71e4ecb6a",
+     "0x5f09731f8fc8779ae99c6521f2db720d70b88053848e683a31494eeb053c9b32",
+     "0x9378760b6bafc2af573f6d6a6540243a80c8ed09f82956ad5e6e3900be702f80",
+     "0xf5602ccf2504c7afd0fe955c2ea9627bc00e03228c51b637a396aa9d5e21dfbc",
+     "0xc12cbdb744e6e82d037d9a2174ad1cbf029d9da1b38e39f5bb243dd5b5b22796",
+     "0xb4e8b433df111b4f2d7cc4d3592e7d134ddf77bc9a3a0e6f12ca3f597314f153"
+    ],
+    "dens": [
+     "NVDA",
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN",
+     "TENDIES",
+     "PONS"
+    ],
+    "burn": 272618.0128516933,
+    "bought": 136607.32798721505,
+    "keepers": [
+     "0x2160a8cece9d06e6f55e2b6a65e5bc714a25f5a9",
+     "0x4d066f6c0078ae92b4583a33139589abc4a0be4f",
+     "0x577dce567f51a2be3c47385881e7c67e32d6f431",
+     "0x98d848d13e880ff4af6af31543adf4ba4455d1cb",
+     "0x9ec85ba235eb6439e7fb0e41d01b5792457f4425",
+     "0xddd90834b757761a5d4696abc6de235c25140ccb",
+     "0xf451c726dc4e0c627736362389770d28e61b0e71"
+    ]
+   },
+   "measured": true,
+   "round": 33
   }
  ]
 }
