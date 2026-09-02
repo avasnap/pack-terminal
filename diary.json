@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-02T14:30:02.276800+00:00",
+ "generated_at": "2026-09-02T14:45:02.774923+00:00",
  "as_of_block": 52514882,
  "state": {
   "supply": 931233365.6864768,
@@ -11,8 +11,8 @@
   "claimed": 0.0,
   "claimable": 0.0,
   "banked_usd": 2.639677965757257,
-  "market_cap": 485803.53272325295,
-  "price": 0.0005216775414454071
+  "market_cap": 485413.32973354886,
+  "price": 0.0005212585240389416
  },
  "entries": [
   {
@@ -2881,6 +2881,111 @@
    "title": "usdg depeg",
    "lines": [
     "USDG traded at $0.9897. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6a98339a4e22c470260477b9",
+   "kind": "security",
+   "ts": 1788357951,
+   "block": 52514882,
+   "day": 20,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $1.0100. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6a9833f44e22c47026047985",
+   "kind": "security",
+   "ts": 1788358090,
+   "block": 52514882,
+   "day": 20,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $1.0100. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6a98344e4e22c47026047b51",
+   "kind": "security",
+   "ts": 1788358226,
+   "block": 52514882,
+   "day": 20,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $1.0110. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6a9834a84e22c47026047d1d",
+   "kind": "security",
+   "ts": 1788358366,
+   "block": 52514882,
+   "day": 20,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $1.0470. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6a9835984e22c470260481e6",
+   "kind": "security",
+   "ts": 1788358737,
+   "block": 52514882,
+   "day": 20,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $0.9842. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6a9835f24e22c470260483b2",
+   "kind": "security",
+   "ts": 1788358882,
+   "block": 52514882,
+   "day": 20,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $1.0210. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6a98362e4e22c470260484e5",
+   "kind": "security",
+   "ts": 1788358973,
+   "block": 52514882,
+   "day": 20,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $1.0470. The dollar the dens",
     "are measured in is bending."
    ],
    "evidence": {},
