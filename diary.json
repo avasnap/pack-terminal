@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-09-02T22:45:02.151535+00:00",
- "as_of_block": 52514882,
+ "generated_at": "2026-09-02T23:00:02.553063+00:00",
+ "as_of_block": 52936558,
  "state": {
-  "supply": 930079659.9238042,
-  "burned": 69920339.60242368,
-  "bought": 25615143.118335653,
-  "residue": 110280.05623765328,
+  "supply": 929449302.7460644,
+  "burned": 70550696.78016333,
+  "bought": 25925622.291127607,
+  "residue": 108939.71472465177,
   "sealed": true,
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 2.4792855488256014,
-  "market_cap": 470780.905573413,
-  "price": 0.0005061726708570116
+  "banked_usd": 2.1666728739582846,
+  "market_cap": 472603.2320364657,
+  "price": 0.0005084766115162561
  },
  "entries": [
   {
@@ -4957,6 +4957,70 @@
    "title": "usdg depeg",
    "lines": [
     "USDG traded at $1.0130. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "feeding-043",
+   "kind": "feeding",
+   "ts": 1788389098,
+   "block": 52935181,
+   "day": 21,
+   "title": "FEEDING \u211643 \u00b7 10/10 dens",
+   "lines": [
+    "630,357 PACK burned \u00b7 310,479 bought back and buried deeper",
+    "\u2500\u2500 milestone: 7% of genesis is now smoke \u2500\u2500"
+   ],
+   "evidence": {
+    "txs": [
+     "0x532037fecacc0c8945d44b168f962c0baccfbff38b71fe0ae5884b52fb466661",
+     "0x3eaa289552a005591522bc976ad89c2bebd9f69ba076e424a15bd0ea024ba52b",
+     "0xdca566907e29fac341e6077398821effbe42e25100ce8b1f25154fb35525df04",
+     "0xef5b8f226d28aa34a590151c260a4c0955f840c3f1f3705a113c01e254dbb8ac",
+     "0xaf75b445c214edc4676faf9a721e89247b257c0ee93cfa9b76754e8f1133ef8f",
+     "0x6c6ebc651179f3cd52948d111ac72eb157107295ef111a8bca1a14121fdfacd8",
+     "0x7febb77d7bc8abab3bdeb18e10e06fd92a9b8ace04495a9122f3dffee5e9f598",
+     "0xd162c17b2aca7120c8cdcdcd53b2956f81ac6b39e4f68dc47ce1fdf2053d78b1",
+     "0x19b53b822cf93ea5ed4901bf641272747be103bb612570ea4b04dca8e669a6ab",
+     "0xfcd25d2c274f6a03b1e43740d3aa278c42149725a995e5bf291e44b022749c26"
+    ],
+    "dens": [
+     "NVDA",
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN",
+     "TENDIES",
+     "PONS"
+    ],
+    "burn": 630357.1777396387,
+    "bought": 310479.1727919535,
+    "keepers": [
+     "0x2151d603243dcd9adc727e4b9be6ed51eaef563c",
+     "0x28387402ba962c188af7eb10da8c62335765fac3",
+     "0x4d066f6c0078ae92b4583a33139589abc4a0be4f",
+     "0xddd90834b757761a5d4696abc6de235c25140ccb",
+     "0xfb0c7b979a3736a94b9fb0a57969a94604dbc17d"
+    ]
+   },
+   "measured": true,
+   "round": 43
+  },
+  {
+   "_id": "sec-6a98a8e34e22c4702606987e",
+   "kind": "security",
+   "ts": 1788389591,
+   "block": 52936558,
+   "day": 21,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $1.0140. The dollar the dens",
     "are measured in is bending."
    ],
    "evidence": {},
