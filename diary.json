@@ -1,8 +1,8 @@
 {
- "generated_at": "2026-09-04T20:00:04.369741+00:00",
- "as_of_block": 54529317,
+ "generated_at": "2026-09-04T20:45:04.791554+00:00",
+ "as_of_block": 54540513,
  "state": {
-  "supply": 928234276.5386486,
+  "supply": 899999999.5386486,
   "burned": 71765722.9875792,
   "bought": 26588247.143831022,
   "residue": 106373.75075436356,
@@ -10,9 +10,9 @@
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 2.5948901875208734,
-  "market_cap": 470449.77362317266,
-  "price": 0.0005068222382149715
+  "banked_usd": 2.5755087298489476,
+  "market_cap": 458132.9334961631,
+  "price": 0.0005090365930344532
  },
  "entries": [
   {
@@ -5231,6 +5231,33 @@
    "evidence": {},
    "measured": true,
    "round": null
+  },
+  {
+   "_id": "feeding-047",
+   "kind": "feeding",
+   "ts": 1788551632,
+   "block": 54529317,
+   "day": 22,
+   "title": "FEEDING \u211647 \u00b7 0/10 dens",
+   "lines": [
+    "28,234,277 PACK burned \u00b7 0 bought back and buried deeper",
+    "\u2500\u2500 milestone: 8%. Then 9% of genesis, smoke. All in one meal. \u2500\u2500"
+   ],
+   "evidence": {
+    "txs": [
+     "0x7a8e357ce0df01c820bae05419481eacfcb915dc63daf7ece17e126caf2e52f5",
+     "0x0f8cf7b0004194e99e964ee4dbac46ae2d0f1d34146e2991187e6c368d5d9db8"
+    ],
+    "dens": [],
+    "burn": 28234277.0,
+    "bought": 0.0,
+    "keepers": [
+     "0x83d133b675a0793225498b67faf263e5ef35f877",
+     "0xf1a24eba326c03e74782cf0ed47c6b7e8ad27f2c"
+    ]
+   },
+   "measured": true,
+   "round": 47
   }
  ]
 }
