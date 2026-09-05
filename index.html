@@ -92,11 +92,13 @@
 </div>
 <div id="spark"></div>
 
-<div class="section">── pools ──────────────── ◆ locked dens, always shown ──</div>
+<div class="section">── pools ──────────────── ◆ locked dens · ○ added pools, wallet-held at Sep 5 check · both always shown ──</div>
 <div class="wrap"><table id="pools">
   <thead><tr><th>#</th><th class="l">quote</th><th class="l">dex</th><th>fee</th><th>price usd</th><th>liq usd</th><th>vol 24h</th><th>Δ 24h</th><th>dev</th><th class="l">trade</th></tr></thead>
   <tbody></tbody>
 </table></div>
+
+<div class="dim">○ Initial positions held by their creating wallet at block 55350419 (Sep 5, 2026). Ownership may change; these pools are outside the locked-den fee routing.</div>
 
 <div class="section">── log ──────────────────────────────────────── type `help` ──</div>
 <div id="log"></div>
@@ -145,6 +147,59 @@ const DEN_FULL = [   // full v4 poolIds (dexscreener pair ids on this chain)
   "0xbb061ffe27facf06aaff43a94cb04fb612c990afe2dc402e5c25753ce0b8aa35",
   "0x548ae8c6751c5c7b5d3cf53f41a54e602263e7c688bd1070dede7fdb71878cbd",
 ];
+// Receipt-verified September 5 additions. Ownership is a dated observation, not a live lock check.
+const WATCHED_POOLS = [
+  {
+    "id": "0xf287d4f8e192e5a983d0182801a8ebcffcc3dbfa73e66895275ab30eaa3ff222",
+    "sym": "AMC",
+    "quote": "0x05a3d1cd21d0c88145e82600e62e7e496e0f222b",
+    "fee": 15000,
+    "position": 1901225,
+    "owner": "0x346dc337b3308dadd03eac357179b0ccc9c57df8"
+  },
+  {
+    "id": "0x40af09ce36eef7f911ba5223edc6cff3d0a3adbdbd12dbd86fcc879fe440c4f5",
+    "sym": "GLD",
+    "quote": "0xc9a981fee1f9dec688bb123ccdecc63d0debfc4e",
+    "fee": 15000,
+    "position": 1901206,
+    "owner": "0x346dc337b3308dadd03eac357179b0ccc9c57df8"
+  },
+  {
+    "id": "0x28d16ad9513fb4c8d875d15ede356e35eac7d272f855815e763d335efdc627f6",
+    "sym": "HIMS",
+    "quote": "0xccee82fe024c36fa15e1005ede3e9e4787e23d09",
+    "fee": 15000,
+    "position": 1901223,
+    "owner": "0x346dc337b3308dadd03eac357179b0ccc9c57df8"
+  },
+  {
+    "id": "0x19158cf952bc48329af2489ad571daf5b211014b4793f2389964029618776bc8",
+    "sym": "SLV",
+    "quote": "0x411efb0e7f985935daec3d4c3ebaea0d0ad7d89f",
+    "fee": 15000,
+    "position": 1901228,
+    "owner": "0x346dc337b3308dadd03eac357179b0ccc9c57df8"
+  },
+  {
+    "id": "0xc7b28b68bfc4f77b154bba0bd2500f388da575c87298aa5f1fcf403d18ab7fc0",
+    "sym": "TSLA",
+    "quote": "0x322f0929c4625ed5bad873c95208d54e1c003b2d",
+    "fee": 15000,
+    "position": 1901230,
+    "owner": "0x346dc337b3308dadd03eac357179b0ccc9c57df8"
+  },
+  {
+    "id": "0x8fb2ca56e41977e10278ba740c4ecd73d0e5bceb56a881d95e99fc4979911755",
+    "sym": "USO",
+    "quote": "0xa30fa36db767ad9ed3f7a60fc79526fb4d56d344",
+    "fee": 15000,
+    "position": 1901209,
+    "owner": "0x346dc337b3308dadd03eac357179b0ccc9c57df8"
+  }
+];
+const WATCHED = new Map(WATCHED_POOLS.map(p => [p.id.slice(0, 42), p]));
+const watchedPool = id => WATCHED.get((id || "").toLowerCase().slice(0, 42));
 const store = (() => {   // localStorage is unavailable in some contexts (data: origin, strict private mode)
   try { localStorage.setItem("__t", "1"); localStorage.removeItem("__t"); return localStorage; }
   catch { const m = new Map();
@@ -237,8 +292,7 @@ function applyTheme() {
   } else { ["--fg", "--dim", "--faint", "--cyan"].forEach(p => r.removeProperty(p)); }
 }
 function feeFor(r) {
-  if (!poolFees) return "—";
-  const f = poolFees[(r.id || "").toLowerCase().slice(0, 42)];
+  const f = watchedPool(r.id)?.fee ?? poolFees?.[(r.id || "").toLowerCase().slice(0, 42)];
   if (f == null) return "—";
   if (f === 8388608) return "dyn";
   return (f / 10000).toFixed(2).replace(/\.?0+$/, "") + "%";
@@ -276,7 +330,7 @@ async function tick() {
 
   // dens missing from the token listing are fetched explicitly by pair id
   const listed = new Set((data.pairs || []).map(p => (p.pairAddress || "").toLowerCase().slice(0, 42)));
-  const missing = DEN_FULL.filter(f => !listed.has(f.slice(0, 42)));
+  const missing = [...DEN_FULL, ...WATCHED_POOLS.map(p => p.id)].filter(f => !listed.has(f.slice(0, 42)));
   if (missing.length) {
     try {
       const r2 = await fetch("https://api.dexscreener.com/latest/dex/pairs/robinhood/" +
@@ -307,9 +361,9 @@ async function tick() {
     return p;
   });
   const pairs = data.pairs.filter(p => p.priceUsd &&
-    ((p.liquidity?.usd ?? 0) >= cfg.dust || DENS.has((p.pairAddress || "").toLowerCase().slice(0, 42))));
+    ((p.liquidity?.usd ?? 0) >= cfg.dust || DENS.has((p.pairAddress || "").toLowerCase().slice(0, 42)) || watchedPool(p.pairAddress)));
   lastRows = pairs.map(p => ({
-    sym: p.quoteToken.symbol, dex: p.dexId, qaddr: (p.quoteToken.address || "").toLowerCase(),
+    sym: watchedPool(p.pairAddress)?.sym ?? p.quoteToken.symbol, watched: !!watchedPool(p.pairAddress), dex: p.dexId, qaddr: (p.quoteToken.address || "").toLowerCase(),
     price: +p.priceUsd, liq: p.liquidity?.usd ?? 0, vol: p.volume?.h24 ?? 0,
     chg: p.priceChange?.h24, trusted: TRUSTED.has((p.quoteToken.address || "").toLowerCase()),
     den: DENS.has((p.pairAddress || "").toLowerCase().slice(0, 42)),
@@ -374,17 +428,17 @@ async function tick() {
 
   const tbody = $("pools").tBodies[0];
   tbody.innerHTML = "";
-  // the ten locked dens are always shown; others fill remaining slots by liquidity
-  const denRows = lastRows.filter(r => r.den);
-  const otherRows = lastRows.filter(r => !r.den).slice(0, Math.max(0, 18 - denRows.length));
+  // Keep locked dens and the six added pools visible, even below the dust threshold.
+  const denRows = lastRows.filter(r => r.den || r.watched);
+  const otherRows = lastRows.filter(r => !r.den && !r.watched).slice(0, Math.max(0, 18 - denRows.length));
   const shown = [...denRows, ...otherRows].sort((a, b) => b.liq - a.liq);
   shown.forEach((r, i) => {
     const trEl = document.createElement("tr");
-    if (!r.trusted) trEl.className = "untrusted";
+    if (!r.trusted && !r.watched) trEl.className = "untrusted";
     const dev = r.trusted ? ((r.price / med - 1) * 1e4).toFixed(0) + "bp" : "—";
     let chg = r.chg == null ? "—" : (r.chg > 0 ? "+" : "") + (Math.abs(r.chg) > 999 ? ">999" : r.chg) + "%";
     trEl.innerHTML =
-      `<td class="faint">${i + 1}</td><td class="l">${r.den ? "◆ " : r.trusted ? "" : "☠ "}${r.sym}</td>` +
+      `<td class="faint">${i + 1}</td><td class="l">${r.den ? "◆ " : r.watched ? "○ " : r.trusted ? "" : "☠ "}${r.sym}</td>` +
       `<td class="l dim">${r.dex}</td><td class="dim">${feeFor(r)}</td>` +
       `<td>$${r.price.toFixed(6)}</td><td>${fmtUsd(r.liq)}</td>` +
       `<td>${fmtUsd(r.vol)}</td><td class="${(r.chg ?? 0) < 0 ? "red" : "dim"}">${chg}</td>` +
@@ -402,6 +456,16 @@ async function tick() {
         `<td class="l"><a href="https://dexscreener.com/robinhood/${pid}" target="_blank" rel="noopener">[chart]</a></td>`;
       tbody.appendChild(trEl);
     }
+  }
+
+  for (const p of WATCHED_POOLS) {
+    if (shown.some(r => watchedPool(r.id)?.id === p.id)) continue;
+    const row = document.createElement("tr");
+    row.innerHTML = `<td></td><td class="l">○ ${p.sym}</td><td class="l dim">uniswap</td>` +
+      `<td class="dim">1.5%</td><td colspan="5" class="dim">market data unavailable this tick</td>` +
+      `<td class="l"><a href="${swapUrl({dex: "uniswap", qaddr: p.quote})}" target="_blank" rel="noopener">[swap]</a> ` +
+      `<a href="https://dexscreener.com/robinhood/${p.id}" target="_blank" rel="noopener">[chart]</a></td>`;
+    tbody.appendChild(row);
   }
 
   if (divBps > cfg.divbps && !lastDivAlert) {
@@ -542,8 +606,8 @@ function exec(line) {
       break;
     case "pools":
       [...lastRows].reverse().forEach((r, ri) =>
-        log(`#${lastRows.length - ri} ${r.trusted ? "" : "☠ "}${r.sym}@${r.dex} $${r.price.toFixed(6)} ` +
-            `liq ${fmtUsd(r.liq)} vol ${fmtUsd(r.vol)}`, r.trusted ? undefined : "faint"));
+        log(`#${lastRows.length - ri} ${r.watched ? "○ " : r.trusted ? "" : "☠ "}${r.sym}@${r.dex} $${r.price.toFixed(6)} ` +
+            `liq ${fmtUsd(r.liq)} vol ${fmtUsd(r.vol)}`, r.trusted || r.watched ? undefined : "faint"));
       break;
     case "swap": case "chart": {
       const r = findRow(arg);
