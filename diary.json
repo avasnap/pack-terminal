@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-09-07T22:15:12.194421+00:00",
- "as_of_block": 56773974,
+ "generated_at": "2026-09-07T23:00:11.850771+00:00",
+ "as_of_block": 57202140,
  "state": {
-  "supply": 891001786.9592168,
-  "burned": 80513935.56701097,
-  "bought": 32051865.14643711,
-  "residue": 125242.48978157442,
+  "supply": 890753563.8576931,
+  "burned": 80762158.66853482,
+  "bought": 32184338.34155342,
+  "residue": 124035.94091394826,
   "sealed": true,
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 4.415955788385225,
-  "market_cap": 656581.8830696705,
-  "price": 0.0007369029924288174
+  "banked_usd": 1.0371220696496029,
+  "market_cap": 663668.482113592,
+  "price": 0.0007450640772509103
  },
  "entries": [
   {
@@ -5597,6 +5597,54 @@
    },
    "measured": true,
    "round": 54
+  },
+  {
+   "_id": "feeding-055",
+   "kind": "feeding",
+   "ts": 1788821098,
+   "block": 57200753,
+   "day": 26,
+   "title": "FEEDING \u211655 \u00b7 10/10 dens",
+   "lines": [
+    "248,223 PACK burned \u00b7 132,473 bought back and buried deeper",
+    "Meal 5 of the shrinking. Decay is the schedule."
+   ],
+   "evidence": {
+    "txs": [
+     "0x5b3c12d8b10641aec0faa66cefe1e9bb9ea94849fbd3fc1ce9c4358125f3a795",
+     "0xa6c159cc786e663f94d4845eb675e4a81fc96b5bbbabe14726611612a2309c9f",
+     "0x72620d919ce619953821ac4efc517a3ed43fd556ea6bceff7102c8ea3fa5de45",
+     "0xe6d2848cc5ffe55dbd37a3eb7915c325b7ac8d79f0d624a049d0886206b52349",
+     "0xaaf9c39bdf7de1aaeb67a5731d126ccf181680c1c5a7ef79a20f473ec32a9b05",
+     "0x189c020018ae3c1d918b080108bf9efa6964946ec4bc346c22e73294e7092269",
+     "0x97e48469ac010170334a824f70130078c80b8c4c8bdd239d47cb09a05b361e88",
+     "0x8856ea93372232c2be716db55554f9ed558d0b38c72d43445858a73743c97ef6",
+     "0xa96c8b2c2512509b8ed3739c33e34f8968a7914c659649de9dea7220e6c0e96a",
+     "0x2b74e9d5cc96978e597aea4c8bcd093258525fcf2342ffd1b400e31607b3534a"
+    ],
+    "dens": [
+     "NVDA",
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN",
+     "TENDIES",
+     "PONS"
+    ],
+    "burn": 248223.10152384473,
+    "bought": 132473.19511631265,
+    "keepers": [
+     "0x2151d603243dcd9adc727e4b9be6ed51eaef563c",
+     "0x577dce567f51a2be3c47385881e7c67e32d6f431",
+     "0x98d848d13e880ff4af6af31543adf4ba4455d1cb",
+     "0xddd90834b757761a5d4696abc6de235c25140ccb"
+    ]
+   },
+   "measured": true,
+   "round": 55
   }
  ]
 }
