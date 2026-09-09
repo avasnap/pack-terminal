@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-09-09T17:00:16.225224+00:00",
- "as_of_block": 58485617,
+ "generated_at": "2026-09-09T17:45:16.938582+00:00",
+ "as_of_block": 58708676,
  "state": {
-  "supply": 890122756.8165915,
-  "burned": 81392965.70963629,
-  "bought": 32470175.31541394,
-  "residue": 121385.4976252002,
+  "supply": 889800456.2265905,
+  "burned": 81715266.29963727,
+  "bought": 32594250.72505581,
+  "residue": 120426.19038294954,
   "sealed": true,
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 0.8619264764916176,
-  "market_cap": 554821.0534379293,
-  "price": 0.0006233084697465491
+  "banked_usd": 1.3159360003340765,
+  "market_cap": 551098.5391475193,
+  "price": 0.0006193507041843775
  },
  "entries": [
   {
@@ -5766,6 +5766,48 @@
    },
    "measured": true,
    "round": 58
+  },
+  {
+   "_id": "feeding-059",
+   "kind": "feeding",
+   "ts": 1788973209,
+   "block": 58708323,
+   "day": 27,
+   "title": "FEEDING \u211659 \u00b7 8/10 dens",
+   "lines": [
+    "322,301 PACK burned \u00b7 124,075 bought back and buried deeper",
+    "The meals stopped shrinking.",
+    "\u2500\u2500 milestone: 11% of genesis is now smoke \u2500\u2500"
+   ],
+   "evidence": {
+    "txs": [
+     "0x282242a5fea87e4048a2351da5695961699ddbf6f6016782affe278f909c6a54",
+     "0x9649a3bad87f071cc441ce77933092464508cecfd174a00a8029afd39b72514a",
+     "0x024370da5a2335c5ef3f70977ca8178baa70c095e99fc50c97052df5001d4e9c",
+     "0x02f667a7b9148070c6739bb9b5bceaafc4e487cb720d3d1e3457bd79f42744e1",
+     "0x9e9c83749c748d0b75151bc8cfe0ce00adc34b49310ef40240a79773af025642",
+     "0x35c7881f1abfc97970fb58695a3446a1ac1a19db99bdea86dce516748e263b37",
+     "0x0f0046b03fc57e7943de8d180d95a51123250a3f830f60daad4bb3d90fc81c4a",
+     "0x80a2a074de812f60f0e88934d23ff90ca774d82bb68c58412d047d833755da51"
+    ],
+    "dens": [
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN",
+     "TENDIES"
+    ],
+    "burn": 322300.5900009868,
+    "bought": 124075.40964186759,
+    "keepers": [
+     "0x0fe692baef42ff90b98dfa6e7193eaed0c1bab5f"
+    ]
+   },
+   "measured": true,
+   "round": 59
   }
  ]
 }
