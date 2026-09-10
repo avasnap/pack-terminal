@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-10T23:00:19.889378+00:00",
+ "generated_at": "2026-09-10T23:30:21.177554+00:00",
  "as_of_block": 59770569,
  "state": {
   "supply": 888884989.7051551,
@@ -10,9 +10,9 @@
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 1.3551428602951983,
-  "market_cap": 525470.9464261795,
-  "price": 0.0005911574078897194
+  "banked_usd": 1.332772534858902,
+  "market_cap": 520396.18697416445,
+  "price": 0.0005854482784626399
  },
  "entries": [
   {
@@ -5997,6 +5997,35 @@
    "evidence": {},
    "measured": true,
    "round": null
+  },
+  {
+   "_id": "feeding-064",
+   "kind": "feeding",
+   "ts": 1789080062,
+   "block": 59767908,
+   "day": 29,
+   "title": "FEEDING \u211664 \u00b7 2/10 dens",
+   "lines": [
+    "279,212 PACK burned \u00b7 147,454 bought back and buried deeper"
+   ],
+   "evidence": {
+    "txs": [
+     "0xb50e16ac136d43baa7e71cde506e1eba0c224389f89cba2546a4fb502f0fc127",
+     "0xa6ce6a856bc6788942cd9c41f4c22a5ea03e2a08818bf9c8348c7bac58d16103"
+    ],
+    "dens": [
+     "NVDA",
+     "PONS"
+    ],
+    "burn": 279212.4217246411,
+    "bought": 147454.31801792514,
+    "keepers": [
+     "0x2160a8cece9d06e6f55e2b6a65e5bc714a25f5a9",
+     "0xe9b5264fb7fca87892e78cdc61417bf90883d9cc"
+    ]
+   },
+   "measured": true,
+   "round": 64
   }
  ]
 }
