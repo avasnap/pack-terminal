@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-09-10T05:00:18.655665+00:00",
- "as_of_block": 58913888,
+ "generated_at": "2026-09-10T06:15:17.749098+00:00",
+ "as_of_block": 59154874,
  "state": {
-  "supply": 889586887.4076239,
-  "burned": 81928835.11860384,
-  "bought": 32715418.997032583,
-  "residue": 119397.57597564602,
+  "supply": 889448836.1955614,
+  "burned": 82066886.33066638,
+  "bought": 32771333.555956315,
+  "residue": 118942.62803678543,
   "sealed": true,
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 1.6187944204339286,
-  "market_cap": 509298.43360131583,
-  "price": 0.0005725111743558632
+  "banked_usd": 1.1126441033116454,
+  "market_cap": 511155.77234190126,
+  "price": 0.0005746882243707995
  },
  "entries": [
   {
@@ -5860,6 +5860,54 @@
    },
    "measured": true,
    "round": 60
+  },
+  {
+   "_id": "feeding-061",
+   "kind": "feeding",
+   "ts": 1789016751,
+   "block": 59140091,
+   "day": 28,
+   "title": "FEEDING \u211661 \u00b7 8/10 dens",
+   "lines": [
+    "138,051 PACK burned \u00b7 55,915 bought back and buried deeper",
+    "Meal 3 of the shrinking. The wolf expected that."
+   ],
+   "evidence": {
+    "txs": [
+     "0x17665f66365eaa1374db87ccc815f35cddd0cad7303bc3bfa15d52ea1e34dca3",
+     "0xac8827752944732c416dc81651f4b8698769f97b820fd7d710cfbd8d8d32a091",
+     "0xda422999b3bbabfac564a58499a314b832fa9fa9b1d8f0d6e9039a0330f1fe90",
+     "0x2dc396cb09629914562943d86cdcc36a558f157325a4c92810709210beb49097",
+     "0x84fdf205adfbed12cc80c1d4ea9d25d6df622d564b2a2bf595e79e0dc942df91",
+     "0xe7fab1e41c3e5cce449e263e1aa156db352ecb1affaa46a2eec0e63259a7e03b",
+     "0xedd46c369d8f79510f33f68edaef1c3f1d3865fb372beeaa3e5d816107d307b5",
+     "0x149bfbad1c02154aa2d676f398a8e9d4a3918d3f655b9fb8968871934ed3c342"
+    ],
+    "dens": [
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN",
+     "TENDIES"
+    ],
+    "burn": 138051.21206252312,
+    "bought": 55914.55892373386,
+    "keepers": [
+     "0x2151d603243dcd9adc727e4b9be6ed51eaef563c",
+     "0x29c731cf0ef90167425a75c4593705bfa0c3552f",
+     "0x543e44422400f7c0e29d000fd3bf6f7421808c06",
+     "0xb16da20b7da7b30b3348d2acbc9e6be9aa48d1c3",
+     "0xb5b1e2e5beeb30184e5317c7293cc50eb940ed93",
+     "0xbd8f3599f2f85118786a97f2faafe666a457535b",
+     "0xf393aff777937a381dbc254f16cb955a994e43b4",
+     "0xfb0c7b979a3736a94b9fb0a57969a94604dbc17d"
+    ]
+   },
+   "measured": true,
+   "round": 61
   }
  ]
 }
