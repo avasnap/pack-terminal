@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-09-11T21:45:21.537834+00:00",
- "as_of_block": 60196482,
+ "generated_at": "2026-09-11T22:15:22.127480+00:00",
+ "as_of_block": 60568576,
  "state": {
   "supply": 888650336.0256658,
   "burned": 82865386.50056197,
@@ -6081,6 +6081,51 @@
    "evidence": {},
    "measured": true,
    "round": null
+  },
+  {
+   "_id": "feeding-066",
+   "kind": "feeding",
+   "ts": 1789161408,
+   "block": 60567621,
+   "day": 29,
+   "title": "FEEDING \u211666 \u00b7 7/10 dens",
+   "lines": [
+    "73,737 PACK burned \u00b7 31,318 bought back and buried deeper",
+    "Meal 3 of the shrinking. Decay is the schedule."
+   ],
+   "evidence": {
+    "txs": [
+     "0xff47ee1c1ee317a0c28c704cd5be477b032b9a70f0140f18623cb4c2fdf365c1",
+     "0x1e90a47d599fd494a5f8d39a2de814ea9a80c4fc45a617f6c027648004bc4449",
+     "0x66f4ee48b72d00bc7315db01c01d11e78fdaa8e4731833210235bb6883a8a4a0",
+     "0x32d0996181ea265e1e719ba674c3249b7d8eb872c0a75b34bae7c06265b5a779",
+     "0xbfc994ea2fe1bcdef5944e48942cfa1afbd1d595907ad601ad2298efa4b51f1b",
+     "0xaa28deafc5764a91b304c2edc16b9ed9e637d8cc4d26e2a21b35c431f2efa392",
+     "0x0631652f258494cd9a19609765e8dd5b2767a66660ec1693e37be171bb89ab9b"
+    ],
+    "dens": [
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "THROBBIN",
+     "TENDIES"
+    ],
+    "burn": 73736.95300816052,
+    "bought": 31317.905315735716,
+    "keepers": [
+     "0x29c731cf0ef90167425a75c4593705bfa0c3552f",
+     "0x39bae5a4fe03c408b5171148241ee17baa4552ef",
+     "0x52ee56fafb8575a28f011429ed8fac64019e3ffb",
+     "0x8e389e8a2abe69e7555ffc2c3cdf67f2e53ad75b",
+     "0x9ec85ba235eb6439e7fb0e41d01b5792457f4425",
+     "0xadb29eb5afdfb6011c805b4f7377afd9acb1b8a6",
+     "0xf451c726dc4e0c627736362389770d28e61b0e71"
+    ]
+   },
+   "measured": true,
+   "round": 66
   },
   {
    "_id": "vesting-cliff",
