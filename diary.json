@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-09-11T09:45:20.695573+00:00",
- "as_of_block": 60145025,
+ "generated_at": "2026-09-11T10:15:20.890580+00:00",
+ "as_of_block": 60160669,
  "state": {
-  "supply": 888768785.4237626,
-  "burned": 82746937.10246517,
-  "bought": 33111100.495550256,
-  "residue": 116077.74671290668,
+  "supply": 888751951.0228922,
+  "burned": 82763771.50333557,
+  "bought": 33119076.882438432,
+  "residue": 115995.00883953832,
   "sealed": true,
   "positions": 10,
   "claimed": 0.0,
   "claimable": 0.0,
-  "banked_usd": 1.3602589515257744,
-  "market_cap": 511249.05476934614,
-  "price": 0.0005752329100144803
+  "banked_usd": 1.3074068702046215,
+  "market_cap": 507383.90843191074,
+  "price": 0.0005708948462480975
  },
  "entries": [
   {
@@ -6026,6 +6026,46 @@
    },
    "measured": true,
    "round": 64
+  },
+  {
+   "_id": "feeding-065",
+   "kind": "feeding",
+   "ts": 1789118208,
+   "block": 60144109,
+   "day": 29,
+   "title": "FEEDING \u211665 \u00b7 8/10 dens",
+   "lines": [
+    "133,039 PACK burned \u00b7 59,606 bought back and buried deeper"
+   ],
+   "evidence": {
+    "txs": [
+     "0xb44f1ed27b1e1aa6cdfc86a455755da4fbc54f95328b9b49f413ea77a3287c96",
+     "0x5cd01c5d9ea38f42fa540643b5613098e0aef09e53cadf2742f07fc7dfa67ebb",
+     "0x8cdfacc5dd275b41e41a8f237328d4265cb8bf74d02e3425ec9a4f040a187162",
+     "0x762d261aa9cf4ceb6ec199a862f6b13fd93ea1d9230dd90c9800097a01cfa0cf",
+     "0xa0b3389ad964eaa83f86e0771bd23b8f172ae70416f35278ff6d6de807a62e91",
+     "0xabf7a2faf9009fca77964b5033cb6f3ecc9581eaa959add144bdb5c5acfe8488",
+     "0xc8acd62c10274a296c23b0adc7bce81c7d4431430303f2d1926261adbc9d21b2",
+     "0xbee86f02fdab2fbbbd53916e569d9b3e5b8ec6317651fa4110c4c368ede8d7fa"
+    ],
+    "dens": [
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN",
+     "TENDIES"
+    ],
+    "burn": 133038.68226299543,
+    "bought": 59606.15741979062,
+    "keepers": [
+     "0x2f2bef42286b27184b5a39b4561f0a8613ee62d8"
+    ]
+   },
+   "measured": true,
+   "round": 65
   },
   {
    "_id": "sec-6aa3cc3bc6479397b1e342cd",
