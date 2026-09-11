@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-11T21:30:22.858912+00:00",
+ "generated_at": "2026-09-11T21:45:21.537834+00:00",
  "as_of_block": 60196482,
  "state": {
   "supply": 888650336.0256658,
@@ -6077,6 +6077,22 @@
    "lines": [
     "USDG traded at $0.9742. The dollar the dens",
     "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "vesting-cliff",
+   "kind": "vesting",
+   "ts": 1789162285,
+   "block": 60196482,
+   "day": 30,
+   "title": "the bowl opens",
+   "lines": [
+    "The cliff has passed. The bowl is open.",
+    "Claimable now: 0 PACK. Claimed so far: 0.",
+    "The drip runs 180 days. The lock counts every ladle."
    ],
    "evidence": {},
    "measured": true,
