@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-09-12T16:45:24.726738+00:00",
- "as_of_block": 61045290,
+ "generated_at": "2026-09-12T17:00:24.645249+00:00",
+ "as_of_block": 61131539,
  "state": {
   "supply": 888650336.0256658,
   "burned": 82865386.50056197,
@@ -6185,6 +6185,33 @@
    },
    "measured": true,
    "round": 67
+  },
+  {
+   "_id": "feeding-068",
+   "kind": "feeding",
+   "ts": 1789218665,
+   "block": 61131539,
+   "day": 30,
+   "title": "FEEDING \u211668 \u00b7 1/10 dens",
+   "lines": [
+    "753 PACK burned \u00b7 167 bought back and buried deeper",
+    "Meal 5 of the shrinking. The wolf expected that."
+   ],
+   "evidence": {
+    "txs": [
+     "0x3fc39d009439ba836bcb56b81c4c656098e33c2ada599a44c5b6c11d9d576ded"
+    ],
+    "dens": [
+     "THROBBIN"
+    ],
+    "burn": 753.2602195024634,
+    "bought": 167.03349035092475,
+    "keepers": [
+     "0x28387402ba962c188af7eb10da8c62335765fac3"
+    ]
+   },
+   "measured": true,
+   "round": 68
   }
  ]
 }
