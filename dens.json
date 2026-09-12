@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-12T10:15:25.182172+00:00",
+ "generated_at": "2026-09-12T11:15:25.320137+00:00",
  "dens": [
   {
    "token_id": 639120,
@@ -100,11 +100,11 @@
    "pool_id": "0xa0e3293bb948a13f5dad3f2a8aa40e9d839bcb9a84bfaf80b78f920221d7396b",
    "pending_spend": 0.26752910660076856,
    "pending_spend_usd": 0.050001190023683646,
-   "lifetime_burned": 6143231.843556325,
-   "lifetime_bought": 2325038.42761625,
-   "harvests": 59,
-   "last_harvest_ts": 1789163092,
-   "next_ready_ts": 1789206292
+   "lifetime_burned": 6152966.0027203895,
+   "lifetime_bought": 2331352.869778567,
+   "harvests": 60,
+   "last_harvest_ts": 1789206292,
+   "next_ready_ts": 1789249492
   },
   {
    "token_id": 639127,
