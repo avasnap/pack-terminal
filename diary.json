@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-09-14T22:00:32.559132+00:00",
- "as_of_block": 61982242,
+ "generated_at": "2026-09-14T23:00:33.109367+00:00",
+ "as_of_block": 62269960,
  "state": {
   "supply": 888650336.0256658,
   "burned": 82865386.50056197,
@@ -6391,6 +6391,49 @@
    },
    "measured": true,
    "round": 73
+  },
+  {
+   "_id": "feeding-074",
+   "kind": "feeding",
+   "ts": 1789334208,
+   "block": 62269016,
+   "day": 31,
+   "title": "FEEDING \u211674 \u00b7 6/10 dens",
+   "lines": [
+    "26,779 PACK burned \u00b7 22,552 bought back and buried deeper",
+    "For every 100 burned, 84 bought back from the fee",
+    "bank \u2014 queued quote fees, worked out a slice per feeding."
+   ],
+   "evidence": {
+    "txs": [
+     "0x6f3713a835d1f35ae565a0238888da9451c0f64e91b45343611d65d0bfe2bec4",
+     "0x14eb3340b5fc94cb68cbcd840b339f4a2881a80dfdc378d0fd7ad04e73101e9a",
+     "0xadd8c08aa0ba66a219e117e59d4a3078c153ba96d96a6d6644be72a0c26e9f5b",
+     "0x59a2143dfe4de848cfae94bb7ea82ed9f5355ebacc9237774bbe8b471b05d91e",
+     "0x1f7002c0f8316cb5646c83699659b082bb730c07c7d2489daeb7c4751f0e30f2",
+     "0x4c80275515e707ab3e8a88b56b0968bfdde2745b58ff534583d4254e23c2c63d"
+    ],
+    "dens": [
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "TENDIES"
+    ],
+    "burn": 26779.31946350995,
+    "bought": 22551.82494539776,
+    "keepers": [
+     "0x39bae5a4fe03c408b5171148241ee17baa4552ef",
+     "0x52ee56fafb8575a28f011429ed8fac64019e3ffb",
+     "0x9ec85ba235eb6439e7fb0e41d01b5792457f4425",
+     "0xadb29eb5afdfb6011c805b4f7377afd9acb1b8a6",
+     "0xf393aff777937a381dbc254f16cb955a994e43b4",
+     "0xf451c726dc4e0c627736362389770d28e61b0e71"
+    ]
+   },
+   "measured": true,
+   "round": 74
   }
  ]
 }
