@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-09-15T00:00:33.819463+00:00",
- "as_of_block": 62321502,
+ "generated_at": "2026-09-15T01:15:34.309481+00:00",
+ "as_of_block": 62407527,
  "state": {
   "supply": 888650336.0256658,
   "burned": 82865386.50056197,
@@ -6434,6 +6434,32 @@
    },
    "measured": true,
    "round": 74
+  },
+  {
+   "_id": "feeding-075",
+   "kind": "feeding",
+   "ts": 1789348265,
+   "block": 62407527,
+   "day": 32,
+   "title": "FEEDING \u211675 \u00b7 1/10 dens",
+   "lines": [
+    "30,217 PACK burned \u00b7 11,824 bought back and buried deeper"
+   ],
+   "evidence": {
+    "txs": [
+     "0x57977cca816f6fcf10721b9119769cf9166825ccfa8f1e75c95550e63fee13c7"
+    ],
+    "dens": [
+     "THROBBIN"
+    ],
+    "burn": 30217.296922900157,
+    "bought": 11824.299260347567,
+    "keepers": [
+     "0x2151d603243dcd9adc727e4b9be6ed51eaef563c"
+    ]
+   },
+   "measured": true,
+   "round": 75
   }
  ]
 }
