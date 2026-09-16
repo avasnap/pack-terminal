@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-16T20:45:39.638581+00:00",
+ "generated_at": "2026-09-16T21:45:40.006989+00:00",
  "as_of_block": 64540615,
  "state": {
   "supply": 888650336.0256658,
@@ -6806,6 +6806,27 @@
    },
    "measured": true,
    "round": 86
+  },
+  {
+   "_id": "strangers-w4",
+   "kind": "stranger",
+   "ts": 1789588436,
+   "block": 64774141,
+   "day": 34,
+   "title": "strangers \u00b7 week 4",
+   "lines": [
+    "Strangers dug 12 dens beside the wolf's this week \u2014",
+    "12 named after nothing the registry knows.",
+    "2 carry hooks. The wolf dug none of them",
+    "and drinks from none of them."
+   ],
+   "evidence": {
+    "count": 12,
+    "unknown_symbol": 12,
+    "hooked": 2
+   },
+   "measured": true,
+   "round": null
   }
  ]
 }
