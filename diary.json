@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-09-16T07:15:38.011996+00:00",
- "as_of_block": 63545279,
+ "generated_at": "2026-09-16T08:00:37.838963+00:00",
+ "as_of_block": 63597790,
  "state": {
   "supply": 888650336.0256658,
   "burned": 82865386.50056197,
@@ -6610,6 +6610,37 @@
    },
    "measured": true,
    "round": 80
+  },
+  {
+   "_id": "feeding-081",
+   "kind": "feeding",
+   "ts": 1789469134,
+   "block": 63597767,
+   "day": 33,
+   "title": "FEEDING \u211681 \u00b7 2/10 dens",
+   "lines": [
+    "157,190 PACK burned \u00b7 78,712 bought back and buried deeper",
+    "For every 100 burned, 50 bought back from the fee",
+    "bank \u2014 queued quote fees, worked out a slice per feeding."
+   ],
+   "evidence": {
+    "txs": [
+     "0x844cd2b2469da2c62c85e7a37489b89151900128d6bb9e45b42aa7095033c000",
+     "0xe0726e70bc952e41199e382103ecef38567a830f640d97c369f3aacff930285b"
+    ],
+    "dens": [
+     "THROBBIN",
+     "PONS"
+    ],
+    "burn": 157189.86128630547,
+    "bought": 78711.90353541766,
+    "keepers": [
+     "0x577dce567f51a2be3c47385881e7c67e32d6f431",
+     "0x8e389e8a2abe69e7555ffc2c3cdf67f2e53ad75b"
+    ]
+   },
+   "measured": true,
+   "round": 81
   }
  ]
 }
