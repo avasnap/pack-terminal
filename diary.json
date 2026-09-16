@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-09-16T16:30:39.176639+00:00",
- "as_of_block": 64111660,
+ "generated_at": "2026-09-16T17:15:38.630546+00:00",
+ "as_of_block": 64409377,
  "state": {
   "supply": 888650336.0256658,
   "burned": 82865386.50056197,
@@ -6747,6 +6747,36 @@
    },
    "measured": true,
    "round": 84
+  },
+  {
+   "_id": "feeding-085",
+   "kind": "feeding",
+   "ts": 1789551711,
+   "block": 64409268,
+   "day": 34,
+   "title": "FEEDING \u211685 \u00b7 2/10 dens",
+   "lines": [
+    "77,307 PACK burned \u00b7 23,425 bought back and buried deeper",
+    "Meal 3 of the shrinking. Decay is the schedule."
+   ],
+   "evidence": {
+    "txs": [
+     "0x53eb4a8155990f103ee16547f44dcdf4d234e339fe86d145e3d01e5c6d300008",
+     "0x11d357f1decf13ab167d28cbb414b54b5b5dd237be1f973180ca77e320a4b246"
+    ],
+    "dens": [
+     "NVDA",
+     "MSFT"
+    ],
+    "burn": 77306.74350534764,
+    "bought": 23425.32142554165,
+    "keepers": [
+     "0x543e44422400f7c0e29d000fd3bf6f7421808c06",
+     "0xb5b1e2e5beeb30184e5317c7293cc50eb940ed93"
+    ]
+   },
+   "measured": true,
+   "round": 85
   }
  ]
 }
