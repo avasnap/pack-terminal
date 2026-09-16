@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-09-16T10:45:39.473669+00:00",
- "as_of_block": 63660657,
+ "generated_at": "2026-09-16T12:00:38.602545+00:00",
+ "as_of_block": 63953929,
  "state": {
   "supply": 888650336.0256658,
   "burned": 82865386.50056197,
@@ -6677,6 +6677,50 @@
    },
    "measured": true,
    "round": 82
+  },
+  {
+   "_id": "claim-0x2fd9f591dba6a5a2",
+   "kind": "vesting",
+   "ts": 1789505776,
+   "block": 63953420,
+   "day": 33,
+   "title": "the bowl opens",
+   "lines": [
+    "The creator reached into the bowl: 870,139 PACK claimed.",
+    "The bowl holds what the schedule says it holds. The lock watched."
+   ],
+   "evidence": {
+    "txs": [
+     "0x2fd9f591dba6a5a274b1540ff6bde3988a53ba609299061070b1659b32940583"
+    ],
+    "claim": 870138.8888888889
+   },
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "feeding-083",
+   "kind": "feeding",
+   "ts": 1789505828,
+   "block": 63953929,
+   "day": 33,
+   "title": "FEEDING \u211683 \u00b7 0/10 dens",
+   "lines": [
+    "870,138 PACK burned \u00b7 0 bought back and buried deeper"
+   ],
+   "evidence": {
+    "txs": [
+     "0xd3e9083beb9863018574b56f7fbf38712952b79bb27602b4fea1f50b43ae3e7f"
+    ],
+    "dens": [],
+    "burn": 870138.0,
+    "bought": 0.0,
+    "keepers": [
+     "0xa889ec875205e5a98997bc004ad12538bcdebe7d"
+    ]
+   },
+   "measured": true,
+   "round": 83
   }
  ]
 }
