@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-16T13:30:39.694304+00:00",
+ "generated_at": "2026-09-16T14:30:40.745349+00:00",
  "dens": [
   {
    "token_id": 639120,
@@ -25,11 +25,11 @@
    "pool_id": "0x052362df3d4224dd4200faad35e7ce9b97e6ae8550e1fffabd829096139fdf3f",
    "pending_spend": 4.7579049916013e-05,
    "pending_spend_usd": 0.046339139875201704,
-   "lifetime_burned": 7423064.485037687,
-   "lifetime_bought": 3494945.644875912,
-   "harvests": 65,
-   "last_harvest_ts": 1789475422,
-   "next_ready_ts": 1789518622
+   "lifetime_burned": 7479817.634307188,
+   "lifetime_bought": 3514429.9555947543,
+   "harvests": 66,
+   "last_harvest_ts": 1789519925,
+   "next_ready_ts": 1789563125
   },
   {
    "token_id": 639122,
@@ -70,11 +70,11 @@
    "pool_id": "0xfe3e6151a19b798d83a254d165f69d14420025896fbc642f21b2216241faaa45",
    "pending_spend": 6.5275027758527e-05,
    "pending_spend_usd": 0.033591182034815585,
-   "lifetime_burned": 6427720.471244411,
-   "lifetime_bought": 3036275.229316918,
-   "harvests": 65,
-   "last_harvest_ts": 1789475490,
-   "next_ready_ts": 1789518690
+   "lifetime_burned": 6480428.497633056,
+   "lifetime_bought": 3053766.892449028,
+   "harvests": 66,
+   "last_harvest_ts": 1789520044,
+   "next_ready_ts": 1789563244
   },
   {
    "token_id": 639125,
@@ -85,11 +85,11 @@
    "pool_id": "0xf4a4509bf8bd51e052d896ad9d53e66c9627f498f4b793de6ca6426b11ba848b",
    "pending_spend": 0.000272677870982097,
    "pending_spend_usd": 0.040080920255658445,
-   "lifetime_burned": 6313951.178317665,
-   "lifetime_bought": 2739016.5746805514,
-   "harvests": 65,
-   "last_harvest_ts": 1789475506,
-   "next_ready_ts": 1789518706
+   "lifetime_burned": 6366002.645198256,
+   "lifetime_bought": 2758023.436236907,
+   "harvests": 66,
+   "last_harvest_ts": 1789521760,
+   "next_ready_ts": 1789564960
   },
   {
    "token_id": 639126,
@@ -100,11 +100,11 @@
    "pool_id": "0xa0e3293bb948a13f5dad3f2a8aa40e9d839bcb9a84bfaf80b78f920221d7396b",
    "pending_spend": 0.26752910660076856,
    "pending_spend_usd": 0.050001190023683646,
-   "lifetime_burned": 6212405.976355803,
-   "lifetime_bought": 2355890.2427084153,
-   "harvests": 65,
-   "last_harvest_ts": 1789475526,
-   "next_ready_ts": 1789518726
+   "lifetime_burned": 6248600.114216466,
+   "lifetime_bought": 2365286.5197352157,
+   "harvests": 66,
+   "last_harvest_ts": 1789520057,
+   "next_ready_ts": 1789563257
   },
   {
    "token_id": 639127,
@@ -130,11 +130,11 @@
    "pool_id": "0xbb061ffe27facf06aaff43a94cb04fb612c990afe2dc402e5c25753ce0b8aa35",
    "pending_spend": 4.871016281213651,
    "pending_spend_usd": 0.09206220771493799,
-   "lifetime_burned": 3556089.2936013704,
-   "lifetime_bought": 1148733.33038828,
-   "harvests": 65,
-   "last_harvest_ts": 1789475539,
-   "next_ready_ts": 1789518739
+   "lifetime_burned": 3580063.7011122666,
+   "lifetime_bought": 1156240.4933851976,
+   "harvests": 66,
+   "last_harvest_ts": 1789520066,
+   "next_ready_ts": 1789563266
   },
   {
    "token_id": 639129,
