@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-09-20T22:45:41.936055+00:00",
- "as_of_block": 68164560,
+ "generated_at": "2026-09-20T23:30:41.579490+00:00",
+ "as_of_block": 68307107,
  "state": {
-  "supply": 883588083.3637335,
-  "burned": 86736309.41866702,
-  "bought": 34908342.487648495,
-  "residue": 99330.18178004154,
+  "supply": 883491313.4611775,
+  "burned": 86833079.32122315,
+  "bought": 34966669.542147085,
+  "residue": 98758.40225988578,
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 1409436.0853909466,
-  "banked_usd": 0.2547807498946784,
-  "market_cap": 361774.591569048,
-  "price": 0.0004094380609930902
+  "claimable": 1418135.9310699587,
+  "banked_usd": 0.42088130661886847,
+  "market_cap": 368692.0203565469,
+  "price": 0.0004173125584134541
  },
  "entries": [
   {
@@ -7354,6 +7354,33 @@
    },
    "measured": true,
    "round": 103
+  },
+  {
+   "_id": "feeding-104",
+   "kind": "feeding",
+   "ts": 1789944335,
+   "block": 68307107,
+   "day": 39,
+   "title": "FEEDING \u2116104 \u00b7 1/10 dens",
+   "lines": [
+    "96,770 PACK burned \u00b7 58,327 bought back and buried deeper",
+    "The meals stopped shrinking."
+   ],
+   "evidence": {
+    "txs": [
+     "0xb0c03da2fb13b446fef4cb7368db98a85daa300231145c40cbaea2419cc15199"
+    ],
+    "dens": [
+     "PONS"
+    ],
+    "burn": 96769.90255612852,
+    "bought": 58327.05449859256,
+    "keepers": [
+     "0x98d848d13e880ff4af6af31543adf4ba4455d1cb"
+    ]
+   },
+   "measured": true,
+   "round": 104
   }
  ]
 }
