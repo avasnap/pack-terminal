@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-09-21T18:00:43.874031+00:00",
- "as_of_block": 68735557,
+ "generated_at": "2026-09-21T19:00:42.616847+00:00",
+ "as_of_block": 69007450,
  "state": {
-  "supply": 883322709.3941163,
-  "burned": 87001683.38828434,
-  "bought": 35074549.67829064,
-  "residue": 97800.74206088307,
+  "supply": 883284887.6393839,
+  "burned": 87039505.14301671,
+  "bought": 35095473.44873074,
+  "residue": 97579.58569331437,
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 1632439.5576131686,
-  "banked_usd": 0.514536609225642,
-  "market_cap": 384011.6519972554,
-  "price": 0.00043473540067893703
+  "claimable": 1644020.061728395,
+  "banked_usd": 0.3865760961815491,
+  "market_cap": 387753.21128350677,
+  "price": 0.0004389899756122779
  },
  "entries": [
   {
@@ -7473,6 +7473,36 @@
    },
    "measured": true,
    "round": 107
+  },
+  {
+   "_id": "feeding-108",
+   "kind": "feeding",
+   "ts": 1790014782,
+   "block": 69007275,
+   "day": 39,
+   "title": "FEEDING \u2116108 \u00b7 3/10 dens",
+   "lines": [
+    "37,822 PACK burned \u00b7 20,924 bought back and buried deeper"
+   ],
+   "evidence": {
+    "txs": [
+     "0xba71c030aa84aa6e9bf4a570a83cd168ea2891a2e34dd7a7198eac07dc35b0a6",
+     "0xf756d6b9681b7c7b7bd784c8807699852537619b9e0d32bc671241b2352d4cca",
+     "0x35320cece1914c659c2f699b8be4389bcde96259057320bd6025b0faec99a316"
+    ],
+    "dens": [
+     "NVDA",
+     "MSFT",
+     "CASHCAT"
+    ],
+    "burn": 37821.75473236076,
+    "bought": 20923.770440092874,
+    "keepers": [
+     "0xc09fe4b98716d72882d21219208841d3929bd061"
+    ]
+   },
+   "measured": true,
+   "round": 108
   }
  ]
 }
