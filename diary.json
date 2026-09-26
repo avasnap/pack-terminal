@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-26T18:00:45.026901+00:00",
+ "generated_at": "2026-09-26T18:15:44.471077+00:00",
  "as_of_block": 73263426,
  "state": {
   "supply": 882211750.9509621,
@@ -9,10 +9,10 @@
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 3020807.6131687243,
-  "banked_usd": 0.1698210612164009,
-  "market_cap": 317438.8158629992,
-  "price": 0.00035982156837156446
+  "claimable": 3023704.346707819,
+  "banked_usd": 0.1694039289761884,
+  "market_cap": 315723.1434476264,
+  "price": 0.0003578768284454374
  },
  "entries": [
   {
@@ -8149,6 +8149,40 @@
    },
    "measured": true,
    "round": 128
+  },
+  {
+   "_id": "feeding-129",
+   "kind": "feeding",
+   "ts": 1790443831,
+   "block": 73263201,
+   "day": 44,
+   "title": "FEEDING \u2116129 \u00b7 4/10 dens",
+   "lines": [
+    "10,016 PACK burned \u00b7 6,693 bought back and buried deeper",
+    "For every 100 burned, 67 bought back from the fee",
+    "bank \u2014 queued quote fees, worked out a slice per feeding."
+   ],
+   "evidence": {
+    "txs": [
+     "0x439133751a309de9402cbf2e01cfbf96bfb1bc3b8ab0a51d759fc1227311ab49",
+     "0xb906f9e34ba77b5017ee39b6207fca662514c36b07678c9f2881412b5fab11bb",
+     "0x0830b762334f55dd70dbccc37ee906fde01005d1fe82c747f4d0f787219a554e",
+     "0xc65e28033aa4a6e58696ab1126951ee3e129ce5a5969f95addc4e18176fe65d7"
+    ],
+    "dens": [
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN"
+    ],
+    "burn": 10016.334050340478,
+    "bought": 6692.880171259823,
+    "keepers": [
+     "0x3efda2796a232d4515dff4bbcf3095a13737385e"
+    ]
+   },
+   "measured": true,
+   "round": 129
   }
  ]
 }
