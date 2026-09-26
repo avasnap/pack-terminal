@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-09-26T01:30:44.735123+00:00",
- "as_of_block": 72595156,
+ "generated_at": "2026-09-26T02:30:44.347390+00:00",
+ "as_of_block": 72703648,
  "state": {
-  "supply": 882328055.2339941,
-  "burned": 87996337.54840644,
-  "bought": 35501349.79605832,
-  "residue": 93626.2074672029,
+  "supply": 882267827.2305266,
+  "burned": 88056565.5518741,
+  "bought": 35529669.889729336,
+  "residue": 93346.63081303259,
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 2830037.9372427985,
-  "banked_usd": 0.13811765958553884,
-  "market_cap": 315515.94626047404,
-  "price": 0.00035759482472400695
+  "claimable": 2841608.796296296,
+  "banked_usd": 0.1679425543338212,
+  "market_cap": 316952.8826825582,
+  "price": 0.0003592479209827766
  },
  "entries": [
   {
@@ -8044,6 +8044,44 @@
    },
    "measured": true,
    "round": 125
+  },
+  {
+   "_id": "feeding-126",
+   "kind": "feeding",
+   "ts": 1790387247,
+   "block": 72703108,
+   "day": 44,
+   "title": "FEEDING \u2116126 \u00b7 7/10 dens",
+   "lines": [
+    "60,228 PACK burned \u00b7 28,320 bought back and buried deeper"
+   ],
+   "evidence": {
+    "txs": [
+     "0xde0dba0dbfc84c78c94d4c4e62a7a97ca6f93bc20ad8d56fab67373f77559b48",
+     "0xecc6791c118ff7611a0a0bac4fff698d7d6a980e3dc6426af88d779b60ce1588",
+     "0x929ec25846008ddfdae49165578579b7f047f92563a990891c6e2149d2a038ff",
+     "0x06effa73a4cb6fb83161bd63fa39c9ef20a0fb9c9b8330ecfa189f7b2c3cb9a0",
+     "0xe93e02d38244687297ffdde3b7bc1f66cf1265bb54fbe9f6bfa890bd6ac9dbe9",
+     "0xd6c33b4a6ca120f0ec4eb6e2e58b740bd6e245f4c410944ae096eb6f2064afa2",
+     "0xdeb6ce65f4a68f244c780db0a5b7e144ca14ceb9002a821e58b7d749cc8487df"
+    ],
+    "dens": [
+     "NVDA",
+     "MU",
+     "MSFT",
+     "AMD",
+     "SPCX",
+     "CASHCAT",
+     "THROBBIN"
+    ],
+    "burn": 60228.003467664435,
+    "bought": 28320.093671020444,
+    "keepers": [
+     "0xf1a24eba326c03e74782cf0ed47c6b7e8ad27f2c"
+    ]
+   },
+   "measured": true,
+   "round": 126
   }
  ]
 }
