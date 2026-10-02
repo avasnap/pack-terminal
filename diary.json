@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-02T17:45:47.250989+00:00",
+ "generated_at": "2026-10-02T18:00:46.428507+00:00",
  "as_of_block": 78408514,
  "state": {
   "supply": 880586019.486285,
@@ -9,10 +9,10 @@
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 4684577.546296296,
-  "banked_usd": 0.1425189012094812,
-  "market_cap": 208165.0995608171,
-  "price": 0.00023639382746759498
+  "claimable": 4687467.849794239,
+  "banked_usd": 0.14199084384182267,
+  "market_cap": 208831.60661869834,
+  "price": 0.00023715071781462782
  },
  "entries": [
   {
@@ -8746,6 +8746,33 @@
    },
    "measured": true,
    "round": 148
+  },
+  {
+   "_id": "feeding-149",
+   "kind": "feeding",
+   "ts": 1790961958,
+   "block": 78408514,
+   "day": 50,
+   "title": "FEEDING \u2116149 \u00b7 1/10 dens",
+   "lines": [
+    "69,680 PACK burned \u00b7 32,503 bought back and buried deeper",
+    "The meals stopped shrinking."
+   ],
+   "evidence": {
+    "txs": [
+     "0x6fd15282d859cbc1fdb315e8510ced680e5fd1f1e48b2b1e3a0df78f6ecb5599"
+    ],
+    "dens": [
+     "NVDA"
+    ],
+    "burn": 69679.66642662942,
+    "bought": 32503.061025105162,
+    "keepers": [
+     "0x56b1cc25343d2668442ddce441aa0b8f4fe00484"
+    ]
+   },
+   "measured": true,
+   "round": 149
   }
  ]
 }
