@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-03T11:30:47.186217+00:00",
+ "generated_at": "2026-10-03T12:00:46.408191+00:00",
  "as_of_block": 79046241,
  "state": {
   "supply": 879915327.2768316,
@@ -9,10 +9,10 @@
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 4890014.146090535,
-  "banked_usd": 0.08791547397689058,
-  "market_cap": 176668.0884389147,
-  "price": 0.00020077851011604536
+  "claimable": 4895804.398148148,
+  "banked_usd": 0.08781550648654153,
+  "market_cap": 176588.69175373032,
+  "price": 0.0002006882779281028
  },
  "entries": [
   {
@@ -8825,6 +8825,46 @@
    },
    "measured": true,
    "round": 151
+  },
+  {
+   "_id": "feeding-152",
+   "kind": "feeding",
+   "ts": 1791024340,
+   "block": 79022987,
+   "day": 51,
+   "title": "FEEDING \u2116152 \u00b7 7/10 dens",
+   "lines": [
+    "129,269 PACK burned \u00b7 16,390 bought back and buried deeper",
+    "\u2500\u2500 milestone: 12% of genesis is now smoke \u2500\u2500"
+   ],
+   "evidence": {
+    "txs": [
+     "0xd07030c8b7b4a591f4bc8ab5c4c4b19dfe73d62781fc48516c449630a5699426",
+     "0xdcd93cf9905da96839451164c437520dead0632bd0139e872c1ab4b834b55ad6",
+     "0x3da0f59cc7a13419f627a9d9af8c4a4c9f0f928bcfe018d4dd71953bb975e8e4",
+     "0xfa08272af03b7a0521ffc17de874a14053fb3ed2023e7ecdb9343df811a81d3d",
+     "0xb55801b04f3981f902953117ff38e9d1153a7fa6f0219b77f3ac0e9ffbffddf5",
+     "0xfa16e05637a4f2d2b0330540fb3ad14cea6e86a99a5ccb94a1937aaffb483577",
+     "0x9ef82d9da6aca3bab070fde53e7de65f2a237c9f375406a3a172e66e0cfb0659"
+    ],
+    "dens": [
+     "NVDA",
+     "MU",
+     "MSFT",
+     "AAPL",
+     "AMD",
+     "SPCX",
+     "PONS"
+    ],
+    "burn": 129269.45178350585,
+    "bought": 16390.33763954581,
+    "keepers": [
+     "0x98d848d13e880ff4af6af31543adf4ba4455d1cb",
+     "0xf1a24eba326c03e74782cf0ed47c6b7e8ad27f2c"
+    ]
+   },
+   "measured": true,
+   "round": 152
   }
  ]
 }
