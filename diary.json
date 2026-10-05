@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-05T23:00:47.077367+00:00",
+ "generated_at": "2026-10-05T23:30:47.197678+00:00",
  "as_of_block": 81149211,
  "state": {
   "supply": 879314581.511397,
@@ -9,10 +9,10 @@
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 5579256.6872427985,
-  "banked_usd": 0.06127709597642827,
-  "market_cap": 130687.82274315499,
-  "price": 0.0001486246509395126
+  "claimable": 5585050.154320988,
+  "banked_usd": 0.061090189172164036,
+  "market_cap": 129697.00099729389,
+  "price": 0.00014749783948125379
  },
  "entries": [
   {
@@ -9049,6 +9049,34 @@
    },
    "measured": true,
    "round": 158
+  },
+  {
+   "_id": "feeding-159",
+   "kind": "feeding",
+   "ts": 1791240359,
+   "block": 81149211,
+   "day": 54,
+   "title": "FEEDING \u2116159 \u00b7 1/10 dens",
+   "lines": [
+    "10,632 PACK burned \u00b7 11,448 bought back and buried deeper",
+    "The wolf now buries more than it burns. For every 100",
+    "gone to smoke, 108 came back from the fee bank."
+   ],
+   "evidence": {
+    "txs": [
+     "0xecdf5648dc906678c08102d4c1333d4273831958b2cf605972fae96862ec334e"
+    ],
+    "dens": [
+     "PONS"
+    ],
+    "burn": 10632.105570534415,
+    "bought": 11448.14349590907,
+    "keepers": [
+     "0x98d848d13e880ff4af6af31543adf4ba4455d1cb"
+    ]
+   },
+   "measured": true,
+   "round": 159
   }
  ]
 }
