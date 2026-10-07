@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-10-07T21:15:46.941830+00:00",
- "as_of_block": 82549784,
+ "generated_at": "2026-10-07T21:45:47.172393+00:00",
+ "as_of_block": 82795372,
  "state": {
-  "supply": 879075401.6030505,
-  "burned": 91248991.1793502,
-  "bought": 36709712.09526039,
+  "supply": 879064621.868428,
+  "burned": 91259770.91397256,
+  "bought": 36718007.845555924,
   "residue": 82581.13045584188,
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 6114499.742798354,
-  "banked_usd": 0.09103660633494574,
-  "market_cap": 112089.68315609601,
-  "price": 0.00012750861069675396
+  "claimable": 6120273.919753087,
+  "banked_usd": 0.09814681347502047,
+  "market_cap": 112010.55385164885,
+  "price": 0.0001274201589566572
  },
  "entries": [
   {
@@ -8746,6 +8746,26 @@
    },
    "measured": true,
    "round": 148
+  },
+  {
+   "_id": "strangers-w7",
+   "kind": "stranger",
+   "ts": 1790960387,
+   "block": 78392904,
+   "day": 50,
+   "title": "strangers \u00b7 week 7",
+   "lines": [
+    "Strangers dug 1 dens beside the wolf's this week \u2014",
+    "1 named after nothing the registry knows.",
+    "The wolf dug none of them and drinks from none of them."
+   ],
+   "evidence": {
+    "count": 1,
+    "unknown_symbol": 1,
+    "hooked": 0
+   },
+   "measured": true,
+   "round": null
   },
   {
    "_id": "feeding-149",
