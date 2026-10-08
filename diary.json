@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-10-08T02:45:46.459252+00:00",
- "as_of_block": 82971547,
+ "generated_at": "2026-10-08T03:30:46.427583+00:00",
+ "as_of_block": 82977305,
  "state": {
-  "supply": 879021111.4732444,
-  "burned": 91303281.30915621,
-  "bought": 36737394.683223486,
-  "residue": 82369.67981172394,
+  "supply": 878943266.5775492,
+  "burned": 91381126.20485145,
+  "bought": 36754152.437840074,
+  "residue": 82228.11247299344,
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 6178153.935185186,
-  "banked_usd": 0.09627951271044889,
-  "market_cap": 114509.93565953651,
-  "price": 0.00013026983557609578
+  "claimable": 6186840.920781893,
+  "banked_usd": 0.09150125069889192,
+  "market_cap": 114185.04046880429,
+  "price": 0.00012991173015457617
  },
  "entries": [
   {
@@ -9333,6 +9333,44 @@
    },
    "measured": true,
    "round": 168
+  },
+  {
+   "_id": "feeding-169",
+   "kind": "feeding",
+   "ts": 1791427214,
+   "block": 82971547,
+   "day": 56,
+   "title": "FEEDING \u2116169 \u00b7 6/10 dens",
+   "lines": [
+    "99,618 PACK burned \u00b7 22,359 bought back and buried deeper",
+    "The meals stopped shrinking."
+   ],
+   "evidence": {
+    "txs": [
+     "0xd2d383f04eac9dd322f5fafbcb0d2493bd875d1a0ef9f91c458f24cb842b0ede",
+     "0xa9f62c3eb852f869277fa89d6b469018735c128c4ad10ac2369f6342b128939e",
+     "0x258aa522c7cba4184cb91f3cea495489c74bd8a651755c66318fab50dd32ac66",
+     "0xdaa8b65d982b5a99127603b3fcaf05e93792550f77160a5923578280b7d7b246",
+     "0x13c005a8d41d8979dd0a7e03ac94bda1a45859834feca512dee9da6fb07c1cb6",
+     "0x37ff797ee43dfe067c4d029d7c50ebb16476460c1eab350de0460aa70655fda6"
+    ],
+    "dens": [
+     "NVDA",
+     "MU",
+     "MSFT",
+     "AAPL",
+     "SPCX",
+     "THROBBIN"
+    ],
+    "burn": 99617.73507305901,
+    "bought": 22359.069448812534,
+    "keepers": [
+     "0x56b1cc25343d2668442ddce441aa0b8f4fe00484",
+     "0xf1a24eba326c03e74782cf0ed47c6b7e8ad27f2c"
+    ]
+   },
+   "measured": true,
+   "round": 169
   }
  ]
 }
