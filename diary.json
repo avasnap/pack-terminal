@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-10-10T22:45:47.007896+00:00",
- "as_of_block": 85083651,
+ "generated_at": "2026-10-10T23:30:46.810340+00:00",
+ "as_of_block": 85359609,
  "state": {
-  "supply": 878279978.1028228,
-  "burned": 92044414.6795779,
-  "bought": 36934418.49927661,
+  "supply": 878263386.7086998,
+  "burned": 92061006.07370085,
+  "bought": 36935135.03870071,
   "residue": 80771.14416239034,
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 6965226.33744856,
-  "banked_usd": 0.0666602052578276,
+  "claimable": 6973903.677983539,
+  "banked_usd": 0.04429207354931824,
   "market_cap": 87299.69780322071,
   "price": 9.939848337633433e-05
  },
@@ -9704,6 +9704,33 @@
    },
    "measured": true,
    "round": 181
+  },
+  {
+   "_id": "feeding-182",
+   "kind": "feeding",
+   "ts": 1791672387,
+   "block": 85359609,
+   "day": 59,
+   "title": "FEEDING \u2116182 \u00b7 1/10 dens",
+   "lines": [
+    "16,591 PACK burned \u00b7 717 bought back and buried deeper",
+    "Meal 5 of the shrinking. The wolf expected that."
+   ],
+   "evidence": {
+    "txs": [
+     "0x828cbad04d6e2a0b84ddce95a849be32b88a08cc795c2ee061c98578b2d7ece0"
+    ],
+    "dens": [
+     "PONS"
+    ],
+    "burn": 16591.394122949852,
+    "bought": 716.539424094824,
+    "keepers": [
+     "0x98d848d13e880ff4af6af31543adf4ba4455d1cb"
+    ]
+   },
+   "measured": true,
+   "round": 182
   }
  ]
 }
