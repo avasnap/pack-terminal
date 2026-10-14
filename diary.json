@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-14T22:30:47.375404+00:00",
+ "generated_at": "2026-10-14T22:45:47.280878+00:00",
  "as_of_block": 88710761,
  "state": {
   "supply": 877308977.6265996,
@@ -9,8 +9,8 @@
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 8072691.615226337,
-  "banked_usd": 0.1871975773762575,
+  "claimable": 8075588.348765432,
+  "banked_usd": 0.18639100717218637,
   "market_cap": 94537.1188321762,
   "price": 0.00010775338390368127
  },
@@ -10157,6 +10157,32 @@
    },
    "measured": true,
    "round": 197
+  },
+  {
+   "_id": "feeding-198",
+   "kind": "feeding",
+   "ts": 1792015544,
+   "block": 88710761,
+   "day": 63,
+   "title": "FEEDING \u2116198 \u00b7 1/10 dens",
+   "lines": [
+    "38,122 PACK burned \u00b7 34,294 bought back and buried deeper"
+   ],
+   "evidence": {
+    "txs": [
+     "0xda89fdf635a69a57945c0af293fca79446fb5d445be37b4c31a4abdda21a9b17"
+    ],
+    "dens": [
+     "AMD"
+    ],
+    "burn": 38121.90097669008,
+    "bought": 34294.2177529875,
+    "keepers": [
+     "0x56b1cc25343d2668442ddce441aa0b8f4fe00484"
+    ]
+   },
+   "measured": true,
+   "round": 198
   }
  ]
 }
