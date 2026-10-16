@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T13:00:49.493678+00:00",
+ "generated_at": "2026-10-16T13:15:49.726615+00:00",
  "dens": [
   {
    "token_id": 639120,
@@ -9,7 +9,7 @@
    "quote": "0xd0601ce157db5bdc3162bbac2a2c8af5320d9eec",
    "pool_id": "0x4900c6d3f31ff1e1545a487469c134cdbd9f1499f938054c0c77a14728b3f150",
    "pending_spend": 4.9015301775928e-05,
-   "pending_spend_usd": 0.010636408712919572,
+   "pending_spend_usd": 0.010612302987506171,
    "lifetime_burned": 16949957.605407145,
    "lifetime_bought": 5261394.546307194,
    "harvests": 105,
@@ -24,7 +24,7 @@
    "quote": "0xff080c8ce2e5feadaca0da81314ae59d232d4afd",
    "pool_id": "0x052362df3d4224dd4200faad35e7ce9b97e6ae8550e1fffabd829096139fdf3f",
    "pending_spend": 1.9147859948876e-05,
-   "pending_spend_usd": 0.017450019207209164,
+   "pending_spend_usd": 0.01743221169745671,
    "lifetime_burned": 8080770.156897934,
    "lifetime_bought": 3755811.709904686,
    "harvests": 97,
@@ -84,7 +84,7 @@
    "quote": "0x4a0e65a3eccec6dbe60ae065f2e7bb85fae35eea",
    "pool_id": "0xf4a4509bf8bd51e052d896ad9d53e66c9627f498f4b793de6ca6426b11ba848b",
    "pending_spend": 0.000229048923264134,
-   "pending_spend_usd": 0.0339862792339322,
+   "pending_spend_usd": 0.03373890639680694,
    "lifetime_burned": 6906439.426697993,
    "lifetime_bought": 2969080.988714044,
    "harvests": 94,
@@ -98,13 +98,13 @@
    "side": "meme",
    "quote": "0x020bfc650a365f8bb26819deaabf3e21291018b4",
    "pool_id": "0xa0e3293bb948a13f5dad3f2a8aa40e9d839bcb9a84bfaf80b78f920221d7396b",
-   "pending_spend": 0.16553382297332075,
-   "pending_spend_usd": 0.019201923464905207,
-   "lifetime_burned": 6830387.955867012,
-   "lifetime_bought": 2620741.1590285567,
-   "harvests": 94,
-   "last_harvest_ts": 1792080363,
-   "next_ready_ts": 1792123563
+   "pending_spend": 0.1509640826851141,
+   "pending_spend_usd": 0.017104230568223428,
+   "lifetime_burned": 6848427.782693882,
+   "lifetime_bought": 2628872.154815276,
+   "harvests": 95,
+   "last_harvest_ts": 1792156036,
+   "next_ready_ts": 1792199236
   },
   {
    "token_id": 639127,
@@ -144,7 +144,7 @@
    "quote": "0x39dbed3a2bd333467115de45665cc57f813c4571",
    "pool_id": "0x548ae8c6751c5c7b5d3cf53f41a54e602263e7c688bd1070dede7fdb71878cbd",
    "pending_spend": 0.09060602847648729,
-   "pending_spend_usd": 0.030769807270615082,
+   "pending_spend_usd": 0.03069732244783389,
    "lifetime_burned": 16064495.223469794,
    "lifetime_bought": 8311210.117678621,
    "harvests": 130,
