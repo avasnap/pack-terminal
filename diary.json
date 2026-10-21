@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-21T18:30:48.926138+00:00",
+ "generated_at": "2026-10-21T18:45:47.234767+00:00",
  "as_of_block": 94267654,
  "state": {
   "supply": 875878828.7582942,
@@ -9,10 +9,10 @@
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 9971479.552469136,
-  "banked_usd": 0.08973154080401156,
-  "market_cap": 81210.36427602124,
-  "price": 9.271872045491796e-05
+  "claimable": 9974379.501028806,
+  "banked_usd": 0.08942133349178154,
+  "market_cap": 80911.23439198863,
+  "price": 9.237720074441568e-05
  },
  "entries": [
   {
@@ -15738,6 +15738,66 @@
    "title": "usdg depeg",
    "lines": [
     "USDG traded at $0.8722. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6ad905f0500f6e77c49ef7d4",
+   "kind": "security",
+   "ts": 1792607684,
+   "block": 94267654,
+   "day": 69,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $0.8133. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6ad906e0500f6e77c49efc55",
+   "kind": "security",
+   "ts": 1792607935,
+   "block": 94267654,
+   "day": 69,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $0.8124. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6ad90776500f6e77c49eff26",
+   "kind": "security",
+   "ts": 1792608084,
+   "block": 94267654,
+   "day": 69,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $0.8131. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6ad9080d500f6e77c49f01fa",
+   "kind": "security",
+   "ts": 1792608235,
+   "block": 94267654,
+   "day": 69,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $0.8354. The dollar the dens",
     "are measured in is bending."
    ],
    "evidence": {},
