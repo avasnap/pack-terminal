@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-21T18:45:47.234767+00:00",
+ "generated_at": "2026-10-21T19:00:48.737096+00:00",
  "as_of_block": 94267654,
  "state": {
   "supply": 875878828.7582942,
@@ -9,10 +9,10 @@
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 9974379.501028806,
-  "banked_usd": 0.08942133349178154,
-  "market_cap": 80911.23439198863,
-  "price": 9.237720074441568e-05
+  "claimable": 9977260.15946502,
+  "banked_usd": 0.08949138665880096,
+  "market_cap": 80698.6553779479,
+  "price": 9.21344970654809e-05
  },
  "entries": [
   {
@@ -15798,6 +15798,66 @@
    "title": "usdg depeg",
    "lines": [
     "USDG traded at $0.8354. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6ad90866500f6e77c49f03ae",
+   "kind": "security",
+   "ts": 1792608323,
+   "block": 94267654,
+   "day": 69,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $0.8397. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6ad908de500f6e77c49f05f3",
+   "kind": "security",
+   "ts": 1792608443,
+   "block": 94267654,
+   "day": 69,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $0.8134. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6ad90b72500f6e77c49f126a",
+   "kind": "security",
+   "ts": 1792609103,
+   "block": 94267654,
+   "day": 69,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $0.8124. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6ad90bae500f6e77c49f138d",
+   "kind": "security",
+   "ts": 1792609164,
+   "block": 94267654,
+   "day": 69,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $0.8193. The dollar the dens",
     "are measured in is bending."
    ],
    "evidence": {},
