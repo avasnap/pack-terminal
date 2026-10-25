@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T12:15:49.545931+00:00",
+ "generated_at": "2026-10-25T12:45:48.670050+00:00",
  "as_of_block": 97571851,
  "state": {
   "supply": 875380373.2037191,
@@ -9,10 +9,10 @@
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 11009696.502057614,
-  "banked_usd": 0.07772266964967826,
-  "market_cap": 66145.74301152126,
-  "price": 7.556228701980252e-05
+  "claimable": 11015506.044238683,
+  "banked_usd": 0.07763780376192653,
+  "market_cap": 66194.58753006089,
+  "price": 7.561808507060969e-05
  },
  "entries": [
   {
@@ -24789,6 +24789,33 @@
    "round": null
   },
   {
+   "_id": "feeding-239",
+   "kind": "feeding",
+   "ts": 1792929808,
+   "block": 97571851,
+   "day": 73,
+   "title": "FEEDING \u2116239 \u00b7 1/10 dens",
+   "lines": [
+    "6,375 PACK burned \u00b7 6,142 bought back and buried deeper",
+    "Meal 3 of the shrinking. The wolf expected that."
+   ],
+   "evidence": {
+    "txs": [
+     "0xc237f28429fcf804daff24d6b7c12d2d4bbecd8a053943d7a04efdbc6f5aab29"
+    ],
+    "dens": [
+     "PONS"
+    ],
+    "burn": 6374.953284902618,
+    "bought": 6141.6829464183975,
+    "keepers": [
+     "0x98d848d13e880ff4af6af31543adf4ba4455d1cb"
+    ]
+   },
+   "measured": true,
+   "round": 239
+  },
+  {
    "_id": "sec-6addf188500f6e77c4b91950",
    "kind": "security",
    "ts": 1792930149,
@@ -24797,6 +24824,21 @@
    "title": "usdg depeg",
    "lines": [
     "USDG traded at $15.5900. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6addf872500f6e77c4b93af7",
+   "kind": "security",
+   "ts": 1792931919,
+   "block": 97571851,
+   "day": 73,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $6.2500. The dollar the dens",
     "are measured in is bending."
    ],
    "evidence": {},
