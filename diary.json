@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-10-25T23:30:49.599381+00:00",
- "as_of_block": 97571851,
+ "generated_at": "2026-10-26T00:00:50.551142+00:00",
+ "as_of_block": 97969566,
  "state": {
-  "supply": 875380373.2037191,
-  "burned": 94944019.57868154,
-  "bought": 38347581.29638798,
-  "residue": 73541.41079115521,
+  "supply": 875348393.939222,
+  "burned": 94975998.84317864,
+  "bought": 38355202.99119971,
+  "residue": 73458.58338235789,
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 11140290.637860084,
-  "banked_usd": 0.07795950826419316,
+  "claimable": 11146122.685185187,
+  "banked_usd": 0.07865834360602351,
   "market_cap": 67325.71835221807,
   "price": 7.691024429279726e-05
  },
@@ -25544,6 +25544,36 @@
    "title": "usdg depeg",
    "lines": [
     "USDG traded at $3.4800. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6ade95b8500f6e77c4bc300e",
+   "kind": "security",
+   "ts": 1792972182,
+   "block": 97969566,
+   "day": 74,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $2.2800. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6ade97bd500f6e77c4bc39f4",
+   "kind": "security",
+   "ts": 1792972699,
+   "block": 97969566,
+   "day": 74,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $2.7900. The dollar the dens",
     "are measured in is bending."
    ],
    "evidence": {},
