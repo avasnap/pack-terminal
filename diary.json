@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T08:15:49.279254+00:00",
+ "generated_at": "2026-10-30T08:30:48.401490+00:00",
  "as_of_block": 101572109,
  "state": {
   "supply": 874165423.0781693,
@@ -9,8 +9,8 @@
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 12352697.402263375,
-  "banked_usd": 0.17529354410705209,
+  "claimable": 12355590.920781894,
+  "banked_usd": 0.17603963771668668,
   "market_cap": 71228.0976994787,
   "price": 8.148125723008535e-05
  },
@@ -33377,6 +33377,32 @@
    "round": null
   },
   {
+   "_id": "feeding-259",
+   "kind": "feeding",
+   "ts": 1793347139,
+   "block": 101572109,
+   "day": 78,
+   "title": "FEEDING \u2116259 \u00b7 1/10 dens",
+   "lines": [
+    "26,316 PACK burned \u00b7 8,531 bought back and buried deeper"
+   ],
+   "evidence": {
+    "txs": [
+     "0x2f967d3f0fc778455c82cc94331e94cc087e44146b5a8c05505421ef9cf650a5"
+    ],
+    "dens": [
+     "AAPL"
+    ],
+    "burn": 26315.93269145972,
+    "bought": 8531.354148895005,
+    "keepers": [
+     "0x56b1cc25343d2668442ddce441aa0b8f4fe00484"
+    ]
+   },
+   "measured": true,
+   "round": 259
+  },
+  {
    "_id": "sec-6ae44f5e500f6e77c4dad2d6",
    "kind": "security",
    "ts": 1793347387,
@@ -33400,6 +33426,21 @@
    "title": "usdg depeg",
    "lines": [
     "USDG traded at $0.4220. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6ae4522e500f6e77c4dae420",
+   "kind": "security",
+   "ts": 1793348109,
+   "block": 101572109,
+   "day": 78,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $0.3100. The dollar the dens",
     "are measured in is bending."
    ],
    "evidence": {},
