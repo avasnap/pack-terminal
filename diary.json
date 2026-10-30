@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-30T00:45:50.543895+00:00",
+ "generated_at": "2026-10-30T01:00:56.815088+00:00",
  "as_of_block": 101315682,
  "state": {
   "supply": 874249274.5774181,
@@ -9,10 +9,10 @@
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 12265306.712962963,
-  "banked_usd": 0.2849338592864104,
-  "market_cap": 69891.39331083,
-  "price": 7.994446817769805e-05
+  "claimable": 12268200.231481481,
+  "banked_usd": 0.2877021029866705,
+  "market_cap": 70161.6800790206,
+  "price": 8.025363259573116e-05
  },
  "entries": [
   {
@@ -32858,6 +32858,33 @@
    "round": null
   },
   {
+   "_id": "feeding-257",
+   "kind": "feeding",
+   "ts": 1793320130,
+   "block": 101315682,
+   "day": 78,
+   "title": "FEEDING \u2116257 \u00b7 1/10 dens",
+   "lines": [
+    "26,178 PACK burned \u00b7 14,817 bought back and buried deeper",
+    "Meal 3 of the shrinking. The wolf expected that."
+   ],
+   "evidence": {
+    "txs": [
+     "0x2b0f146ad0fd819afb938ace412fd8e91676c99fce48091189ae26b3a0bf7a95"
+    ],
+    "dens": [
+     "AMD"
+    ],
+    "burn": 26177.66055525671,
+    "bought": 14817.475815519418,
+    "keepers": [
+     "0x56b1cc25343d2668442ddce441aa0b8f4fe00484"
+    ]
+   },
+   "measured": true,
+   "round": 257
+  },
+  {
    "_id": "sec-6ae3e514500f6e77c4d8ef58",
    "kind": "security",
    "ts": 1793320178,
@@ -32896,6 +32923,36 @@
    "title": "usdg depeg",
    "lines": [
     "USDG traded at $0.1903. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6ae3e9ff500f6e77c4d90d85",
+   "kind": "security",
+   "ts": 1793321438,
+   "block": 101315682,
+   "day": 78,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $0.2286. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6ae3ea59500f6e77c4d90fab",
+   "kind": "security",
+   "ts": 1793321527,
+   "block": 101315682,
+   "day": 78,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $0.1963. The dollar the dens",
     "are measured in is bending."
    ],
    "evidence": {},
