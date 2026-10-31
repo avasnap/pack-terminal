@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-31T10:45:57.865722+00:00",
+ "generated_at": "2026-10-31T11:01:04.457903+00:00",
  "as_of_block": 102479290,
  "state": {
   "supply": 874050439.1118361,
@@ -9,10 +9,10 @@
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 12657690.329218108,
-  "banked_usd": 0.07684725466176884,
-  "market_cap": 67100.16258847623,
-  "price": 7.676921100418401e-05
+  "claimable": 12661921.296296297,
+  "banked_usd": 0.07672211630592522,
+  "market_cap": 67086.95064408274,
+  "price": 7.675409523534243e-05
  },
  "entries": [
   {
@@ -34130,6 +34130,40 @@
    "round": null
   },
   {
+   "_id": "feeding-262",
+   "kind": "feeding",
+   "ts": 1793441829,
+   "block": 102478875,
+   "day": 79,
+   "title": "FEEDING \u2116262 \u00b7 5/10 dens",
+   "lines": [
+    "85,827 PACK burned \u00b7 36,122 bought back and buried deeper"
+   ],
+   "evidence": {
+    "txs": [
+     "0x97e75dc0483cca51c458e1479abad3fa10ca629ae7709eacdd75de02a7ab5e0a",
+     "0xa48e81ff5071c1ea39d3aa8d2180979af7157c4a2ffba00cf09e4fe28ce1e080",
+     "0x86a41c8f6d34c0df80d66e42f2bfd41201cfdde853b79d626d24135151fabc1c",
+     "0x33365d590f24c9552f706407bdb0e71c582db1c3d390cb428b01f7fc013d9806",
+     "0x0dc0b8874cf5e972402a971dd5bb5021cb9c23493dda336d8e46c46d28466cc4"
+    ],
+    "dens": [
+     "NVDA",
+     "MSFT",
+     "AMD",
+     "CASHCAT",
+     "TENDIES"
+    ],
+    "burn": 85826.55468407561,
+    "bought": 36122.40029691323,
+    "keepers": [
+     "0xf1a24eba326c03e74782cf0ed47c6b7e8ad27f2c"
+    ]
+   },
+   "measured": true,
+   "round": 262
+  },
+  {
    "_id": "sec-6ae5c3a6500f6e77c4e1485b",
    "kind": "security",
    "ts": 1793442692,
@@ -34138,6 +34172,21 @@
    "title": "usdg depeg",
    "lines": [
     "USDG traded at $1.4500. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "sec-6ae5c90d500f6e77c4e1575b",
+   "kind": "security",
+   "ts": 1793444071,
+   "block": 102479290,
+   "day": 79,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $1.4900. The dollar the dens",
     "are measured in is bending."
    ],
    "evidence": {},
