@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-11-02T22:00:57.519557+00:00",
- "as_of_block": 104131954,
+ "generated_at": "2026-11-02T22:45:57.410940+00:00",
+ "as_of_block": 104555190,
  "state": {
-  "supply": 874000251.1768682,
-  "burned": 96324141.60553236,
-  "bought": 39019629.9709261,
+  "supply": 873988606.8377017,
+  "burned": 96335785.94469891,
+  "bought": 39033287.20837575,
   "residue": 70300.81069506305,
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 13344068.287037037,
-  "banked_usd": 0.070868850842688,
-  "market_cap": 64150.92023332482,
-  "price": 7.339920114089628e-05
+  "claimable": 13352652.391975308,
+  "banked_usd": 0.0863538924561814,
+  "market_cap": 64978.81786501998,
+  "price": 7.434744269736967e-05
  },
  "entries": [
   {
@@ -35988,6 +35988,47 @@
    "title": "usdg depeg",
    "lines": [
     "USDG traded at $1.9600. The dollar the dens",
+    "are measured in is bending."
+   ],
+   "evidence": {},
+   "measured": true,
+   "round": null
+  },
+  {
+   "_id": "feeding-268",
+   "kind": "feeding",
+   "ts": 1793657027,
+   "block": 104555190,
+   "day": 82,
+   "title": "FEEDING \u2116268 \u00b7 1/10 dens",
+   "lines": [
+    "11,644 PACK burned \u00b7 13,657 bought back and buried deeper"
+   ],
+   "evidence": {
+    "txs": [
+     "0x9da41a4b7e338ad84b1c59369d5d4efa770d51d52d69887137a6b3deadfaf5c4"
+    ],
+    "dens": [
+     "PONS"
+    ],
+    "burn": 11644.339166548278,
+    "bought": 13657.237449655022,
+    "keepers": [
+     "0x98d848d13e880ff4af6af31543adf4ba4455d1cb"
+    ]
+   },
+   "measured": true,
+   "round": 268
+  },
+  {
+   "_id": "sec-6ae91156500f6e77c4e96fb6",
+   "kind": "security",
+   "ts": 1793659190,
+   "block": 104555190,
+   "day": 82,
+   "title": "usdg depeg",
+   "lines": [
+    "USDG traded at $4.8900. The dollar the dens",
     "are measured in is bending."
    ],
    "evidence": {},
