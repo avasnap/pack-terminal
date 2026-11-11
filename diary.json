@@ -1,18 +1,18 @@
 {
- "generated_at": "2026-11-11T14:31:00.555296+00:00",
- "as_of_block": 111387449,
+ "generated_at": "2026-11-11T15:45:58.658499+00:00",
+ "as_of_block": 111791235,
  "state": {
-  "supply": 873204829.2871594,
-  "burned": 97119563.49524118,
-  "bought": 39441738.04275522,
+  "supply": 873199384.670881,
+  "burned": 97125008.11151956,
+  "bought": 39445391.065795824,
   "residue": 68425.20607093279,
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 15758259.387860082,
+  "claimable": 15771948.945473252,
   "banked_usd": null,
-  "market_cap": 60897.851263327546,
-  "price": 6.974062581976498e-05
+  "market_cap": 60822.147324539226,
+  "price": 6.965436347331348e-05
  },
  "entries": [
   {
@@ -36618,6 +36618,33 @@
    },
    "measured": true,
    "round": 286
+  },
+  {
+   "_id": "feeding-287",
+   "kind": "feeding",
+   "ts": 1794409578,
+   "block": 111791235,
+   "day": 90,
+   "title": "FEEDING \u2116287 \u00b7 1/10 dens",
+   "lines": [
+    "5,445 PACK burned \u00b7 3,653 bought back and buried deeper",
+    "Meal 3 of the shrinking. Decay is the schedule."
+   ],
+   "evidence": {
+    "txs": [
+     "0x4b796090e2327193f441cfe47ae10dfbf919704a7704364991c04ddcb19c4aa7"
+    ],
+    "dens": [
+     "PONS"
+    ],
+    "burn": 5444.616278381903,
+    "bought": 3653.023040609664,
+    "keepers": [
+     "0x98d848d13e880ff4af6af31543adf4ba4455d1cb"
+    ]
+   },
+   "measured": true,
+   "round": 287
   }
  ]
 }
