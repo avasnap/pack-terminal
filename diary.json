@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-11T09:00:59.698385+00:00",
+ "generated_at": "2026-11-11T10:00:59.130358+00:00",
  "as_of_block": 111387449,
  "state": {
   "supply": 873204829.2871594,
@@ -9,7 +9,7 @@
   "sealed": true,
   "positions": 10,
   "claimed": 1104330.6327160494,
-  "claimable": 15694804.52674897,
+  "claimable": 15706143.904320987,
   "banked_usd": null,
   "market_cap": 60233.8529304718,
   "price": 6.89802104961372e-05
